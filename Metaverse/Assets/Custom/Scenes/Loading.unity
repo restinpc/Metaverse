@@ -336,7 +336,7 @@ MonoBehaviour:
   onHandClick:
     m_PersistentCalls:
       m_Calls: []
-  targetSceneName: Mansion
+  targetSceneName: SteamVR
 --- !u!114 &155163513
 MonoBehaviour:
   m_ObjectHideFlags: 0
