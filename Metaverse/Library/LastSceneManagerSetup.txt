@@ -3,15 +3,3 @@ sceneSetups:
   isLoaded: 1
   isActive: 1
   isSubScene: 0
-- path: Assets/Custom/Scenes/Menu.unity
-  isLoaded: 0
-  isActive: 0
-  isSubScene: 0
-- path: Assets/Custom/Scenes/SteamVR.unity
-  isLoaded: 0
-  isActive: 0
-  isSubScene: 0
-- path: Assets/Custom/Scenes/Mansion.unity
-  isLoaded: 0
-  isActive: 0
-  isSubScene: 0
