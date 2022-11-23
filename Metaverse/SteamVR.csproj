@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{71C2D1AE-6D07-4FAD-D9C5-0F9D02C2CB4F}</ProjectGuid>
+    <ProjectGuid>{B981DDBF-0920-6A2D-64DC-5CD334368A12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>SteamVR</AssemblyName>
@@ -209,6 +209,56 @@
     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportPoint.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportURPHelper.cs" />
     <Compile Include="Assets\SteamVR\Plugins\openvr_api.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\App.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Components\Button.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Components\Component.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Components\Enemy.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Components\Label.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Components\Player.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Game.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\EnablePlayerInput.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\EnemyDeath.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\EnemyMove.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerDeath.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerEnemyCollision.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerEnteredDeathZone.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerEnteredVictoryZone.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerJumped.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerLanded.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerSpawn.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerStopJump.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerTokenCollision.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Model.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Prop.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\View\AnimatedTile.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\View\ParallaxLayer.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Buttons\ButtonWrapper.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Buttons\ExitGameButton.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Buttons\NewGameButton.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Caption.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Element.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\EnemyWrapper.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\PlayerWrapper.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Splash.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Core\Fuzzy.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Core\HeapQueue.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Core\Simulation.Event.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Core\Simulation.InstanceRegister.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Core\Simulation.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\AnimationController.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\DeathZone.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\EnemyController.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\GameController.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\Kinematic.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\PatrolPath.Mover.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\PatrolPath.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\PlayAudioClip.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\PlayerController.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\SpawnPoint.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\TokenController.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\TokenInstance.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Platformer\Mechanics\VictoryZone.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Player.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Behaviour.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Camera.cs" />
@@ -448,6 +498,9 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.40f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Valve.Newtonsoft.Json">
+      <HintPath>Assets\SteamVR\Input\Plugins\JSON.NET\Valve.Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="log4netPlastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.14.18\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
@@ -459,9 +512,6 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.14.18\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="Valve.Newtonsoft.Json">
-      <HintPath>Assets\SteamVR\Input\Plugins\JSON.NET\Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.40f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -823,7 +873,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
-      <Project>{339EEDA9-2846-F1F8-2FB0-2215A84C8A15}</Project>
+      <Project>{17DD6E10-3FDE-F47F-4FF6-9741606989FC}</Project>
       <Name>SteamVR_Windows_EditorHelper</Name>
     </ProjectReference>
   </ItemGroup>

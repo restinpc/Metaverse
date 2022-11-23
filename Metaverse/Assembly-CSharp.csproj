@@ -56,7 +56,59 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Custom\Scripts\Player.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\App.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Components\Button.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Components\Component.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Components\Enemy.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Components\Label.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Components\Player.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Game.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\EnablePlayerInput.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\EnemyDeath.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\EnemyMove.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\PlayerDeath.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\PlayerEnemyCollision.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\PlayerEnteredDeathZone.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\PlayerEnteredVictoryZone.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\PlayerJumped.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\PlayerLanded.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\PlayerSpawn.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\PlayerStopJump.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Gameplay\PlayerTokenCollision.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Model.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Prop.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\View\AnimatedTile.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\View\ParallaxLayer.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Wrappers\Buttons\ButtonWrapper.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Wrappers\Buttons\ExitGameButton.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Wrappers\Buttons\NewGameButton.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Wrappers\Caption.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Wrappers\Element.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Wrappers\EnemyWrapper.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Wrappers\PlayerWrapper.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Engine\Wrappers\Splash.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Core\Fuzzy.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Core\HeapQueue.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Core\Simulation.Event.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Core\Simulation.InstanceRegister.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Core\Simulation.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\AnimationController.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\DeathZone.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\EnemyController.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\GameController.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\Kinematic.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\PatrolPath.Mover.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\PatrolPath.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\PlayAudioClip.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\PlayerController.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\SpawnPoint.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\TokenController.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\TokenInstance.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Platformer\Mechanics\VictoryZone.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Player.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Metaverse\Scripts\link.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -649,6 +701,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="SteamVR_Actions.csproj">
+      <Project>{DEDBA3C3-402B-4B0A-9109-2548A63B48EA}</Project>
+      <Name>SteamVR_Actions</Name>
+    </ProjectReference>
     <ProjectReference Include="SteamVR_Input_Editor.csproj">
       <Project>{909EDC2E-4FAF-1520-A440-757996FD1C3C}</Project>
       <Name>SteamVR_Input_Editor</Name>
@@ -664,10 +720,6 @@
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
       <Project>{17DD6E10-3FDE-F47F-4FF6-9741606989FC}</Project>
       <Name>SteamVR_Windows_EditorHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="SteamVR_Actions.csproj">
-      <Project>{DEDBA3C3-402B-4B0A-9109-2548A63B48EA}</Project>
-      <Name>SteamVR_Actions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
