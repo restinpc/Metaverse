@@ -9,6 +9,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using Engine;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -69,9 +71,13 @@ namespace Valve.VR.InteractionSystem
 			{
 				if (targetSceneName.Length > 0)
 				{
-					string currentSceneName = SceneManager.GetActiveScene().name;
-					SceneManager.LoadSceneAsync(this.targetSceneName);
-					SceneManager.UnloadSceneAsync(currentSceneName);
+					if (Model.application.state["started"].getBool())
+					{
+						Model.application.setState(Model.setScene(targetSceneName));
+					} else
+                    {
+						Model.application.setState(Model.startGame());
+                    }
 				}
 				else
 				{
