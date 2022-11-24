@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static Platformer.Core.Simulation;
 
 namespace Engine
 {
@@ -107,6 +109,49 @@ namespace Engine
             return fout;
         }
 
+
+        public bool matchDictionaries(Dictionary<string, Prop> dictionary1, Dictionary<string, Prop> dictionary2)
+        {
+            bool flag = false;
+            foreach (var prop in dictionary1)
+            {
+                if (prop.Value.getType() == typeof(bool) && prop.Value.getBool() != dictionary2[prop.Key].getBool())
+                {
+                    flag = true;
+                    break;
+                }
+                else if (prop.Value.getType() == typeof(int) && prop.Value.getInt() != dictionary2[prop.Key].getInt())
+                {
+                    flag = true;
+                    break;
+                }
+                else if (prop.Value.getType() == typeof(string) && prop.Value.getString() != dictionary2[prop.Key].getString())
+                {
+                    flag = true;
+                    break;
+                }
+                else if (prop.Value.getType() == typeof(Vector3) && prop.Value.getVector3() != dictionary2[prop.Key].getVector3())
+                {
+                    flag = true;
+                    break;
+                }
+                else if (prop.Value.getType() == typeof(Dictionary<string, Prop>) && prop.Value.getDictionary() != dictionary2[prop.Key].getDictionary())
+                {
+                    flag = this.matchDictionaries(prop.Value.getDictionary(), dictionary2[prop.Key].getDictionary());
+                    if (flag)
+                    {
+                        break;
+                    }
+                }
+                else if (prop.Value.getType() == typeof(Component) && prop.Value.getComponent() != dictionary2[prop.Key].getComponent())
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            return flag;
+        }
+
         /**
          * @param state
          */
@@ -116,6 +161,16 @@ namespace Engine
             {
                 Debug.Log("Before dispatch >> " + "\n" + JsonConvert.SerializeObject(this.state));
                 Debug.Log("Will dispatch >> " + "\n" + JsonConvert.SerializeObject(state));
+            }
+            string currentScene = this.state["activeScene"].getString();
+            if (state.ContainsKey("activeScene") && !currentScene.Equals(state["activeScene"].getString()))
+            {
+                string targetScene = state["activeScene"].getString();
+                if ((DEBUG && logToConsole) || (DEBUG && DEEP_DEBUG))
+                {
+                    Debug.Log("Scene is changing from <" + currentScene + "> to <" + targetScene + ">");
+                }
+                SceneManager.LoadScene(targetScene);
             }
             Dictionary<string, Prop> newState = new Dictionary<string, Prop>();
             foreach (var field in this.state)
@@ -141,38 +196,9 @@ namespace Engine
                 // string before = JsonConvert.SerializeObject(obj.Value.props);
                 Dictionary<string, Prop> afterProps = obj.Value.getUpdatedProps();
                 // string after = JsonConvert.SerializeObject(obj.Value.getUpdateProps());
-                bool flag = false;
-                foreach(var prop in obj.Value.props)
+                if (!matchDictionaries(obj.Value.props, afterProps))
                 {
-                    if (prop.Value.getType() == typeof(bool) && prop.Value.getBool() != afterProps[prop.Key].getBool())
-                    {
-                        flag = true;
-                        break;
-                    } else  if (prop.Value.getType() == typeof(int) && prop.Value.getInt() != afterProps[prop.Key].getInt())
-                    {
-                        flag = true;
-                        break;
-                    } else if (prop.Value.getType() == typeof(string) && prop.Value.getString() != afterProps[prop.Key].getString())
-                    {
-                        flag = true;
-                        break;
-                    } else if (prop.Value.getType() == typeof(Vector2) && prop.Value.getVector2() != afterProps[prop.Key].getVector2())
-                    {
-                        flag = true;
-                        break;
-                    } else if (prop.Value.getType() == typeof(Dictionary<string, Prop>) && prop.Value.getDictionary() != afterProps[prop.Key].getDictionary())
-                    {
-                        flag = true;
-                        break;
-                    } else if (prop.Value.getType() == typeof(Component) && prop.Value.getComponent() != afterProps[prop.Key].getComponent())
-                    {
-                        flag = true;
-                        break;
-                    }
-                }
-                if (flag /*|| !before.Equals(after)*/)
-                {
-                    List<Components.Component> treeList = this.tree(this.stdin.getNodes());
+                    List<Components.Component> treeList = tree(this.stdin.getNodes());
                     if (treeList.IndexOf(obj.Value) >= 0 || obj.Value == this.stdin)
                     {
                         obj.Value.render(obj.Value.parent != null ? obj.Value.parent.gameObject : this.stdout);

@@ -14,7 +14,6 @@ namespace Engine.Wrappers
             }
             level[objectName] = new Components.Component(
                 Model.application,
-                GameObject.Find(objectName),
                 scene,
                 parent,
                 objectName,

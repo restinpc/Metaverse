@@ -9,7 +9,7 @@ namespace Engine
         string stringValue;
         int intValue;
         bool boolValue;
-        Vector2 vector2Value;
+        Vector3 vector3Value;
         Dictionary<string, Prop> dictionaryValue;
         Components.Component componentValue;
         System.Type type;
@@ -37,10 +37,10 @@ namespace Engine
             this.type = typeof(bool);
         }
 
-        public Prop(Vector2 value)
+        public Prop(Vector3 value)
         {
-            this.vector2Value = value;
-            this.type = typeof(Vector2);
+            this.vector3Value = value;
+            this.type = typeof(Vector3);
         }
 
         public Prop(Dictionary<string, Prop> value)
@@ -63,7 +63,7 @@ namespace Engine
             this.stringValue = null;
             this.intValue = 0;
             this.boolValue = false;
-            this.vector2Value = default(Vector2);
+            this.vector3Value = default(Vector3);
             this.dictionaryValue = null;
             this.componentValue = null;
             this.type = default(System.Type);
@@ -93,11 +93,11 @@ namespace Engine
             this.type = typeof(bool);
         }
 
-        public void setValue(Vector2 value)
+        public void setValue(Vector3 value)
         {
             reset();
-            this.vector2Value = value;
-            this.type = typeof(Vector2);
+            this.vector3Value = value;
+            this.type = typeof(Vector3);
         }
 
         public void setValue(Dictionary<string, Prop> value)
@@ -132,9 +132,9 @@ namespace Engine
             return this.boolValue;
         }
 
-        public Vector2 getVector2()
+        public Vector3 getVector3()
         {
-            return this.vector2Value;
+            return this.vector3Value;
         }
 
         public Dictionary<string, Prop> getDictionary()

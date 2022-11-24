@@ -29,12 +29,11 @@ namespace Engine.Components
         */
         public Button(
             App application,
-            GameObject gameObject,
             Scene scene,
             Component parent = null,
             string name = "",
             Func<Dictionary<string, Prop>, Dictionary<string, Prop>> mapStateToProps = null
-        ) : base(application, gameObject, scene, parent, name, mapStateToProps) {
+        ) : base(application, scene, parent, name, mapStateToProps) {
             // textValue = gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>();
         }
 

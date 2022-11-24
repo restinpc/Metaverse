@@ -20,7 +20,7 @@ namespace Engine.Gameplay
             {
                 Debug.Log("Engine.Gameplay.EnemyMove.Execute()");
             }
-            enemy.component.move(path);
+            // enemy.component.move(path);
         }
     }
 }

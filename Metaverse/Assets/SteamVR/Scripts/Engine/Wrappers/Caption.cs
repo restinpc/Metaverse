@@ -14,29 +14,29 @@ namespace Engine.Wrappers
             Dictionary<string, Prop> mapStateToProps(Dictionary<string, Prop> state)
             {
                 string text = "Welcome to\n Metaverse";
-                if (state["gameOver"].getBool())
+                bool isGameOver = state["gameOver"].getBool();
+                bool isLoading = state["loading"].getBool();
+                bool isPaused = state["paused"].getBool();
+                bool isDead = state["player"].getDictionary()["dead"].getBool();
+                if (isGameOver)
                 {
                     text = "Game Over";
                 }
-                else if (state["paused"].getBool() && !state["dead"].getBool())
+                else if (isPaused && !isDead)
                 {
                     text = "Pause";
-                } else if (state["victory"].getBool())
+                }
+                else if (isLoading)
                 {
-                    text = "Victory";
-                } else if (state["lives"].getInt() > 0 && state["started"].getBool())
-                {
-                    text = state["lives"].getInt() + " / 3";
+                    text = "Loading..\nPlease wait";
                 }
                 return new Dictionary<string, Prop>
                 {
-                    { "enabled", new Prop(state["activeScene"].getString() == Scene.Loading.ToString()) },
                     { "value", new Prop(text)}
                 };
             }
             level[objectName] = new Components.Label(
                 Model.application,
-                GameObject.Find(objectName),
                 scene,
                 parent,
                 objectName,

@@ -212,7 +212,6 @@
     <Compile Include="Assets\SteamVR\Scripts\Engine\App.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Components\Button.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Components\Component.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\Engine\Components\Enemy.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Components\Label.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Components\Player.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Game.cs" />
@@ -228,6 +227,7 @@
     <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerSpawn.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerStopJump.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\PlayerTokenCollision.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Gameplay\SceneChange.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Model.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Prop.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\View\AnimatedTile.cs" />
@@ -237,9 +237,8 @@
     <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Buttons\NewGameButton.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Caption.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Element.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\EnemyWrapper.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\LabelWrapper.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\PlayerWrapper.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Splash.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Platformer\Core\Fuzzy.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Platformer\Core\HeapQueue.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Platformer\Core\Simulation.Event.cs" />

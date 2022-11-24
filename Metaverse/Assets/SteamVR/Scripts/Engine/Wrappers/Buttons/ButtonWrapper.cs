@@ -25,7 +25,6 @@ namespace Engine.Wrappers
             }
             component = new Components.Button(
                 Model.application,
-                GameObject.Find(objectName),
                 scene,
                 parent,
                 objectName,

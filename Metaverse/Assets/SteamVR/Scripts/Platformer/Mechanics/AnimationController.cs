@@ -48,7 +48,7 @@ namespace Platformer.Mechanics
         protected override void ComputeVelocity()
         {
             Dictionary<string, Engine.Prop> enemies = this.application.state["enemies"].getDictionary();
-            Vector2 move = enemies[this.name].getDictionary()["move"].getVector2();
+            Vector3 move = enemies[this.name].getDictionary()["move"].getVector3();
             if (jump && IsGrounded)
             {
                 velocity.y = jumpTakeOffSpeed * gameModel.jumpModifier;

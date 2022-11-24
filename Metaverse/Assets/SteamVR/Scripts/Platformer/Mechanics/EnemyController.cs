@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Engine.Gameplay;
+﻿using Engine.Gameplay;
 using UnityEngine;
 using static Platformer.Core.Simulation;
 
@@ -21,7 +19,7 @@ namespace Platformer.Mechanics
         internal AudioSource _audio;
 
         public Engine.App application;
-        public Engine.Components.Enemy component;
+        public Engine.Components.Component component;
 
         public Bounds Bounds => _collider.bounds;
 
@@ -31,7 +29,7 @@ namespace Platformer.Mechanics
             _collider = GetComponent<Collider2D>();
             _audio = GetComponent<AudioSource>();
             application = Engine.Model.application;
-            component = Engine.Model.application.getComponentByName(this.name) as Engine.Components.Enemy;
+            component = Engine.Model.application.getComponentByName(this.name);
         }
 
         void OnCollisionEnter2D(Collision2D collision)

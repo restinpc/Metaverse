@@ -18,7 +18,7 @@ namespace Engine.Gameplay
             {
                 Debug.Log("Engine.Gameplay.EnemyDeath.Execute()");
             }
-            enemy.component.death();
+            // enemy.component.death();
         }
     }
 }
