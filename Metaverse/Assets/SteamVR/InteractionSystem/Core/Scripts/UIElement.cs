@@ -67,26 +67,18 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         protected virtual void OnButtonClick()
 		{
-			try
+			if (targetSceneName.Length > 0)
 			{
-				if (targetSceneName.Length > 0)
+				Model.gameModel.ChangeScene(targetSceneName);
+				if (!Model.application.state["started"].getBool())
 				{
-					if (Model.application.state["started"].getBool())
-					{
-						Model.application.setState(Model.setScene(targetSceneName));
-					} else
-                    {
-						Model.application.setState(Model.startGame());
-                    }
+					Model.application.setState(Model.startGame());
 				}
-				else
-				{
-					onHandClick.Invoke(currentHand);
-				}
-			} catch (Exception e)
-            {
-				Debug.Log(e.Message);
-            }
+			}
+			else
+			{
+				onHandClick.Invoke(currentHand);
+			}
 		}
 	}
 

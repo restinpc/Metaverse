@@ -33,7 +33,6 @@ namespace Engine.Components
         */
         public Player(
             App application,
-            GameObject gameObject,
             Scene scene,
             Component parent = null,
             string name = "",
@@ -41,12 +40,11 @@ namespace Engine.Components
                 Dictionary<string, Prop>,
                 Dictionary<string, Prop>
             > mapStateToProps = null
-        ) : base(application, gameObject, scene, parent, name, mapStateToProps)
+        ) : base(application, scene, parent, name, mapStateToProps)
         {
             this.isDead = false;
             this.isVictory = false;
             this.isInputEnabled = true;
-            this.player = gameObject.GetComponent<PlayerController>();
         }
 
         /**
@@ -55,10 +53,10 @@ namespace Engine.Components
         public override void render(GameObject stdout)
         {
             base.render(stdout);
+            this.player = gameObject.GetComponent<PlayerController>();
             renderDeadProp();
             renderVictoryProp();
             renderInputEnableProp();
-            renderCollider2dProp();
             renderSpawnProp();
         }
 
@@ -73,12 +71,7 @@ namespace Engine.Components
                 // Model.gameModel.virtualCamera.m_LookAt = null;
                 player.animator.SetTrigger("hurt");
                 player.animator.SetBool("dead", true);
-                Dictionary<string, Prop> newState = Model.toggleInput(false);
-                foreach (KeyValuePair<string, Prop> el in Model.toggleCollider2d(false))
-                {
-                    newState.Add(el.Key, el.Value);
-                }
-                Model.application.setState(newState);
+                Model.application.setState(Model.toggleInput(false));
                 Simulation.Schedule<Gameplay.PlayerSpawn>(2f);
             }
             else if (this.isDead && !deadProp)
@@ -119,21 +112,6 @@ namespace Engine.Components
                     this.isInputEnabled = false;
                     player.controlEnabled = false;
                 }
-            }
-        }
-
-        private void renderCollider2dProp()
-        {
-            bool toggleCollider2dProp = this.props["collider2d"].getBool();
-            if (!this.isToggleCollider2d && toggleCollider2dProp)
-            {
-                this.isToggleCollider2d = true;
-                player.collider2d.enabled = true;
-            }
-            else if (this.isToggleCollider2d && !toggleCollider2dProp)
-            {
-                this.isToggleCollider2d = false;
-                player.collider2d.enabled = false;
             }
         }
 
@@ -179,19 +157,17 @@ namespace Engine.Components
             }
             if (!this.isDead)
             {
-                Dictionary<string, Prop> newState = Model.killPlayer();
-                foreach (KeyValuePair<string, Prop> el in Model.pauseGame())
+                Dictionary<string, Prop> baseState = Model.killPlayer();
+                List<Dictionary<string, Prop>> actions = new List<Dictionary<string, Prop>>()
                 {
-                    newState.Add(el.Key, el.Value);
-                }
-                if (newState["lives"].getInt() == 0)
+                    baseState,
+                    Model.pauseGame()
+                };
+                if (baseState["lives"].getInt() == 0)
                 {
-                    foreach (KeyValuePair<string, Prop> el in Model.gameOver())
-                    {
-                        newState.Add(el.Key, el.Value);
-                    }
+                    actions.Add(Model.gameOver());
                 }
-                Model.application.setState(newState);
+                Model.application.setState(Model.mergeActions(actions));
             }
         }
 

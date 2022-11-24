@@ -41,7 +41,6 @@ namespace Engine.Components
         */
         public Component(
             App application,
-            GameObject gameObject,
             Scene scene,
             Component parent = null,
             string name = "",
@@ -55,7 +54,6 @@ namespace Engine.Components
                 Debug.Log("Component.constructor(" + name + ")");
             }
             this.name = name.Length > 0 ? name : "";
-            this.gameObject = gameObject;
             this.scene = scene;
             this.application = application;
             this.parent = parent;
@@ -68,6 +66,12 @@ namespace Engine.Components
             this.mapStateToProps = mapStateToProps;
             this.nodes = new Dictionary<string, Component> { };
             this.application.list.Add(this.name, this);
+            constructor();
+        }
+
+        public void constructor()
+        {
+            this.gameObject = GameObject.Find(this.name);
         }
         /**
          * Method to return child node list.
@@ -147,6 +151,10 @@ namespace Engine.Components
                 if (DEBUG && this.name.Length > 0)
                 {
                     Debug.Log("Engine.Component(" + this.name + ").render(" + this.renderId + ")");
+                }
+                if (!this.gameObject)
+                {
+                    constructor();
                 }
                 this.updateProps();
                 foreach (var item in this.props)

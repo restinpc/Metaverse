@@ -3,6 +3,7 @@ using Platformer.Mechanics;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Platformer.Core.Simulation;
 
 namespace Engine
 {
@@ -41,82 +42,139 @@ namespace Engine
 
         void Awake()
         {
+            Debug.Log("Awake");
             Model.gameModel = this;
             if (Model.application == null)
             {
                 Model.application = new App();
             }
             activeScene = Model.application.state["activeScene"].getString();
-            if (activeScene == Scene.Loading.ToString() && Model.loadingScene == null)
+            // Loading Scene
+            if (activeScene == Scene.Loading.ToString())
             {
-                Model.loadingScene = new Dictionary<string, Components.Component> {
-                    { "Loading.Game", null },
-                    { "Loading.Navigation", null },
-                    { "Loading.Caption", null }
-                };
-                new Wrappers.Element(
-                    "Loading.Game",
-                    Model.loadingScene,
-                    Scene.Loading
-                );
+                if (Model.loadingScene == null)
+                {
+                    Model.loadingScene = new Dictionary<string, Components.Component> {
+                        { "Loading.Game", null },
+                        { "Loading.Navigation", null },
+                        { "Loading.Caption", null },
+                        { "Loading.Menu", null }
+                    };
+                    new Wrappers.Element(
+                        "Loading.Game",
+                        Model.loadingScene,
+                        Scene.Loading
+                    );
+                    new Wrappers.Element(
+                        "Loading.Navigation",
+                        Model.loadingScene,
+                        Scene.Loading,
+                        Model.loadingScene["Loading.Game"]
+                    );
+                    new Wrappers.Caption(
+                        "Loading.Caption",
+                        Model.loadingScene,
+                        Scene.Loading,
+                        Model.loadingScene["Loading.Navigation"]
+                    );
+                }
                 Model.application.stdin = Model.loadingScene["Loading.Game"];
-                new Wrappers.Element(
-                    "Loading.Navigation",
-                    Model.loadingScene,
-                    Scene.Loading,
-                    Model.loadingScene["Loading.Game"]
-                );
-                new Wrappers.Caption(
-                    "Loading.Caption",
-                    Model.loadingScene,
-                    Scene.Loading,
-                    Model.loadingScene["Loading.Navigation"]
-                );
             }
-            else if (activeScene == Scene.Menu.ToString() && Model.menuScene == null)
+            // Menu Scene
+            else if (activeScene == Scene.Menu.ToString())
             {
-                Model.menuScene = new Dictionary<string, Components.Component> {
-                    { "Menu.Game", null },
-                    { "Menu.Navigation", null },
-                    { "Menu.Caption", null }
-                };
-                new Wrappers.Element(
-                    "Menu.Game",
-                    Model.menuScene,
-                    Scene.Menu
-                );
+                if (Model.menuScene == null)
+                {
+                    Model.menuScene = new Dictionary<string, Components.Component> {
+                        { "Menu.Game", null },
+                        { "Menu.Navigation", null },
+                        { "Menu.Caption", null }
+                    };
+                    new Wrappers.Element(
+                        "Menu.Game",
+                        Model.menuScene,
+                        Scene.Menu
+                    );
+                    new Wrappers.Element(
+                        "Menu.Navigation",
+                        Model.menuScene,
+                        Scene.Menu,
+                        Model.menuScene["Menu.Game"]
+                    );
+                    new Wrappers.LabelWrapper(
+                        "Menu.Caption",
+                        Model.menuScene,
+                        Scene.Menu,
+                        Model.menuScene["Menu.Navigation"],
+                        "Main Menu"
+                    );
+                }
                 Model.application.stdin = Model.menuScene["Menu.Game"];
-                new Wrappers.Element(
-                    "Menu.Navigation",
-                    Model.menuScene,
-                    Scene.Menu,
-                    Model.menuScene["Menu.Game"]
-                );
-                new Wrappers.Caption(
-                    "Menu.Caption",
-                    Model.menuScene,
-                    Scene.Menu,
-                    Model.menuScene["Menu.Navigation"]
-                );
+            }
+            // Mansion Scene
+            else if (activeScene == Scene.Mansion.ToString())
+            {
+                if (Model.mansionScene == null)
+                {
+                    Model.mansionScene = new Dictionary<string, Components.Component> {
+                        { "Mansion.Game", null },
+                    };
+                    new Wrappers.Element(
+                        "Mansion.Game",
+                        Model.mansionScene,
+                        Scene.Mansion
+                    );
+                }
+                Model.application.stdin = Model.mansionScene["Mansion.Game"];
             }
         }
         void Start()
         {
             Model.application.render();
         }
+
+        public void ChangeScene(string targetScene)
+        {
+            if (Model.application.DEBUG)
+            {
+                Debug.Log("Engine.Game.ChangeScene(" + targetScene + ")");
+            }
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            bool flag = true;
+            if (targetScene != "Loading")
+            {
+                if (currentSceneName != "Loading")
+                {
+                    flag = false;
+                    Schedule<Gameplay.SceneChange>(3f).targetScene = targetScene;
+                    Model.application.setState(
+                        Model.mergeActions(
+                            new List<Dictionary<string, Prop>>() {
+                                Model.setScene(Scene.Loading.ToString()),
+                                Model.toggleLoading(true)
+                            }
+                        )
+                    );
+                }
+            }
+            if (flag)
+            {
+                Model.application.setState(
+                    Model.mergeActions(
+                        new List<Dictionary<string, Prop>>() {
+                            Model.setScene(targetScene),
+                            Model.toggleLoading(false)
+                        }
+                    )
+                );
+            }
+        }
+
         void Update()
         {
             if (Model.application.DEBUG && Model.application.DEEP_DEBUG)
             {
                 Debug.Log("Engine.Game.Update()");
-            }
-            string targetScene = Model.application.state["activeScene"].getString();
-            if (!targetScene.Equals(activeScene))
-            {
-                string currentSceneName = SceneManager.GetActiveScene().name;
-                SceneManager.LoadSceneAsync(targetScene);
-                SceneManager.UnloadSceneAsync(currentSceneName);
-                activeScene = targetScene;
             }
             /*
             bool isStarted = Model.application.state["started"].getBool() == true;

@@ -29,7 +29,6 @@ namespace Engine.Wrappers
             button.onClick.AddListener(() => this.onClick(button));
             component = new Components.Button(
                 Model.application,
-                GameObject.Find(objectName),
                 scene,
                 parent,
                 objectName,

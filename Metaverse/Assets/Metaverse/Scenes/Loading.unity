@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 155163513}
   - component: {fileID: 155163512}
   m_Layer: 0
-  m_Name: Menu
+  m_Name: Loading.Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
   onHandClick:
     m_PersistentCalls:
       m_Calls: []
-  targetSceneName: SteamVR
+  targetSceneName: Menu
 --- !u!114 &155163513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -785,6 +785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1571791534}
   - component: {fileID: 1571791535}
+  - component: {fileID: 1571791536}
   m_Layer: 0
   m_Name: Loading.Game
   m_TagString: Untagged
@@ -822,9 +823,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   vr_player: {fileID: 838957782}
+  activeScene: 
   spawnPoint: {fileID: 0}
   jumpModifier: 1.5
   jumpDeceleration: 0.5
+--- !u!114 &1571791536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571791533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9a35656b8ddac4db4e94955a76177d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1997751911
 GameObject:
   m_ObjectHideFlags: 0

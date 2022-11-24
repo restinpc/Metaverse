@@ -8,44 +8,50 @@ namespace Engine
     {
         public static App application = null;
         public static Game gameModel = null;
-        public static Components.Label caption;
-        public static Components.Component canvas;
-        public static Components.Component splash;
-        public static Components.Player player;
-        public static Components.Button newGameButton;
-        public static Components.Button exitGameButton;
-
+        public static Components.Player player = null;
         public static Dictionary<string, Components.Component> loadingScene = null;
         public static Dictionary<string, Components.Component> menuScene = null;
+        public static Dictionary<string, Components.Component> mansionScene = null;
+        public static Dictionary<string, Components.Component> steamVrScrene = null;
 
         public static Dictionary<string, Prop> defaultState()
         {
             Dictionary<string, Prop> fout = new Dictionary<string, Prop>
             {
+                { "frameId", new Prop(0) },
                 { "activeScene", new Prop(Scene.Loading.ToString()) },
+                { "loading", new Prop(false) },
                 { "started", new Prop(false) },
                 { "paused", new Prop(false) },
                 { "gameOver", new Prop(false) },
-                { "frameId", new Prop(0) },
-                { "lives", new Prop(3) },
-                { "dead", new Prop(false) },
                 { "victory", new Prop(false) },
                 { "inputEnabled", new Prop(true) },
-                { "collider2d", new Prop(true) },
-                { "spawn", new Prop(false) }
             };
-            /*
-            Dictionary<string, Prop> enemies = new Dictionary<string, Prop>();
-            for (int i = 1; i <= 16; i++)
-            {
-                Dictionary<string, Prop> enemy = new Dictionary<string, Prop> { };
-                enemy.Add("id", new Prop(i));
-                enemy.Add("name", new Prop("Enemy" + i.ToString()));
-                enemy.Add("move", new Prop(new Vector2(0, 0)));
-            }
-            fout.Add("enemies", new Prop(enemies));
-            */
+            fout.Add("player", new Prop(
+                new Dictionary<string, Prop>() {
+                    { "position", new Prop(new Vector3(0, 0, 0)) },
+                    { "move", new Prop(new Vector3(0, 0, 0)) },
+                    { "hp", new Prop(100) },
+                    { "tokens", new Prop(100) },
+                    { "lives", new Prop(3) },
+                    { "dead", new Prop(false) },
+                    { "spawn", new Prop(false) }
+                }
+            ));
             return fout;
+        }
+
+        static public Dictionary<string, Prop> mergeActions(List<Dictionary<string, Prop>> values)
+        {
+            Dictionary<string, Prop> newState = new Dictionary<string, Prop>();
+            for(int i = 0; i < values.Count; i++)
+            {
+                foreach (var field in values[i])
+                {
+                    newState[field.Key] = field.Value;
+                }
+            }
+            return newState;
         }
 
         static public Dictionary<string, Prop> setScene(string scene)
@@ -78,7 +84,6 @@ namespace Engine
             }
             return new Dictionary<string, Prop>() {
                 { "started", new Prop(true) },
-                { "activeScene", new Prop(Scene.Menu.ToString()) }
             };
         }
 
@@ -110,9 +115,12 @@ namespace Engine
             {
                 Debug.Log("Engine.Model.killPlayer()");
             }
+            Dictionary<string, Prop> player = Model.application.state["player"].getDictionary();
+            player["dead"] = new Prop(true);
+            player["lives"] = new Prop(application.state["lives"].getInt() - 1);
             return new Dictionary<string, Prop>() {
-                { "lives", new Prop(application.state["lives"].getInt() - 1)},
-                { "dead", new Prop(true) }
+                { "gameOver", new Prop(player["lives"].getInt() >= 0) },
+                { "player", new Prop(player) }
             };
         }
 
@@ -122,9 +130,10 @@ namespace Engine
             {
                 Debug.Log("Engine.Model.revivePlayer()");
             }
+            Dictionary<string, Prop> player = Model.application.state["player"].getDictionary();
+            player["dead"] = new Prop(false);
             return new Dictionary<string, Prop>() {
-                { "dead", new Prop(false) },
-                { "paused", new Prop(false) }
+                { "player", new Prop(player) }
             };
         }
 
@@ -139,25 +148,25 @@ namespace Engine
             };
         }
 
+        static public Dictionary<string, Prop> toggleLoading(bool value)
+        {
+            if (application.DEBUG)
+            {
+                Debug.Log("Engine.Model.toggleLoading(" + value + ")");
+            }
+            return new Dictionary<string, Prop>() {
+                { "loading", new Prop(value) }
+            };
+        }
+
         static public Dictionary<string, Prop> toggleInput(bool value)
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.toggleInput()");
+                Debug.Log("Engine.Model.toggleInput(" + value + ")");
             }
             return new Dictionary<string, Prop>() {
                 { "enableInput", new Prop(value) }
-            };
-        }
-
-        static public Dictionary<string, Prop> toggleCollider2d(bool value)
-        {
-            if (application.DEBUG)
-            {
-                Debug.Log("Engine.Model.toggleCollider2d()");
-            }
-            return new Dictionary<string, Prop>() {
-                { "collider2d", new Prop(value) }
             };
         }
 
@@ -165,10 +174,12 @@ namespace Engine
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.toggleSpawn()");
+                Debug.Log("Engine.Model.toggleSpawn(" + value + ")");
             }
+            Dictionary<string, Prop> player = Model.application.state["player"].getDictionary();
+            player["spawn"] = new Prop(value);
             return new Dictionary<string, Prop>() {
-                { "spawn", new Prop(value) }
+                { "player", new Prop(player) }
             };
         }
 
@@ -180,32 +191,6 @@ namespace Engine
             }
             return new Dictionary<string, Prop>() {
                 { "gameOver", new Prop(true)}
-            };
-        }
-
-        static public Dictionary<string, Prop> initEnemy(string enemyName, Components.Component component)
-        {
-            if (application.DEBUG)
-            {
-                Debug.Log("Engine.Model.initEnemies(" + enemyName + ")");
-            }
-            Dictionary<string, Prop> enemies = Model.application.state["enemies"].getDictionary();
-            enemies[enemyName].getDictionary()["component"] = new Prop(component);
-            return new Dictionary<string, Prop>() {
-                { "enemies", new Prop(enemies) }
-            };
-        }
-
-        static public Dictionary<string, Prop> setEnemyMove(string enemyName, Vector2 move)
-        {
-            if (application.DEBUG && application.DEEP_DEBUG)
-            {
-                Debug.Log("Engine.Model.setEnemyMove("+ enemyName + ")");
-            }
-            Dictionary<string, Prop> enemies = Model.application.state["enemies"].getDictionary();
-            enemies[enemyName].getDictionary()["move"] = new Prop(move);
-            return new Dictionary<string, Prop>() {
-                { "enemies", new Prop(enemies) }
             };
         }
     }
