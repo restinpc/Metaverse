@@ -104,7 +104,7 @@ namespace Platformer.Mechanics
         {
             if (jump && IsGrounded)
             {
-                velocity.y = jumpTakeOffSpeed * gameModel.jumpModifier * 1.2f;
+                velocity.y = jumpTakeOffSpeed * 1.5f * 1.2f;
                 jump = false;
             }
             else if (stopJump)
@@ -112,7 +112,7 @@ namespace Platformer.Mechanics
                 stopJump = false;
                 if (velocity.y > 0)
                 {
-                    velocity.y = velocity.y * gameModel.jumpDeceleration;
+                    velocity.y = velocity.y * 0.5f;
                 }
             }
 

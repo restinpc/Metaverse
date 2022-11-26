@@ -1989,7 +1989,7 @@ ScriptsOnlyBuild:
     className: OpenVRLoader
   - hash:
       serializedVersion: 2
-      Hash: c920398891678476b7c6a06881eebdb5
+      Hash: a43f41b5e00cfaebf678e23a34b618a9
     assemblyName: SteamVR.dll
     namespaceName: Engine
     className: Game

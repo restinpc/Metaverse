@@ -31,7 +31,6 @@ namespace Engine
                 this.state = Model.defaultState();
                 this.renderId = 0;
                 this.list = new Dictionary<string, Components.Component> { };
-                // this.render(); 
             }
             catch (Exception e)
             {
@@ -63,7 +62,7 @@ namespace Engine
          * Method to get a list of all child nodes.
          * @param arr Initial array of nodes.
          */
-        public List<Components.Component> tree(Dictionary<string, Components.Component> arr)
+        private List<Components.Component> tree(Dictionary<string, Components.Component> arr)
         {
             try
             {
@@ -110,7 +109,7 @@ namespace Engine
         }
 
 
-        public bool matchDictionaries(Dictionary<string, Prop> dictionary1, Dictionary<string, Prop> dictionary2)
+        private bool matchDictionaries(Dictionary<string, Prop> dictionary1, Dictionary<string, Prop> dictionary2)
         {
             bool flag = false;
             foreach (var prop in dictionary1)
@@ -162,6 +161,7 @@ namespace Engine
                 Debug.Log("Before dispatch >> " + "\n" + JsonConvert.SerializeObject(this.state));
                 Debug.Log("Will dispatch >> " + "\n" + JsonConvert.SerializeObject(state));
             }
+            bool rerender = true;
             string currentScene = this.state["activeScene"].getString();
             if (state.ContainsKey("activeScene") && !currentScene.Equals(state["activeScene"].getString()))
             {
@@ -170,18 +170,17 @@ namespace Engine
                 {
                     Debug.Log("Scene is changing from <" + currentScene + "> to <" + targetScene + ">");
                 }
-                SceneManager.LoadScene(targetScene);
+                SceneManager.LoadSceneAsync(targetScene);
+                rerender = false;
             }
             Dictionary<string, Prop> newState = new Dictionary<string, Prop>();
             foreach (var field in this.state)
             {
-                try
+                if (state.ContainsKey(field.Key))
                 {
                     newState[field.Key] = state[field.Key];
-                }
-                catch (Exception e)
+                } else
                 {
-                    Console.WriteLine(e.Message);
                     newState[field.Key] = this.state[field.Key];
                 }
             }
@@ -193,10 +192,8 @@ namespace Engine
             }
             foreach (KeyValuePair<string, Components.Component> obj in this.list)
             {
-                // string before = JsonConvert.SerializeObject(obj.Value.props);
                 Dictionary<string, Prop> afterProps = obj.Value.getUpdatedProps();
-                // string after = JsonConvert.SerializeObject(obj.Value.getUpdateProps());
-                if (!matchDictionaries(obj.Value.props, afterProps))
+                if (!matchDictionaries(obj.Value.props, afterProps) && rerender)
                 {
                     List<Components.Component> treeList = tree(this.stdin.getNodes());
                     if (treeList.IndexOf(obj.Value) >= 0 || obj.Value == this.stdin)

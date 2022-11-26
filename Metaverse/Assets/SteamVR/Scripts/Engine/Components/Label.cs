@@ -16,6 +16,7 @@ namespace Engine.Components
      */
     public class Label : Component
     {
+        UnityEngine.UI.Text textObject;
         /**
         * @constructor
         * @param application Application object.
@@ -33,10 +34,7 @@ namespace Engine.Components
                 Dictionary<string, Prop>,
                 Dictionary<string, Prop>
             > mapStateToProps = null
-        ) : base(application, scene, parent, name, mapStateToProps)
-        {
-            base.constructor();
-        }
+        ) : base(application, scene, parent, name, mapStateToProps) { }
         /**
          * Method to output html content to parent node.
          * @param stdout HTML Element to output.
@@ -44,14 +42,19 @@ namespace Engine.Components
         public override void render(GameObject stdout)
         {
             base.render(stdout);
-            if (DEBUG && this.name.Length > 0)
-            {
-                Debug.Log("Engine.Label(" + this.name + ").render(" + this.renderId + ")");
-            }
             try
             {
-                gameObject.GetComponent<UnityEngine.UI.Text>().text = this.props["value"].getString();
-                Debug.Log(gameObject.GetComponent<UnityEngine.UI.Text>().text);
+                if (gameObject && gameObject.activeSelf)
+                {
+                    if (textObject == null)
+                    {
+                        textObject = gameObject.GetComponent<UnityEngine.UI.Text>();
+                    }
+                    if (textObject != null)
+                    {
+                        textObject.text = this.props["value"].getString();
+                    }
+                }
             }
             catch (Exception e)
             {

@@ -66,12 +66,6 @@ namespace Engine.Components
             this.mapStateToProps = mapStateToProps;
             this.nodes = new Dictionary<string, Component> { };
             this.application.list.Add(this.name, this);
-            constructor();
-        }
-
-        public void constructor()
-        {
-            this.gameObject = GameObject.Find(this.name);
         }
         /**
          * Method to return child node list.
@@ -105,46 +99,11 @@ namespace Engine.Components
             }
         }
         /**
-         * Method to output element into DOM.
-         * @param stdout Parent Node.
-         * 
-        public void output(GameObject stdout)
-        {
-            try
-            {
-                bool flag = false;
-                if (stdout != null)
-                {
-                    foreach (Transform child in stdout.transform.GetComponentsInChildren<Transform>())
-                    {
-                        if (child.name == this.gameObject.name)
-                        {
-                            this.gameObject.transform.SetParent(child.transform.parent);
-                            child.transform.parent = null;
-                            flag = true;
-                        }
-                    }
-                    if (!flag && !this.gameObject.transform.parent)
-                    {
-                        this.gameObject.transform.SetParent(stdout.transform);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("Engine.Component(" + this.name + ").output(" + this.renderId + ") -> " + e.Message);
-            }
-        }
-        /**
          * Method to output html content to parent node.
          * @param stdout HTML Element to output.
          */
         public virtual void render(GameObject stdout)
         {
-            if (scene.ToString() != Model.application.state["activeScene"].getString())
-            {
-                return;
-            }
             this.renderId++;
             try
             {
@@ -152,34 +111,19 @@ namespace Engine.Components
                 {
                     Debug.Log("Engine.Component(" + this.name + ").render(" + this.renderId + ")");
                 }
-                if (!this.gameObject)
+                if (!gameObject)
                 {
-                    constructor();
+                    gameObject = GameObject.Find(this.name);
                 }
                 this.updateProps();
                 foreach (var item in this.props)
                 {
-                    if (item.Key == "active")
+                    if (item.Key == "visible")
                     {
-                        this.gameObject.SetActive(item.Value.getBool() == true);
+                        gameObject.SetActive(item.Value.getBool() == true);
                     }
                 }
-                this.fallback(this.gameObject);
-                /**
-                Object fout = this.gameObject;
-                Object.keys(this.props).forEach((key: string) => {
-                    if (key === "innerHTML") {
-                        fout.innerHTML = this.props[key];
-                    } else if (this.props[key]) {
-                        fout.setAttribute(key, this.props[key]);
-                    }
-                });
-                if (this.name) {
-                    fout.setAttribute("name", this.name);
-                }
-                this.fallback(fout);
-                this.output(stdout);
-                */
+                this.fallback(gameObject);
             }
             catch (Exception e)
             {

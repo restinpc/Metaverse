@@ -70,10 +70,6 @@ namespace Valve.VR.InteractionSystem
 			if (targetSceneName.Length > 0)
 			{
 				Model.gameModel.ChangeScene(targetSceneName);
-				if (!Model.application.state["started"].getBool())
-				{
-					Model.application.setState(Model.startGame());
-				}
 			}
 			else
 			{
