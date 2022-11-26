@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Unity;
+using UnityEditor;
 
 namespace Engine.Components
 {
@@ -17,8 +18,9 @@ namespace Engine.Components
      */
     public class Button : Component
     {
-        // TMPro.TextMeshProUGUI textValue;
-
+        UnityEngine.UI.Button button;
+        UnityEngine.UI.Text textObject;
+        Func<int> onClick = null;
         /**
         * @constructor
         * @param application Application object.
@@ -32,9 +34,10 @@ namespace Engine.Components
             Scene scene,
             Component parent = null,
             string name = "",
-            Func<Dictionary<string, Prop>, Dictionary<string, Prop>> mapStateToProps = null
+            Func<Dictionary<string, Prop>, Dictionary<string, Prop>> mapStateToProps = null,
+            Func<int> onClick = null
         ) : base(application, scene, parent, name, mapStateToProps) {
-            // textValue = gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            this.onClick = onClick;
         }
 
         /**
@@ -46,7 +49,22 @@ namespace Engine.Components
             base.render(stdout);
             try
             {
-                // textValue.text = this.props["value"].getString();
+                if (gameObject && gameObject.activeSelf)
+                {
+                    if (button == null)
+                    {
+                        button = GameObject.Find(name).GetComponent<UnityEngine.UI.Button>();
+                        textObject = button.gameObject.GetComponentInChildren<UnityEngine.UI.Text>();
+                        if (this.onClick != null)
+                        {
+                            button.onClick.AddListener(() => this.onClick());
+                        }
+                    }
+                    if (textObject != null)
+                    {
+                        textObject.text = this.props["value"].getString();
+                    }
+                }
             }
             catch (Exception e)
             {

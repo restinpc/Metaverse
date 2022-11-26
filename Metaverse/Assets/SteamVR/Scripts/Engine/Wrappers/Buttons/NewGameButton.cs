@@ -6,9 +6,10 @@ namespace Engine.Wrappers
 {
     public class NewGameButton
     {
+        Components.Button component;
         public NewGameButton(
             string objectName,
-            out Components.Button component,
+            Dictionary<string, Components.Component> level,
             Scene scene,
             Components.Component parent
         )
@@ -17,30 +18,31 @@ namespace Engine.Wrappers
             {
                 return new Dictionary<string, Prop>
                 {
-                    { "value", new Prop("New Game (1)")},
-                    { "active", new Prop(
-                        state["paused"].getBool()
-                        || !state["started"].getBool()
-                        || state["gameOver"].getBool()
-                    )}
+                    { "value", new Prop("Start")},
+                    { "visible", new Prop(
+                        state["activeScene"].getString() == Scene.Loading.ToString() && 
+                        (
+                            state["paused"].getBool()
+                            || !state["started"].getBool()
+                            || state["gameOver"].getBool()
+                        ))
+                    }
                 };
             }
-            UnityEngine.UI.Button button = GameObject.Find(objectName).GetComponent<UnityEngine.UI.Button>();
-            button.onClick.AddListener(() => this.onClick(button));
+            int onClick() {
+                Model.gameModel.ChangeScene("Mansion");
+                return 0;
+            }
             component = new Components.Button(
                 Model.application,
                 scene,
                 parent,
                 objectName,
-                mapStateToProps
+                mapStateToProps,
+                onClick
             );
             parent.addChild(component);
-        }
-
-        void onClick(UnityEngine.UI.Button sender)
-        {
-            Model.application.setState(Model.newGame());
-            Simulation.Schedule<Engine.Gameplay.PlayerSpawn>();
+            level[objectName] = component;
         }
     }
 }

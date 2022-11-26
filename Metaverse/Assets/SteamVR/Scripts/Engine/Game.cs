@@ -29,20 +29,10 @@ namespace Engine
         /// </summary>
         public Transform spawnPoint;
 
-        /// <summary>
-        /// A global jump modifier applied to all initial jump velocities.
-        /// </summary>
-        public float jumpModifier = 1.5f;
-
-        /// <summary>
-        /// A global jump modifier applied to slow down an active jump when 
-        /// the user releases the jump input.
-        /// </summary>
-        public float jumpDeceleration = 0.5f;
 
         void Awake()
         {
-            Debug.Log("Awake");
+            Debug.Log("Engine.Game.Awake()");
             Model.gameModel = this;
             if (Model.application == null)
             {
@@ -58,6 +48,7 @@ namespace Engine
                         { "Loading.Game", null },
                         { "Loading.Navigation", null },
                         { "Loading.Caption", null },
+                        { "Loading.Text", null },
                         { "Loading.Menu", null }
                     };
                     new Wrappers.Element(
@@ -71,8 +62,20 @@ namespace Engine
                         Scene.Loading,
                         Model.loadingScene["Loading.Game"]
                     );
-                    new Wrappers.Caption(
+                    new Wrappers.LoadingCaption(
                         "Loading.Caption",
+                        Model.loadingScene,
+                        Scene.Loading,
+                        Model.loadingScene["Loading.Navigation"]
+                    );
+                    new Wrappers.LoadingText(
+                        "Loading.Text",
+                        Model.loadingScene,
+                        Scene.Loading,
+                        Model.loadingScene["Loading.Navigation"]
+                    );
+                    new Wrappers.NewGameButton(
+                        "Loading.Menu",
                         Model.loadingScene,
                         Scene.Loading,
                         Model.loadingScene["Loading.Navigation"]
@@ -130,7 +133,13 @@ namespace Engine
         }
         void Start()
         {
-            Model.application.render();
+            if (activeScene != Scene.Loading.ToString() && !Model.application.state["started"].getBool())
+            {
+                Model.application.setState(Model.startGame());
+            } else
+            {
+                Model.application.render();
+            }
         }
 
         public void ChangeScene(string targetScene)
@@ -146,7 +155,7 @@ namespace Engine
                 if (currentSceneName != "Loading")
                 {
                     flag = false;
-                    Schedule<Gameplay.SceneChange>(3f).targetScene = targetScene;
+                    Schedule<Gameplay.SceneChange>(1.5f).targetScene = targetScene;
                     Model.application.setState(
                         Model.mergeActions(
                             new List<Dictionary<string, Prop>>() {

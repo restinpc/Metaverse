@@ -51,7 +51,7 @@ namespace Platformer.Mechanics
             Vector3 move = enemies[this.name].getDictionary()["move"].getVector3();
             if (jump && IsGrounded)
             {
-                velocity.y = jumpTakeOffSpeed * gameModel.jumpModifier;
+                velocity.y = jumpTakeOffSpeed * 1.5f;
                 jump = false;
             }
             else if (stopJump)
@@ -59,7 +59,7 @@ namespace Platformer.Mechanics
                 stopJump = false;
                 if (velocity.y > 0)
                 {
-                    velocity.y = velocity.y * gameModel.jumpDeceleration;
+                    velocity.y = velocity.y * 0.5f;
                 }
             }
 

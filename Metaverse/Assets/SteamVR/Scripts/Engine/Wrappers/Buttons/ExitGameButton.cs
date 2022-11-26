@@ -16,7 +16,7 @@ namespace Engine.Wrappers
                 return new Dictionary<string, Prop>
                 {
                     { "value", new Prop("Exit Game") },
-                    { "active", new Prop(
+                    { "visible", new Prop(
                         state["paused"].getBool()
                         || !state["started"].getBool()
                         || state["gameOver"].getBool()

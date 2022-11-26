@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Engine.Wrappers
 {
-    public class Caption
+    public class LoadingCaption
     {
-        public Caption(
+        public LoadingCaption(
             string objectName,
             Dictionary<string, Components.Component> level,
             Scene scene,
@@ -13,11 +13,12 @@ namespace Engine.Wrappers
         ){
             Dictionary<string, Prop> mapStateToProps(Dictionary<string, Prop> state)
             {
-                string text = "Welcome to\n Metaverse";
                 bool isGameOver = state["gameOver"].getBool();
                 bool isLoading = state["loading"].getBool();
                 bool isPaused = state["paused"].getBool();
+                bool isStarted = state["started"].getBool();
                 bool isDead = state["player"].getDictionary()["dead"].getBool();
+                string text = "Welcome to\n Metaverse";
                 if (isGameOver)
                 {
                     text = "Game Over";
@@ -28,10 +29,14 @@ namespace Engine.Wrappers
                 }
                 else if (isLoading)
                 {
-                    text = "Loading..\nPlease wait";
+                    text = "Loading...";
+                } else if (isStarted)
+                {
+                    text = "Done";
                 }
                 return new Dictionary<string, Prop>
                 {
+                    { "visible", new Prop(state["activeScene"].getString() == Scene.Loading.ToString()) },
                     { "value", new Prop(text)}
                 };
             }
