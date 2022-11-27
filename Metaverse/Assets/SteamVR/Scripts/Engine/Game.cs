@@ -1,5 +1,7 @@
 
+using Platformer.Core;
 using Platformer.Mechanics;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,10 +12,6 @@ namespace Engine
     [System.Serializable]
     public class Game : MonoBehaviour
     {
-        /// <summary>
-        /// The virtual camera in the scene.
-        /// </summary>
-        // public Cinemachine.CinemachineVirtualCamera virtualCamera;
 
         /// <summary>
         /// The main component which controls the player sprite, controlled 
@@ -22,123 +20,181 @@ namespace Engine
         public PlayerController player;
 
         public Valve.VR.InteractionSystem.Player vr_player;
-        public string activeScene;
-
-        /// <summary>
-        /// The spawn point in the scene.
-        /// </summary>
-        public Transform spawnPoint;
-
+        private string activeScene;
 
         void Awake()
         {
-            Debug.Log("Engine.Game.Awake()");
-            Model.gameModel = this;
+            Debug.Log("Engine.Game.Awake(" + SceneManager.GetActiveScene().name + ")");
             if (Model.application == null)
             {
                 Model.application = new App();
             }
+            Model.gameModel = this;
             activeScene = Model.application.state["activeScene"].getString();
-            // Loading Scene
             if (activeScene == Scene.Loading.ToString())
             {
-                if (Model.loadingScene == null)
-                {
-                    Model.loadingScene = new Dictionary<string, Components.Component> {
-                        { "Loading.Game", null },
-                        { "Loading.Navigation", null },
-                        { "Loading.Caption", null },
-                        { "Loading.Text", null },
-                        { "Loading.Menu", null }
-                    };
-                    new Wrappers.Element(
-                        "Loading.Game",
-                        Model.loadingScene,
-                        Scene.Loading
-                    );
-                    new Wrappers.Element(
-                        "Loading.Navigation",
-                        Model.loadingScene,
-                        Scene.Loading,
-                        Model.loadingScene["Loading.Game"]
-                    );
-                    new Wrappers.LoadingCaption(
-                        "Loading.Caption",
-                        Model.loadingScene,
-                        Scene.Loading,
-                        Model.loadingScene["Loading.Navigation"]
-                    );
-                    new Wrappers.LoadingText(
-                        "Loading.Text",
-                        Model.loadingScene,
-                        Scene.Loading,
-                        Model.loadingScene["Loading.Navigation"]
-                    );
-                    new Wrappers.NewGameButton(
-                        "Loading.Menu",
-                        Model.loadingScene,
-                        Scene.Loading,
-                        Model.loadingScene["Loading.Navigation"]
-                    );
-                }
+                initLoadingScene();
                 Model.application.stdin = Model.loadingScene["Loading.Game"];
             }
-            // Menu Scene
             else if (activeScene == Scene.Menu.ToString())
             {
-                if (Model.menuScene == null)
-                {
-                    Model.menuScene = new Dictionary<string, Components.Component> {
-                        { "Menu.Game", null },
-                        { "Menu.Navigation", null },
-                        { "Menu.Caption", null }
-                    };
-                    new Wrappers.Element(
-                        "Menu.Game",
-                        Model.menuScene,
-                        Scene.Menu
-                    );
-                    new Wrappers.Element(
-                        "Menu.Navigation",
-                        Model.menuScene,
-                        Scene.Menu,
-                        Model.menuScene["Menu.Game"]
-                    );
-                    new Wrappers.LabelWrapper(
-                        "Menu.Caption",
-                        Model.menuScene,
-                        Scene.Menu,
-                        Model.menuScene["Menu.Navigation"],
-                        "Main Menu"
-                    );
-                }
+                initMenuScene();
                 Model.application.stdin = Model.menuScene["Menu.Game"];
             }
-            // Mansion Scene
             else if (activeScene == Scene.Mansion.ToString())
             {
-                if (Model.mansionScene == null)
-                {
-                    Model.mansionScene = new Dictionary<string, Components.Component> {
-                        { "Mansion.Game", null },
-                    };
-                    new Wrappers.Element(
-                        "Mansion.Game",
-                        Model.mansionScene,
-                        Scene.Mansion
-                    );
-                }
+                initMansionScene();
                 Model.application.stdin = Model.mansionScene["Mansion.Game"];
             }
+            else if (activeScene == Scene.SteamVR.ToString())
+            {
+                initSteamVrScene();
+                Model.application.stdin = Model.steamVrScrene["SteamVR.Game"];
+            }
         }
+
         void Start()
         {
             if (activeScene != Scene.Loading.ToString() && !Model.application.state["started"].getBool())
             {
-                Model.application.setState(Model.startGame());
+                Model.application.setState(Model.startGameAction());
             } else
             {
                 Model.application.render();
+            }
+            Simulation.Schedule<Gameplay.ZoomInCamera>(0.01f).objectName = "FallbackObjects";
+        }
+
+        void initLoadingScene()
+        {
+            if (Model.loadingScene == null)
+            {
+                if (Model.application.DEBUG)
+                {
+                    Debug.Log("Engine.Game.initLoadingScene()");
+                }
+                Model.loadingScene = new Dictionary<string, Components.Component> {
+                        { "Loading.Game", null },
+                        { "Loading.Player", null },
+                        { "Loading.Navigation", null },
+                        { "Loading.Caption", null },
+                        { "Loading.Text", null },
+                        { "Loading.Menu", null },
+                        { "Loading.Test", null }
+                    };
+                new Wrappers.Element(
+                    "Loading.Game",
+                    Model.loadingScene,
+                    Scene.Loading
+                );
+                new Wrappers.Element(
+                    "Loading.Player",
+                    Model.loadingScene,
+                    Scene.Loading,
+                    Model.loadingScene["Loading.Player"]
+                );
+                new Wrappers.Element(
+                    "Loading.Navigation",
+                    Model.loadingScene,
+                    Scene.Loading,
+                    Model.loadingScene["Loading.Game"]
+                );
+                new Wrappers.LoadingCaption(
+                    "Loading.Caption",
+                    Model.loadingScene,
+                    Scene.Loading,
+                    Model.loadingScene["Loading.Navigation"]
+                );
+                new Wrappers.LoadingText(
+                    "Loading.Text",
+                    Model.loadingScene,
+                    Scene.Loading,
+                    Model.loadingScene["Loading.Navigation"]
+                );
+                new Wrappers.NewGameButton(
+                    "Loading.Menu",
+                    Model.loadingScene,
+                    Scene.Loading,
+                    Model.loadingScene["Loading.Navigation"]
+                );
+                new Wrappers.TestButton(
+                    "Loading.Test",
+                    Model.loadingScene,
+                    Scene.Loading,
+                    Model.loadingScene["Loading.Navigation"]
+                );
+            }
+        }
+
+        void initMenuScene()
+        {
+            if (Model.menuScene == null)
+            {
+                if (Model.application.DEBUG)
+                {
+                    Debug.Log("Engine.Game.initMenuScene()");
+                }
+                Model.menuScene = new Dictionary<string, Components.Component> {
+                        { "Menu.Game", null },
+                        { "Menu.Navigation", null },
+                        { "Menu.Caption", null }
+                    };
+                new Wrappers.Element(
+                    "Menu.Game",
+                    Model.menuScene,
+                    Scene.Menu
+                );
+                new Wrappers.Element(
+                    "Menu.Navigation",
+                    Model.menuScene,
+                    Scene.Menu,
+                    Model.menuScene["Menu.Game"]
+                );
+                new Wrappers.LabelWrapper(
+                    "Menu.Caption",
+                    Model.menuScene,
+                    Scene.Menu,
+                    Model.menuScene["Menu.Navigation"],
+                    "Main Menu"
+                );
+            }
+        }
+
+        void initMansionScene()
+        {
+            if (Model.mansionScene == null)
+            {
+                if (Model.application.DEBUG)
+                {
+                    Debug.Log("Engine.Game.initMansionScene()");
+                }
+                Model.mansionScene = new Dictionary<string, Components.Component> {
+                    { "Mansion.Game", null },
+                };
+                new Wrappers.Element(
+                    "Mansion.Game",
+                    Model.mansionScene,
+                    Scene.Mansion
+                );
+            }
+        }
+
+        void initSteamVrScene()
+        {
+            if (Model.steamVrScrene == null)
+            {
+                if (Model.application.DEBUG)
+                {
+                    Debug.Log("Engine.Game.initSteamVrScene()");
+                }
+                Model.steamVrScrene = new Dictionary<string, Components.Component> {
+                        { "SteamVR.Game", null },
+                    };
+                new Wrappers.Element(
+                    "SteamVR.Game",
+                    Model.steamVrScrene,
+                    Scene.SteamVR
+                );
             }
         }
 
@@ -155,12 +211,12 @@ namespace Engine
                 if (currentSceneName != "Loading")
                 {
                     flag = false;
-                    Schedule<Gameplay.SceneChange>(1.5f).targetScene = targetScene;
+                    Schedule<Gameplay.SceneChange>(2f).targetScene = targetScene;
                     Model.application.setState(
                         Model.mergeActions(
                             new List<Dictionary<string, Prop>>() {
-                                Model.setScene(Scene.Loading.ToString()),
-                                Model.toggleLoading(true)
+                                Model.setSceneAction(Scene.Loading.ToString()),
+                                Model.toggleLoadingAction(true)
                             }
                         )
                     );
@@ -171,11 +227,39 @@ namespace Engine
                 Model.application.setState(
                     Model.mergeActions(
                         new List<Dictionary<string, Prop>>() {
-                            Model.setScene(targetScene),
-                            Model.toggleLoading(false)
+                            Model.setSceneAction(targetScene),
+                            Model.toggleLoadingAction(false)
                         }
                     )
                 );
+            }
+        }
+
+        public IEnumerator zoomOutCamera(Camera camera, int from, int to, float delay)
+        {
+            yield return new WaitForSecondsRealtime(delay);
+            camera.fieldOfView = from;
+            if (from < to)
+            {
+                yield return zoomOutCamera(camera, from + 2, to, delay);
+            }
+            else
+            {
+                StopCoroutine(Model.coroutines["zoomOutCamera"]);
+            }
+        }
+
+        public IEnumerator zoomInCamera(Camera camera, int from, int to, float delay)
+        {
+            yield return new WaitForSecondsRealtime(delay);
+            camera.fieldOfView = from;
+            if (from > to)
+            {
+                yield return zoomInCamera(camera, from - 2, to, delay);
+            }
+            else
+            {
+                StopCoroutine(Model.coroutines["zoomInCamera"]);
             }
         }
 

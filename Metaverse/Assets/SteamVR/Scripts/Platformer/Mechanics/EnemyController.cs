@@ -45,9 +45,9 @@ namespace Platformer.Mechanics
 
         void Update()
         {
-            var ev = Schedule<EnemyMove>();
-            ev.path = this.path;
-            ev.enemy = this;
+            // var ev = Schedule<EnemyMove>();
+            // ev.path = this.path;
+            // ev.enemy = this;
         }
     }
 }

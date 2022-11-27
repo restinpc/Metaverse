@@ -30,7 +30,11 @@ namespace Engine.Wrappers
                 };
             }
             int onClick() {
-                Model.gameModel.ChangeScene("Mansion");
+                if (Model.application.DEBUG)
+                {
+                    Debug.Log("Engine.Wrappers.NewGameButton.onClick()");
+                }
+                Simulation.Schedule<Gameplay.SceneChange>().targetScene = "Mansion";
                 return 0;
             }
             component = new Components.Button(

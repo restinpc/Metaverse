@@ -118,7 +118,7 @@ namespace Platformer.Core
                 }
                 else
                 {
-                    // Debug.Log($"<color=green>{ev.tick} {ev.GetType().Name}</color>");
+                    Debug.Log($"<color=green>{ev.tick} {ev.GetType().Name}</color>");
                     ev.Cleanup();
                     try
                     {

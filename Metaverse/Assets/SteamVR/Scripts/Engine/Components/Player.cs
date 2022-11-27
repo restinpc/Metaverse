@@ -53,11 +53,24 @@ namespace Engine.Components
         public override void render(GameObject stdout)
         {
             base.render(stdout);
-            this.player = gameObject.GetComponent<PlayerController>();
-            renderDeadProp();
-            renderVictoryProp();
-            renderInputEnableProp();
-            renderSpawnProp();
+            try
+            {
+                if (gameObject.activeSelf)
+                {
+                    if (this.player == null)
+                    {
+                        this.player = gameObject.GetComponent<PlayerController>();
+                    }
+                    renderDeadProp();
+                    renderVictoryProp();
+                    renderInputEnableProp();
+                    renderSpawnProp();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Engine.Player(" + this.name + ").render(" + this.renderId + ") -> " + e.Message);
+            }
         }
 
         private void renderDeadProp()
@@ -67,11 +80,9 @@ namespace Engine.Components
             if (deadProp && !this.isDead)
             {
                 this.isDead = true;
-                // Model.gameModel.virtualCamera.m_Follow = null;
-                // Model.gameModel.virtualCamera.m_LookAt = null;
                 player.animator.SetTrigger("hurt");
                 player.animator.SetBool("dead", true);
-                Model.application.setState(Model.toggleInput(false));
+                Model.application.setState(Model.toggleInputAction(false));
                 Simulation.Schedule<Gameplay.PlayerSpawn>(2f);
             }
             else if (this.isDead && !deadProp)
@@ -87,7 +98,7 @@ namespace Engine.Components
             {
                 this.isVictory = true;
                 player.animator.SetTrigger("victory");
-                Model.application.setState(Model.toggleInput(false));
+                Model.application.setState(Model.toggleInputAction(false));
             }
         }
 
@@ -120,15 +131,11 @@ namespace Engine.Components
             bool spawnProp = this.props["spawn"].getBool();
             if (spawnProp)
             {
-                Model.application.setState(Model.toggleSpawn(false));
+                Model.application.setState(Model.toggleSpawnAction(false));
                 if (player.audioSource && player.respawnAudio)
                     player.audioSource.PlayOneShot(player.respawnAudio);
-                player.Teleport(Model.gameModel.spawnPoint.transform.position);
                 player.jumpState = PlayerController.JumpState.Grounded;
                 player.animator.SetBool("dead", false);
-                // Model.gameModel.virtualCamera.m_Follow = player.transform;
-                // Model.gameModel.virtualCamera.m_LookAt = player.transform;
-                Simulation.Schedule<Gameplay.EnablePlayerInput>(2f);
             }
         }
 
@@ -140,7 +147,7 @@ namespace Engine.Components
             var willHurtEnemy = player.Bounds.center.y >= enemy.Bounds.max.y;
             if (willHurtEnemy)
             {
-                Schedule<Gameplay.EnemyDeath>().enemy = enemy;
+                // Schedule<Gameplay.EnemyDeath>().enemy = enemy;
                 player.Bounce(2);
             }
             else
@@ -157,15 +164,15 @@ namespace Engine.Components
             }
             if (!this.isDead)
             {
-                Dictionary<string, Prop> baseState = Model.killPlayer();
+                Dictionary<string, Prop> baseState = Model.killPlayerAction();
                 List<Dictionary<string, Prop>> actions = new List<Dictionary<string, Prop>>()
                 {
                     baseState,
-                    Model.pauseGame()
+                    Model.pauseGameAction()
                 };
                 if (baseState["lives"].getInt() == 0)
                 {
-                    actions.Add(Model.gameOver());
+                    actions.Add(Model.gameOverAction());
                 }
                 Model.application.setState(Model.mergeActions(actions));
             }
@@ -177,16 +184,12 @@ namespace Engine.Components
             {
                 Debug.Log("Engine.Components.Player(" + this.name + ").spawn()");
             }
-            Model.application.setState(Model.toggleInput(false));
+            Model.application.setState(Model.toggleInputAction(false));
             player.collider2d.enabled = true;
             if (player.audioSource && player.respawnAudio)
                 player.audioSource.PlayOneShot(player.respawnAudio);
-            player.Teleport(Model.gameModel.spawnPoint.transform.position);
             player.jumpState = PlayerController.JumpState.Grounded;
             player.animator.SetBool("dead", false);
-            // Model.gameModel.virtualCamera.m_Follow = player.transform;
-            // Model.gameModel.virtualCamera.m_LookAt = player.transform;
-            Simulation.Schedule<Gameplay.EnablePlayerInput>(2f);
         }
 
         public void jump()
@@ -201,22 +204,13 @@ namespace Engine.Components
             }
         }
 
-        public void victory()
-        {
-            if (DEBUG && this.name.Length > 0)
-            {
-                Debug.Log("Engine.Components.Player(" + this.name + ").victory()");
-            }
-            Model.application.setState(Model.victory());
-        }
-
         public void revive()
         {
             if (DEBUG && this.name.Length > 0)
             {
                 Debug.Log("Engine.Components.Player(" + this.name + ").revive()");
             }
-            Model.application.setState(Model.revivePlayer());
+            Model.application.setState(Model.revivePlayerAction());
         }
 
         public void enableInput()
@@ -225,7 +219,7 @@ namespace Engine.Components
             {
                 Debug.Log("Engine.Components.Player(" + this.name + ").enableInput()");
             }
-            Model.application.setState(Model.toggleInput(true));
+            Model.application.setState(Model.toggleInputAction(true));
         }
     }
 }
