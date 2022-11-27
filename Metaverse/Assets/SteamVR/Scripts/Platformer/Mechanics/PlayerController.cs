@@ -59,7 +59,6 @@ namespace Platformer.Mechanics
                 else if (Input.GetButtonUp("Jump"))
                 {
                     stopJump = true;
-                    Schedule<Engine.Gameplay.PlayerStopJump>().player = this;
                 }
             }
             else
@@ -83,14 +82,12 @@ namespace Platformer.Mechanics
                 case JumpState.Jumping:
                     if (!IsGrounded)
                     {
-                        Schedule<Engine.Gameplay.PlayerJumped>().player = this;
                         jumpState = JumpState.InFlight;
                     }
                     break;
                 case JumpState.InFlight:
                     if (IsGrounded)
                     {
-                        Schedule<Engine.Gameplay.PlayerLanded>().player = this;
                         jumpState = JumpState.Landed;
                     }
                     break;

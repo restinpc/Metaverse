@@ -69,7 +69,7 @@ namespace Valve.VR.InteractionSystem
 		{
 			if (targetSceneName.Length > 0)
 			{
-				Model.gameModel.ChangeScene(targetSceneName);
+				Platformer.Core.Simulation.Schedule<Engine.Gameplay.SceneChange>().targetScene = targetSceneName;
 			}
 			else
 			{

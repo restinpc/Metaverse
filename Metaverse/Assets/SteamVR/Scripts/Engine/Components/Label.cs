@@ -44,17 +44,11 @@ namespace Engine.Components
             base.render(stdout);
             try
             {
-                if (gameObject && gameObject.activeSelf)
+                if (textObject == null)
                 {
-                    if (textObject == null)
-                    {
-                        textObject = gameObject.GetComponent<UnityEngine.UI.Text>();
-                    }
-                    if (textObject != null)
-                    {
-                        textObject.text = this.props["value"].getString();
-                    }
+                    textObject = gameObject.GetComponent<UnityEngine.UI.Text>();
                 }
+                textObject.text = this.props["value"].getString();
             }
             catch (Exception e)
             {

@@ -49,7 +49,7 @@ namespace Engine.Components
             base.render(stdout);
             try
             {
-                if (gameObject && gameObject.activeSelf)
+                if (gameObject.activeSelf)
                 {
                     if (button == null)
                     {
@@ -60,10 +60,7 @@ namespace Engine.Components
                             button.onClick.AddListener(() => this.onClick());
                         }
                     }
-                    if (textObject != null)
-                    {
-                        textObject.text = this.props["value"].getString();
-                    }
+                    textObject.text = this.props["value"].getString();
                 }
             }
             catch (Exception e)

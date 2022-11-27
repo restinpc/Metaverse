@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Platformer.Core.Simulation;
 
 namespace Engine
 {
@@ -22,40 +21,13 @@ namespace Engine
         public Dictionary<string, Prop> state;
         public App()
         {
-            try
+            if (DEBUG)
             {
-                if (DEBUG)
-                {
-                    Debug.Log("App.constructor()");
-                }
-                this.state = Model.defaultState();
-                this.renderId = 0;
-                this.list = new Dictionary<string, Components.Component> { };
+                Debug.Log("App.constructor()");
             }
-            catch (Exception e)
-            {
-                Debug.LogError("App.constructor() -> " + e.Message);
-            }
-        }
-
-        /**
-         * Method to rebuild while Virtual DOM
-         */
-        public void render()
-        {
-            this.renderId++;
-            try
-            {
-                if (DEBUG)
-                {
-                    Debug.Log("App.render(" + this.renderId + ")");
-                }
-                this.stdin.render(this.stdout);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("App.render(" + this.renderId + ") -> " + e.Message);
-            }
+            this.state = Model.defaultState();
+            this.renderId = 0;
+            this.list = new Dictionary<string, Components.Component> { };
         }
 
         /**
@@ -93,22 +65,10 @@ namespace Engine
         }
 
         /**
-         * @param name
-         * @param element
+         * Method to get match 2 dictionaries by values.
+         * @param dictionary1.
+         * @param dictionary2.
          */
-        public Components.Component register(string name, MonoBehaviour element, Type type)
-        {
-            if (DEBUG)
-            {
-                Debug.Log("Engine.App.register(<" + name + " " + type + " />)");
-            }
-            Components.Component fout = this.list[name];
-            fout.element = element;
-            fout.elementType = type;
-            return fout;
-        }
-
-
         private bool matchDictionaries(Dictionary<string, Prop> dictionary1, Dictionary<string, Prop> dictionary2)
         {
             bool flag = false;
@@ -153,13 +113,14 @@ namespace Engine
 
         /**
          * @param state
+         * @param logToConsole Flag to force output debug data to console
          */
         public void setState(Dictionary<string, Prop> state, bool logToConsole = true)
         {
             if ((DEBUG && logToConsole) || (DEBUG && DEEP_DEBUG))
             {
-                Debug.Log("Before dispatch >> " + "\n" + JsonConvert.SerializeObject(this.state));
-                Debug.Log("Will dispatch >> " + "\n" + JsonConvert.SerializeObject(state));
+                Debug.Log($"Before dispatch >> " + "\n<color=orange>" + JsonConvert.SerializeObject(this.state) + "</color>");
+                Debug.Log($"Will dispatch >> " + "\n<color=yellow>" + JsonConvert.SerializeObject(state) + "</color>");
             }
             bool rerender = true;
             string currentScene = this.state["activeScene"].getString();
@@ -188,7 +149,7 @@ namespace Engine
             this.state = newState;
             if ((DEBUG && logToConsole) || (DEBUG && DEEP_DEBUG))
             {
-                Debug.Log("After dispatch >> " + "\n" + JsonConvert.SerializeObject(this.state));
+                Debug.Log($"After dispatch >> " + "\n<color=orange>" + JsonConvert.SerializeObject(this.state) + "</color>");
             }
             foreach (KeyValuePair<string, Components.Component> obj in this.list)
             {
@@ -201,7 +162,6 @@ namespace Engine
                         obj.Value.render(obj.Value.parent != null ? obj.Value.parent.gameObject : this.stdout);
                     }
                 }
-                obj.Value.updateProps();
             }
         }
 
@@ -212,6 +172,26 @@ namespace Engine
                 return this.list[name];
             }
             return null;
+        }
+
+        /**
+         * Method to rebuild while Virtual DOM
+         */
+        public void render()
+        {
+            this.renderId++;
+            try
+            {
+                if (DEBUG)
+                {
+                    Debug.Log("App.render(" + this.renderId + ")");
+                }
+                this.stdin.render(this.stdout);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("App.render(" + this.renderId + ") -> " + e.Message);
+            }
         }
     }
 }

@@ -11,3 +11,7 @@ sceneSetups:
   isLoaded: 0
   isActive: 0
   isSubScene: 0
+- path: Assets/Metaverse/Scenes/SteamVR.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0

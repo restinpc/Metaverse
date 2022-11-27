@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 namespace Engine
 {
@@ -9,6 +8,7 @@ namespace Engine
         public static App application = null;
         public static Game gameModel = null;
         public static Components.Player player = null;
+        public static Dictionary<string, Coroutine> coroutines = new Dictionary<string, Coroutine>();
         public static Dictionary<string, Components.Component> loadingScene = null;
         public static Dictionary<string, Components.Component> menuScene = null;
         public static Dictionary<string, Components.Component> mansionScene = null;
@@ -54,66 +54,66 @@ namespace Engine
             return newState;
         }
 
-        static public Dictionary<string, Prop> setScene(string scene)
+        static public Dictionary<string, Prop> setSceneAction(string scene)
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.setScene(" + scene + ")");
+                Debug.Log("Engine.Model.setSceneAction(" + scene + ")");
             }
             return new Dictionary<string, Prop>() {
                 { "activeScene", new Prop(scene) }
             };
         }
 
-        static public Dictionary<string, Prop> newGame()
+        static public Dictionary<string, Prop> newGameAction()
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.newGame()");
+                Debug.Log("Engine.Model.newGameAction()");
             }
             Dictionary<string, Prop> newState = new Dictionary<string, Prop>(defaultState());
             newState["started"] = new Prop(true);
             return newState;
         }
 
-        static public Dictionary<string, Prop> startGame()
+        static public Dictionary<string, Prop> startGameAction()
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.startGame()");
+                Debug.Log("Engine.Model.startGameAction()");
             }
             return new Dictionary<string, Prop>() {
                 { "started", new Prop(true) },
             };
         }
 
-        static public Dictionary<string, Prop> pauseGame()
+        static public Dictionary<string, Prop> pauseGameAction()
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.pauseGame()");
+                Debug.Log("Engine.Model.pauseGameAction()");
             }
             return new Dictionary<string, Prop>() {
                 { "paused", new Prop(true) }
             };
         }
 
-        static public Dictionary<string, Prop> continueGame()
+        static public Dictionary<string, Prop> continueGameAction()
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.continueGame()");
+                Debug.Log("Engine.Model.continueGameAction()");
             }
             return new Dictionary<string, Prop>() {
                 { "paused", new Prop(false) }
             };
         }
 
-        static public Dictionary<string, Prop> killPlayer()
+        static public Dictionary<string, Prop> killPlayerAction()
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.killPlayer()");
+                Debug.Log("Engine.Model.killPlayerAction()");
             }
             Dictionary<string, Prop> player = Model.application.state["player"].getDictionary();
             player["dead"] = new Prop(true);
@@ -124,11 +124,11 @@ namespace Engine
             };
         }
 
-        static public Dictionary<string, Prop> revivePlayer()
+        static public Dictionary<string, Prop> revivePlayerAction()
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.revivePlayer()");
+                Debug.Log("Engine.Model.revivePlayerAction()");
             }
             Dictionary<string, Prop> player = Model.application.state["player"].getDictionary();
             player["dead"] = new Prop(false);
@@ -137,44 +137,33 @@ namespace Engine
             };
         }
 
-        static public Dictionary<string, Prop> victory()
+        static public Dictionary<string, Prop> toggleLoadingAction(bool value)
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.victory()");
-            }
-            return new Dictionary<string, Prop>() {
-                { "victory", new Prop(true) }
-            };
-        }
-
-        static public Dictionary<string, Prop> toggleLoading(bool value)
-        {
-            if (application.DEBUG)
-            {
-                Debug.Log("Engine.Model.toggleLoading(" + value + ")");
+                Debug.Log("Engine.Model.toggleLoadingAction(" + value + ")");
             }
             return new Dictionary<string, Prop>() {
                 { "loading", new Prop(value) }
             };
         }
 
-        static public Dictionary<string, Prop> toggleInput(bool value)
+        static public Dictionary<string, Prop> toggleInputAction(bool value)
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.toggleInput(" + value + ")");
+                Debug.Log("Engine.Model.toggleInputAction(" + value + ")");
             }
             return new Dictionary<string, Prop>() {
                 { "enableInput", new Prop(value) }
             };
         }
 
-        static public Dictionary<string, Prop> toggleSpawn(bool value)
+        static public Dictionary<string, Prop> toggleSpawnAction(bool value)
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.toggleSpawn(" + value + ")");
+                Debug.Log("Engine.Model.toggleSpawnAction(" + value + ")");
             }
             Dictionary<string, Prop> player = Model.application.state["player"].getDictionary();
             player["spawn"] = new Prop(value);
@@ -183,11 +172,11 @@ namespace Engine
             };
         }
 
-        static public Dictionary<string, Prop> gameOver()
+        static public Dictionary<string, Prop> gameOverAction()
         {
             if (application.DEBUG)
             {
-                Debug.Log("Engine.Model.gameOver()");
+                Debug.Log("Engine.Model.gameOverAction()");
             }
             return new Dictionary<string, Prop>() {
                 { "gameOver", new Prop(true)}

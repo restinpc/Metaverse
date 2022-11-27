@@ -22,7 +22,6 @@ namespace Engine.Components
         public Component parent;
         public Dictionary<string, Component> nodes;
         public GameObject gameObject;
-        public MonoBehaviour element;
         public Scene scene;
         public Type elementType;
         public int renderId = 0;
@@ -83,7 +82,7 @@ namespace Engine.Components
         /**
          * Method to update component props.
          */
-        public void updateProps()
+        void updateProps()
         {
             this.props = this.mapStateToProps(this.application.state);
         }
@@ -91,7 +90,7 @@ namespace Engine.Components
          * Method to update child nodes while capturing.
          * @param fout Target HTML Element.
          */
-        public void fallback(GameObject fout) {
+        void fallback(GameObject fout) {
 
             foreach(KeyValuePair<string, Component> el in this.getNodes())
             {

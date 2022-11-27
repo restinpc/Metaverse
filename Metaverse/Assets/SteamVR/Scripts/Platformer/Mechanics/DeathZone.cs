@@ -15,7 +15,7 @@ namespace Platformer.Mechanics
             var p = collider.gameObject.GetComponent<PlayerController>();
             if (p != null)
             {
-                var ev = Schedule<PlayerEnteredDeathZone>();
+                var ev = Schedule<PlayerDeath>();
             }
         }
     }
