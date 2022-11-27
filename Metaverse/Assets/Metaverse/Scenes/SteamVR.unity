@@ -3709,6 +3709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   vr_player: {fileID: 1893138395}
+  audioSource: {fileID: 0}
+  audioClipArray: []
 --- !u!114 &235688612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28108,7 +28110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2083460, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: field of view
-      value: 160
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 11489144, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: urpControllerMaterial

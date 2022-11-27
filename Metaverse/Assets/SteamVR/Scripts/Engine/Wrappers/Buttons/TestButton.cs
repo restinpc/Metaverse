@@ -31,13 +31,19 @@ namespace Engine.Wrappers
                 };
             }
 
+            int callback(Camera camera) {
+                Simulation.Schedule<Gameplay.ZoomInCamera>().objectName = "FallbackObjects";
+                return 0;
+            }
+
             int onClick() {
                 if (Model.application.DEBUG)
                 {
                     Debug.Log("Engine.Wrappers.TestButton.onClick()");
                 }
-                Simulation.Schedule<Gameplay.ZoomOutCamera>().objectName = "FallbackObjects";
-                Simulation.Schedule<Gameplay.ZoomInCamera>(0.75f).objectName = "FallbackObjects";
+                var ev = Simulation.Schedule<Gameplay.ZoomOutCamera>();
+                ev.objectName = "FallbackObjects";
+                ev.callback = callback;
                 return 0;
             }
             component = new Components.Button(

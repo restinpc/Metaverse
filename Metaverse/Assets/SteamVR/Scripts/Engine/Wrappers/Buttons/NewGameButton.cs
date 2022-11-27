@@ -29,12 +29,20 @@ namespace Engine.Wrappers
                     }
                 };
             }
+            int callback(Camera camera)
+            {
+                Simulation.Schedule<Gameplay.SceneChange>().targetScene = "Mansion";
+                return 0;
+            }
             int onClick() {
                 if (Model.application.DEBUG)
                 {
                     Debug.Log("Engine.Wrappers.NewGameButton.onClick()");
                 }
-                Simulation.Schedule<Gameplay.SceneChange>().targetScene = "Mansion";
+                
+                var ev = Simulation.Schedule<Gameplay.ZoomOutCamera>(0.01f);
+                ev.objectName = "FallbackObjects";
+                ev.callback = callback;
                 return 0;
             }
             component = new Components.Button(

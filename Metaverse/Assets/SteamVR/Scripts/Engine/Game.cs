@@ -1,6 +1,7 @@
 
 using Platformer.Core;
 using Platformer.Mechanics;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,9 @@ namespace Engine
 
         public Valve.VR.InteractionSystem.Player vr_player;
         private string activeScene;
+
+        public AudioSource audioSource;
+        public AudioClip[] audioClipArray;
 
         void Awake()
         {
@@ -57,12 +61,16 @@ namespace Engine
         {
             if (activeScene != Scene.Loading.ToString() && !Model.application.state["started"].getBool())
             {
+                if (audioClipArray != null && audioClipArray.Length > 0)
+                {
+                    audioSource.PlayOneShot(audioClipArray[0]);
+                }
                 Model.application.setState(Model.startGameAction());
             } else
             {
                 Model.application.render();
             }
-            Simulation.Schedule<Gameplay.ZoomInCamera>(0.01f).objectName = "FallbackObjects";
+            Simulation.Schedule<Gameplay.ZoomInCamera>().objectName = "FallbackObjects";
         }
 
         void initLoadingScene()
@@ -211,7 +219,7 @@ namespace Engine
                 if (currentSceneName != "Loading")
                 {
                     flag = false;
-                    Schedule<Gameplay.SceneChange>(2f).targetScene = targetScene;
+                    Schedule<Gameplay.SceneChange>(1.5f).targetScene = targetScene;
                     Model.application.setState(
                         Model.mergeActions(
                             new List<Dictionary<string, Prop>>() {
@@ -235,31 +243,39 @@ namespace Engine
             }
         }
 
-        public IEnumerator zoomOutCamera(Camera camera, int from, int to, float delay)
+        public IEnumerator zoomOutCamera(Camera camera, int from, int to, float delay, Func<Camera, int> callback = null)
         {
             yield return new WaitForSecondsRealtime(delay);
             camera.fieldOfView = from;
             if (from < to)
             {
-                yield return zoomOutCamera(camera, from + 2, to, delay);
+                yield return zoomOutCamera(camera, from + 2, to, delay, callback);
             }
             else
             {
                 StopCoroutine(Model.coroutines["zoomOutCamera"]);
+                if (callback != null)
+                {
+                    callback(camera);
+                }
             }
         }
 
-        public IEnumerator zoomInCamera(Camera camera, int from, int to, float delay)
+        public IEnumerator zoomInCamera(Camera camera, int from, int to, float delay, Func<Camera, int> callback = null)
         {
             yield return new WaitForSecondsRealtime(delay);
             camera.fieldOfView = from;
             if (from > to)
             {
-                yield return zoomInCamera(camera, from - 2, to, delay);
+                yield return zoomInCamera(camera, from - 2, to, delay, callback);
             }
             else
             {
                 StopCoroutine(Model.coroutines["zoomInCamera"]);
+                if (callback != null)
+                {
+                    callback(camera);
+                }
             }
         }
 
