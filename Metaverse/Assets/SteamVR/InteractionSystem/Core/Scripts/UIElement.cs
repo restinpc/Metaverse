@@ -11,6 +11,7 @@ using System;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using Engine;
+using Platformer.Core;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -65,11 +66,18 @@ namespace Valve.VR.InteractionSystem
 
 
         //-------------------------------------------------
+		int callback(Camera camera)
+        {
+			return 0;
+		}
         protected virtual void OnButtonClick()
 		{
 			if (targetSceneName.Length > 0)
 			{
-				Platformer.Core.Simulation.Schedule<Engine.Gameplay.SceneChange>().targetScene = targetSceneName;
+				Simulation.Schedule<Engine.Gameplay.SceneChange>(0.7f).targetScene = targetSceneName;
+				var ev = Simulation.Schedule<Engine.Gameplay.ZoomOutCamera>(0.01f);
+				ev.objectName = "FallbackObjects";
+				ev.callback = callback;
 			}
 			else
 			{

@@ -24,7 +24,6 @@ namespace Engine
                 { "started", new Prop(false) },
                 { "paused", new Prop(false) },
                 { "gameOver", new Prop(false) },
-                { "victory", new Prop(false) },
                 { "inputEnabled", new Prop(true) },
             };
             fout.Add("player", new Prop(
