@@ -231,7 +231,9 @@
     <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Captions\LoadingCaption.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Captions\LoadingText.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Element.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\GameWrapper.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\LabelWrapper.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\LoadingWrapper.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\PlayerWrapper.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Platformer\Core\Fuzzy.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Platformer\Core\HeapQueue.cs" />

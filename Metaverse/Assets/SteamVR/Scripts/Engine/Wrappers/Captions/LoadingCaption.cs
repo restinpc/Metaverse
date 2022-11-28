@@ -36,7 +36,7 @@ namespace Engine.Wrappers
                 }
                 return new Dictionary<string, Prop>
                 {
-                    { "visible", new Prop(state["activeScene"].getString() == Scene.Loading.ToString()) },
+                    { "visible", new Prop(state["activeScene"].getString() == scene.ToString()) },
                     { "value", new Prop(text)}
                 };
             }

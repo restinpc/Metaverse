@@ -131,7 +131,7 @@ namespace Engine
                 {
                     Debug.Log("Scene is changing from <" + currentScene + "> to <" + targetScene + ">");
                 }
-                SceneManager.LoadSceneAsync(targetScene);
+                SceneManager.LoadScene(targetScene);
                 rerender = false;
             }
             Dictionary<string, Prop> newState = new Dictionary<string, Prop>();
