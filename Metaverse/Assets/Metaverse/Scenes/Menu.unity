@@ -271,6 +271,11 @@ PrefabInstance:
       propertyPath: urpControllerMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 70a2eb634d7ed434b86d36f190fcf3a1, type: 2}
+    - target: {fileID: 114000012749712888, guid: dc06161b6d97feb419f45f03b62e14b9,
+        type: 3}
+      propertyPath: doNotDestroy
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
 --- !u!4 &72609347 stripped
@@ -2614,7 +2619,7 @@ GameObject:
   - component: {fileID: 2039029248}
   - component: {fileID: 2039029247}
   m_Layer: 0
-  m_Name: Loading
+  m_Name: Menu.Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2656,7 +2661,7 @@ MonoBehaviour:
   onHandClick:
     m_PersistentCalls:
       m_Calls: []
-  targetSceneName: Loading
+  targetSceneName: 
 --- !u!114 &2039029248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2874,7 +2879,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Loading
+  m_Text: Quit
 --- !u!222 &2075924504
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -70,7 +70,9 @@ namespace Engine
             {
                 Model.application.render();
             }
-            Simulation.Schedule<Gameplay.ZoomInCamera>().objectName = "FallbackObjects";
+            var ev = Simulation.Schedule<Gameplay.ZoomInCamera>();
+            ev.objectName = "VRCamera";
+            ev.objectName = "FallbackObjects";
         }
 
         void initLoadingScene()
@@ -90,7 +92,7 @@ namespace Engine
                         { "Loading.Menu", null },
                         { "Loading.Test", null }
                     };
-                new Wrappers.Element(
+                new Wrappers.LoadingWrapper(
                     "Loading.Game",
                     Model.loadingScene,
                     Scene.Loading
@@ -145,9 +147,10 @@ namespace Engine
                 Model.menuScene = new Dictionary<string, Components.Component> {
                         { "Menu.Game", null },
                         { "Menu.Navigation", null },
-                        { "Menu.Caption", null }
+                        { "Menu.Caption", null },
+                        { "Menu.Quit", null }
                     };
-                new Wrappers.Element(
+                new Wrappers.GameWrapper(
                     "Menu.Game",
                     Model.menuScene,
                     Scene.Menu
@@ -165,6 +168,12 @@ namespace Engine
                     Model.menuScene["Menu.Navigation"],
                     "Main Menu"
                 );
+                new Wrappers.ExitGameButton(
+                    "Menu.Quit",
+                    Model.menuScene,
+                    Scene.Menu,
+                    Model.menuScene["Menu.Navigation"]
+                );
             }
         }
 
@@ -179,7 +188,7 @@ namespace Engine
                 Model.mansionScene = new Dictionary<string, Components.Component> {
                     { "Mansion.Game", null },
                 };
-                new Wrappers.Element(
+                new Wrappers.GameWrapper(
                     "Mansion.Game",
                     Model.mansionScene,
                     Scene.Mansion
@@ -198,7 +207,7 @@ namespace Engine
                 Model.steamVrScrene = new Dictionary<string, Components.Component> {
                         { "SteamVR.Game", null },
                     };
-                new Wrappers.Element(
+                new Wrappers.GameWrapper(
                     "SteamVR.Game",
                     Model.steamVrScrene,
                     Scene.SteamVR

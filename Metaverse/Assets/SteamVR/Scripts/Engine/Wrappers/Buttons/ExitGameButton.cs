@@ -1,3 +1,4 @@
+using Platformer.Core;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,43 +6,52 @@ namespace Engine.Wrappers
 {
     public class ExitGameButton
     {
-        public ExitGameButton(string objectName, out Components.Button component, Scene scane, Components.Component parent)
+        Components.Button component;
+        public ExitGameButton(
+            string objectName,
+            Dictionary<string, Components.Component> level,
+            Scene scene,
+            Components.Component parent
+        )
         {
-            if (Engine.Model.application.DEBUG)
-            {
-                Debug.Log("Engine.Wrappers.ExitGameButton.constructor(" + objectName + ")");
-            }
             Dictionary<string, Prop> mapStateToProps(Dictionary<string, Prop> state)
             {
                 return new Dictionary<string, Prop>
                 {
-                    { "value", new Prop("Exit Game") },
-                    { "visible", new Prop(
-                        state["paused"].getBool()
-                        || !state["started"].getBool()
-                        || state["gameOver"].getBool()
-                    )}
+                    { "value", new Prop("Quit") }
                 };
             }
-            UnityEngine.UI.Button button = GameObject.Find(objectName).GetComponent<UnityEngine.UI.Button>();
-            button.onClick.AddListener(() => this.Quit());
+            int callback(Camera camera)
+            {
+                if (Model.application.DEBUG)
+                {
+                    Debug.Log("Engine.Wrappers.ExitGameButton.callback()");
+                }
+                Application.Quit();
+                return 0;
+            }
+            int onClick()
+            {
+                if (Model.application.DEBUG)
+                {
+                    Debug.Log("Engine.Wrappers.ExitGameButton.onClick()");
+                }
+                var ev = Simulation.Schedule<Gameplay.ZoomOutCamera>(0.01f);
+                ev.objectName = "VRCamera";
+                ev.fallbackObjectName = "FallbackObjects";
+                ev.callback = callback;
+                return 0;
+            }
             component = new Components.Button(
                 Model.application,
-                scane,
+                scene,
                 parent,
                 objectName,
-                mapStateToProps
+                mapStateToProps,
+                onClick
             );
             parent.addChild(component);
-        }
-
-        public void Quit()
-        {
-            if (Model.application.DEBUG)
-            {
-                Debug.Log("Engine.Wrappers.ExitGameButton.Quit()");
-            }
-            Application.Quit();
+            level[objectName] = component;
         }
     }
 }

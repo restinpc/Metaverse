@@ -20,7 +20,7 @@ namespace Engine.Wrappers
                 {
                     { "value", new Prop("Start")},
                     { "visible", new Prop(
-                        state["activeScene"].getString() == Scene.Loading.ToString() && 
+                        state["activeScene"].getString() == scene.ToString() && 
                         (
                             state["paused"].getBool()
                             || !state["started"].getBool()
@@ -31,7 +31,7 @@ namespace Engine.Wrappers
             }
             int callback(Camera camera)
             {
-                Simulation.Schedule<Gameplay.SceneChange>().targetScene = "Mansion";
+                Simulation.Schedule<Gameplay.SceneChange>().targetScene = "Menu";
                 return 0;
             }
             int onClick() {
@@ -41,7 +41,8 @@ namespace Engine.Wrappers
                 }
                 
                 var ev = Simulation.Schedule<Gameplay.ZoomOutCamera>(0.01f);
-                ev.objectName = "FallbackObjects";
+                ev.objectName = "VRCamera";
+                ev.fallbackObjectName = "FallbackObjects";
                 ev.callback = callback;
                 return 0;
             }

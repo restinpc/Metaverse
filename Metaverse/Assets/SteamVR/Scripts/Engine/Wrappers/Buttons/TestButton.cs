@@ -1,5 +1,4 @@
 using Platformer.Core;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +20,7 @@ namespace Engine.Wrappers
                 {
                     { "value", new Prop("Test")},
                     { "visible", new Prop(
-                        state["activeScene"].getString() == Scene.Loading.ToString() && 
+                        state["activeScene"].getString() == scene.ToString() && 
                         (
                             state["paused"].getBool()
                             || !state["started"].getBool()
@@ -32,7 +31,13 @@ namespace Engine.Wrappers
             }
 
             int callback(Camera camera) {
-                Simulation.Schedule<Gameplay.ZoomInCamera>().objectName = "FallbackObjects";
+                if (Model.application.DEBUG)
+                {
+                    Debug.Log("Engine.Wrappers.TestButton.callback()");
+                }
+                var ev = Simulation.Schedule<Gameplay.ZoomInCamera>();
+                ev.objectName = "VRCamera";
+                ev.fallbackObjectName = "FallbackObjects";
                 return 0;
             }
 
@@ -42,7 +47,8 @@ namespace Engine.Wrappers
                     Debug.Log("Engine.Wrappers.TestButton.onClick()");
                 }
                 var ev = Simulation.Schedule<Gameplay.ZoomOutCamera>();
-                ev.objectName = "FallbackObjects";
+                ev.objectName = "VRCamera";
+                ev.fallbackObjectName = "FallbackObjects";
                 ev.callback = callback;
                 return 0;
             }

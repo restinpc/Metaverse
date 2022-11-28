@@ -76,7 +76,8 @@ namespace Valve.VR.InteractionSystem
 			{
 				Simulation.Schedule<Engine.Gameplay.SceneChange>(0.7f).targetScene = targetSceneName;
 				var ev = Simulation.Schedule<Engine.Gameplay.ZoomOutCamera>(0.01f);
-				ev.objectName = "FallbackObjects";
+				ev.objectName = "VRCamera";
+				ev.fallbackObjectName = "FallbackObjects";
 				ev.callback = callback;
 			}
 			else
