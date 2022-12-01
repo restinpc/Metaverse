@@ -24,10 +24,11 @@ namespace Engine
                 { "started", new Prop(false) },
                 { "paused", new Prop(false) },
                 { "gameOver", new Prop(false) },
-                { "inputEnabled", new Prop(true) },
             };
             fout.Add("player", new Prop(
                 new Dictionary<string, Prop>() {
+                    { "id", new Prop(1) },
+                    { "name", new Prop("Player 1") },
                     { "position", new Prop(new Vector3(0, 0, 0)) },
                     { "move", new Prop(new Vector3(0, 0, 0)) },
                     { "hp", new Prop(100) },

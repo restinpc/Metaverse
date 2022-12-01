@@ -13,8 +13,6 @@ namespace Engine.Wrappers
                 { 
                     { "dead", new Prop(state["player"].getDictionary()["dead"].getBool()) },
                     { "spawn", new Prop(state["player"].getDictionary()["spawn"].getBool()) },
-                    { "victory", new Prop(state["victory"].getBool()) },
-                    { "inputEnabled", new Prop(state["inputEnabled"].getBool()) },
                 };
             }
             component = new Components.Player(

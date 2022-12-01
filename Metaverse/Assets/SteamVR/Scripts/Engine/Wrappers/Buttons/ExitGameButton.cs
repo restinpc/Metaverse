@@ -1,4 +1,4 @@
-using Platformer.Core;
+using Engine.Core;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,9 +36,7 @@ namespace Engine.Wrappers
                 {
                     Debug.Log("Engine.Wrappers.ExitGameButton.onClick()");
                 }
-                var ev = Simulation.Schedule<Gameplay.ZoomOutCamera>(0.01f);
-                ev.objectName = "VRCamera";
-                ev.fallbackObjectName = "FallbackObjects";
+                var ev = Simulation.Schedule<Events.ZoomOutCamera>(0.01f);
                 ev.callback = callback;
                 return 0;
             }

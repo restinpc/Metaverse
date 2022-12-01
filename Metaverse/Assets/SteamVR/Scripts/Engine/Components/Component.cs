@@ -15,7 +15,6 @@ namespace Engine.Components
      */
     public class Component
     {
-        public bool DEBUG = true;
         public string id;
         public App application;
         public string name;
@@ -29,7 +28,9 @@ namespace Engine.Components
             Dictionary<string, Prop>,
             Dictionary<string, Prop>
         > mapStateToProps;
-        public Dictionary<string, Prop> props;
+        public Dictionary<string, Prop> props = new Dictionary<string, Prop>() {
+            { "visible", null }
+        };
         /**
         * @constructor
         * @param application Application object.
@@ -48,7 +49,7 @@ namespace Engine.Components
                 Dictionary<string, Prop>
             > mapStateToProps = null
         ) {
-            if (DEBUG && name.Length > 0)
+            if (application.DEBUG && name.Length > 0)
             {
                 Debug.Log("Component.constructor(" + name + ")");
             }
@@ -106,7 +107,7 @@ namespace Engine.Components
             this.renderId++;
             try
             {
-                if (DEBUG && this.name.Length > 0)
+                if (this.application.DEBUG && this.name.Length > 0)
                 {
                     Debug.Log("Engine.Component(" + this.name + ").render(" + this.renderId + ")");
                 }
@@ -135,7 +136,7 @@ namespace Engine.Components
          */
         public void addChild(Component child)
         {
-            if (DEBUG && this.name.Length > 0 && child.name.Length > 0)
+            if (this.application.DEBUG && this.name.Length > 0 && child.name.Length > 0)
             {
                 Debug.Log("Engine.Component(" + this.name + ").addChild(" + child.name + ")");
             }
@@ -155,7 +156,7 @@ namespace Engine.Components
          */
         public void removeChild(Component child)
         {
-            if (DEBUG && this.name.Length > 0)
+            if (this.application.DEBUG && this.name.Length > 0)
             {
                 Debug.Log("Engine.Component(" + this.name + ").removeChild(" + child.name + ")");
             }

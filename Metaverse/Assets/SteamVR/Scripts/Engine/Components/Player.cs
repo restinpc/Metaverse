@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Platformer.Mechanics;
-using Platformer.Core;
-using static Platformer.Core.Simulation;
 
 namespace Engine.Components
 {
@@ -18,11 +15,14 @@ namespace Engine.Components
      */
     public class Player : Component
     {
+        public new Dictionary<string, Prop> props = new Dictionary<string, Prop>() {
+            { "visible", null },
+            { "dead", null },
+            { "spawn", null }
+        };
         public bool isDead;
         public bool isVictory;
-        public bool isInputEnabled;
-        public bool isToggleCollider2d;
-        public PlayerController player;
+        public Valve.VR.InteractionSystem.Player player;
         /**
         * @constructor
         * @param application Application object.
@@ -44,7 +44,6 @@ namespace Engine.Components
         {
             this.isDead = false;
             this.isVictory = false;
-            this.isInputEnabled = true;
         }
 
         /**
@@ -59,11 +58,9 @@ namespace Engine.Components
                 {
                     if (this.player == null)
                     {
-                        this.player = gameObject.GetComponent<PlayerController>();
+                        this.player = gameObject.GetComponent<Valve.VR.InteractionSystem.Player>();
                     }
                     renderDeadProp();
-                    renderVictoryProp();
-                    renderInputEnableProp();
                     renderSpawnProp();
                 }
             }
@@ -75,54 +72,17 @@ namespace Engine.Components
 
         private void renderDeadProp()
         {
-
             bool deadProp = this.props["dead"].getBool();
             if (deadProp && !this.isDead)
             {
                 this.isDead = true;
-                player.animator.SetTrigger("hurt");
-                player.animator.SetBool("dead", true);
+                // player.animator.SetTrigger("hurt");
+                // player.animator.SetBool("dead", true);
                 Model.application.setState(Model.toggleInputAction(false));
-                Simulation.Schedule<Gameplay.PlayerSpawn>(2f);
             }
             else if (this.isDead && !deadProp)
             {
                 this.isDead = false;
-            }
-        }
-
-        private void renderVictoryProp()
-        {
-            bool victoryProp = this.props["victory"].getBool();
-            if (!this.isVictory && victoryProp)
-            {
-                this.isVictory = true;
-                player.animator.SetTrigger("victory");
-                Model.application.setState(Model.toggleInputAction(false));
-            }
-        }
-
-        private void renderInputEnableProp()
-        {
-            bool inputEnabledProp = this.props["inputEnabled"].getBool();
-            if (!this.isInputEnabled && inputEnabledProp)
-            {
-                this.isInputEnabled = true;
-                player.controlEnabled = true;
-            }
-            else if (this.isInputEnabled && !inputEnabledProp)
-            {
-                this.isInputEnabled = false;
-                player.controlEnabled = false; if (!this.isInputEnabled && inputEnabledProp)
-                {
-                    this.isInputEnabled = true;
-                    player.controlEnabled = true;
-                }
-                else if (this.isInputEnabled && !inputEnabledProp)
-                {
-                    this.isInputEnabled = false;
-                    player.controlEnabled = false;
-                }
             }
         }
 
@@ -132,33 +92,16 @@ namespace Engine.Components
             if (spawnProp)
             {
                 Model.application.setState(Model.toggleSpawnAction(false));
-                if (player.audioSource && player.respawnAudio)
-                    player.audioSource.PlayOneShot(player.respawnAudio);
-                player.jumpState = PlayerController.JumpState.Grounded;
-                player.animator.SetBool("dead", false);
             }
         }
 
         /**
          * @methods 
-         */ 
-        public void enemyCollision(EnemyController enemy)
-        {
-            var willHurtEnemy = player.Bounds.center.y >= enemy.Bounds.max.y;
-            if (willHurtEnemy)
-            {
-                // Schedule<Gameplay.EnemyDeath>().enemy = enemy;
-                player.Bounce(2);
-            }
-            else
-            {
-                this.death();
-            }
-        }
+         */
 
         public void death()
         {
-            if (DEBUG && this.name.Length > 0)
+            if (this.application.DEBUG && this.name.Length > 0)
             {
                 Debug.Log("Engine.Components.Player(" + this.name + ").death()");
             }
@@ -178,48 +121,13 @@ namespace Engine.Components
             }
         }
 
-        public void spawn()
-        {
-            if (DEBUG && this.name.Length > 0)
-            {
-                Debug.Log("Engine.Components.Player(" + this.name + ").spawn()");
-            }
-            Model.application.setState(Model.toggleInputAction(false));
-            player.collider2d.enabled = true;
-            if (player.audioSource && player.respawnAudio)
-                player.audioSource.PlayOneShot(player.respawnAudio);
-            player.jumpState = PlayerController.JumpState.Grounded;
-            player.animator.SetBool("dead", false);
-        }
-
-        public void jump()
-        {
-            if (DEBUG && this.name.Length > 0)
-            {
-                Debug.Log("Engine.Components.Player(" + this.name + ").jump()");
-            }
-            if (player.audioSource && player.jumpAudio)
-            {
-                player.audioSource.PlayOneShot(player.jumpAudio);
-            }
-        }
-
         public void revive()
         {
-            if (DEBUG && this.name.Length > 0)
+            if (this.application.DEBUG && this.name.Length > 0)
             {
                 Debug.Log("Engine.Components.Player(" + this.name + ").revive()");
             }
             Model.application.setState(Model.revivePlayerAction());
-        }
-
-        public void enableInput()
-        {
-            if (DEBUG && this.name.Length > 0)
-            {
-                Debug.Log("Engine.Components.Player(" + this.name + ").enableInput()");
-            }
-            Model.application.setState(Model.toggleInputAction(true));
         }
     }
 }
