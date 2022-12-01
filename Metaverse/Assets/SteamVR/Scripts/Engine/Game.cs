@@ -1,28 +1,20 @@
 
-using Platformer.Core;
-using Platformer.Mechanics;
+using Engine.Core;
+using Engine.Mechanics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Platformer.Core.Simulation;
+using static Engine.Core.Simulation;
 
 namespace Engine
 {
     [System.Serializable]
     public class Game : MonoBehaviour
     {
-
-        /// <summary>
-        /// The main component which controls the player sprite, controlled 
-        /// by the user.
-        /// </summary>
-        public PlayerController player;
-
-        public Valve.VR.InteractionSystem.Player vr_player;
+        public Valve.VR.InteractionSystem.Player player;
         private string activeScene;
-
         public AudioSource audioSource;
         public AudioClip[] audioClipArray;
 
@@ -59,20 +51,23 @@ namespace Engine
 
         void Start()
         {
-            if (activeScene != Scene.Loading.ToString() && !Model.application.state["started"].getBool())
+            bool isStarted = Model.application.state["started"].getBool();
+            if ((SceneManager.GetActiveScene().name != Scene.Loading.ToString() || !isStarted) && audioClipArray != null && audioClipArray.Length > 0)
             {
-                if (audioClipArray != null && audioClipArray.Length > 0)
+                audioSource.PlayOneShot(audioClipArray[0]);
+            }
+            if (activeScene != Scene.Loading.ToString())
+            {
+                if (!isStarted)
                 {
-                    audioSource.PlayOneShot(audioClipArray[0]);
+                    Model.application.setState(Model.startGameAction());
                 }
-                Model.application.setState(Model.startGameAction());
             } else
             {
                 Model.application.render();
             }
-            var ev = Simulation.Schedule<Gameplay.ZoomInCamera>();
-            ev.objectName = "VRCamera";
-            ev.objectName = "FallbackObjects";
+
+            var ev = Simulation.Schedule<Events.ZoomInCamera>();
         }
 
         void initLoadingScene()
@@ -97,13 +92,13 @@ namespace Engine
                     Model.loadingScene,
                     Scene.Loading
                 );
-                new Wrappers.Element(
+                new Wrappers.ComponentWrapper(
                     "Loading.Player",
                     Model.loadingScene,
                     Scene.Loading,
                     Model.loadingScene["Loading.Player"]
                 );
-                new Wrappers.Element(
+                new Wrappers.ComponentWrapper(
                     "Loading.Navigation",
                     Model.loadingScene,
                     Scene.Loading,
@@ -155,7 +150,7 @@ namespace Engine
                     Model.menuScene,
                     Scene.Menu
                 );
-                new Wrappers.Element(
+                new Wrappers.ComponentWrapper(
                     "Menu.Navigation",
                     Model.menuScene,
                     Scene.Menu,
@@ -228,7 +223,7 @@ namespace Engine
                 if (currentSceneName != "Loading")
                 {
                     flag = false;
-                    Schedule<Gameplay.SceneChange>(1.5f).targetScene = targetScene;
+                    Schedule<Events.SceneChange>(1.5f).targetScene = targetScene;
                     Model.application.setState(
                         Model.mergeActions(
                             new List<Dictionary<string, Prop>>() {

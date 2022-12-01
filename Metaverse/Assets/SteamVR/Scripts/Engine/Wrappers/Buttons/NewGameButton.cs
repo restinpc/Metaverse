@@ -1,4 +1,4 @@
-using Platformer.Core;
+using Engine.Core;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,7 +31,7 @@ namespace Engine.Wrappers
             }
             int callback(Camera camera)
             {
-                Simulation.Schedule<Gameplay.SceneChange>().targetScene = "Menu";
+                Simulation.Schedule<Events.SceneChange>().targetScene = "Menu";
                 return 0;
             }
             int onClick() {
@@ -39,10 +39,7 @@ namespace Engine.Wrappers
                 {
                     Debug.Log("Engine.Wrappers.NewGameButton.onClick()");
                 }
-                
-                var ev = Simulation.Schedule<Gameplay.ZoomOutCamera>(0.01f);
-                ev.objectName = "VRCamera";
-                ev.fallbackObjectName = "FallbackObjects";
+                var ev = Simulation.Schedule<Events.ZoomOutCamera>(0.01f);
                 ev.callback = callback;
                 return 0;
             }

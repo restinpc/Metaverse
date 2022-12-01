@@ -2,7 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     SteamVR.dll:
     - Engine.Game
-    - Platformer.Mechanics.GameController
+    - Engine.Mechanics.GameController
     - Player
     - URPMaterialSwitcher
     - Valve.VR.InteractionSystem.AllowTeleportWhileAttachedToHand
@@ -515,8 +515,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12372}
     - Class: 114
       Script: {instanceID: 12378}
-    - Class: 114
-      Script: {instanceID: 12428}
     - Class: 114
       Script: {instanceID: 12538}
     - Class: 114
@@ -1183,12 +1181,6 @@ ScriptsOnlyBuild:
     className: UIElement
   - hash:
       serializedVersion: 2
-      Hash: 0f15034f74dcf7097a63e50a3539c638
-    assemblyName: SteamVR.dll
-    namespaceName: Platformer.Mechanics
-    className: PatrolPath
-  - hash:
-      serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -1291,12 +1283,6 @@ ScriptsOnlyBuild:
     className: Player
   - hash:
       serializedVersion: 2
-      Hash: 15d51fad69280a94b9eee79a350fa28b
-    assemblyName: SteamVR.dll
-    namespaceName: Platformer.Mechanics
-    className: AnimationController
-  - hash:
-      serializedVersion: 2
       Hash: d251bf88db6c95a6b1aa0b69298da9ef
     assemblyName: UnityEngine.SpatialTracking.dll
     namespaceName: UnityEngine.SpatialTracking
@@ -1335,7 +1321,7 @@ ScriptsOnlyBuild:
       serializedVersion: 2
       Hash: 3fc7ee92412f03b2aa10ee6da3eb81b7
     assemblyName: SteamVR.dll
-    namespaceName: Platformer.Mechanics
+    namespaceName: Engine.Mechanics
     className: TokenInstance
   - hash:
       serializedVersion: 2
@@ -1395,7 +1381,7 @@ ScriptsOnlyBuild:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: SteamVR.dll
-    namespaceName: Platformer.Mechanics
+    namespaceName: Engine.Mechanics
     className: GameController
   - hash:
       serializedVersion: 2
@@ -1425,7 +1411,7 @@ ScriptsOnlyBuild:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: SteamVR.dll
-    namespaceName: Platformer.Mechanics
+    namespaceName: Engine.Mechanics
     className: DeathZone
   - hash:
       serializedVersion: 2
@@ -1669,12 +1655,6 @@ ScriptsOnlyBuild:
     className: RenderModel
   - hash:
       serializedVersion: 2
-      Hash: 8eded3eb47732503b16e1c58b927f459
-    assemblyName: SteamVR.dll
-    namespaceName: Platformer.Mechanics
-    className: EnemyController
-  - hash:
-      serializedVersion: 2
       Hash: 8eb3a5f0b7fd900742b16e7776e2275b
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
@@ -1697,12 +1677,6 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Fade
-  - hash:
-      serializedVersion: 2
-      Hash: 2bedffcf5e4cbe06bea244abb2b1ec99
-    assemblyName: SteamVR.dll
-    namespaceName: Platformer.Mechanics
-    className: PlayerController
   - hash:
       serializedVersion: 2
       Hash: ef01145d01005ab9549541e17c69be56
@@ -1743,7 +1717,7 @@ ScriptsOnlyBuild:
       serializedVersion: 2
       Hash: 82949f5c747382ccf28507e324146ee5
     assemblyName: SteamVR.dll
-    namespaceName: Platformer.Mechanics
+    namespaceName: Engine.Mechanics
     className: TokenController
   - hash:
       serializedVersion: 2
@@ -1987,7 +1961,7 @@ ScriptsOnlyBuild:
     className: OpenVRLoader
   - hash:
       serializedVersion: 2
-      Hash: 5c8ab6b44bced45464557e9afed2726d
+      Hash: 14255714b6d806c0af20fb84c241fa47
     assemblyName: SteamVR.dll
     namespaceName: Engine
     className: Game
@@ -2095,22 +2069,10 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: SteamVR.dll
-    namespaceName: Platformer.Mechanics
-    className: VictoryZone
-  - hash:
-      serializedVersion: 2
       Hash: 733d63e230e8b7a674b8bfd02525c480
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
     className: FallbackCameraController
-  - hash:
-      serializedVersion: 2
-      Hash: 886bdde952e8d74a376844738c55efa6
-    assemblyName: SteamVR.dll
-    namespaceName: Platformer.Mechanics
-    className: Kinematic
   - hash:
       serializedVersion: 2
       Hash: b8c7297a93272bb07020274d63eb3934
@@ -2213,12 +2175,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Slider
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: SteamVR.dll
-    namespaceName: Platformer.Mechanics
-    className: SpawnPoint
   - hash:
       serializedVersion: 2
       Hash: 0fd6822f6177297bd0eb4d83cc7a9030

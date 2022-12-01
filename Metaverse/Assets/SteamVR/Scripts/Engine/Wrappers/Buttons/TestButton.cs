@@ -1,4 +1,4 @@
-using Platformer.Core;
+using Engine.Core;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,15 +29,12 @@ namespace Engine.Wrappers
                     }
                 };
             }
-
             int callback(Camera camera) {
                 if (Model.application.DEBUG)
                 {
                     Debug.Log("Engine.Wrappers.TestButton.callback()");
                 }
-                var ev = Simulation.Schedule<Gameplay.ZoomInCamera>();
-                ev.objectName = "VRCamera";
-                ev.fallbackObjectName = "FallbackObjects";
+                var ev = Simulation.Schedule<Events.ZoomInCamera>();
                 return 0;
             }
 
@@ -46,9 +43,7 @@ namespace Engine.Wrappers
                 {
                     Debug.Log("Engine.Wrappers.TestButton.onClick()");
                 }
-                var ev = Simulation.Schedule<Gameplay.ZoomOutCamera>();
-                ev.objectName = "VRCamera";
-                ev.fallbackObjectName = "FallbackObjects";
+                var ev = Simulation.Schedule<Events.ZoomOutCamera>();
                 ev.callback = callback;
                 return 0;
             }

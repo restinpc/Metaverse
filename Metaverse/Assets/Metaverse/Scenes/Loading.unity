@@ -398,7 +398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: field of view
-      value: 170
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 2083460, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_Enabled
@@ -406,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2083460, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: field of view
-      value: 170
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 2083460, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_projectionMatrixMode
@@ -1352,8 +1352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ffcbfc2993a3349aef092cf392eabd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  vr_player: {fileID: 838957782}
+  player: {fileID: 838957782}
   audioSource: {fileID: 61245745}
   audioClipArray:
   - {fileID: 8300000, guid: e66f40facb753c14d8ffea881545b099, type: 3}
