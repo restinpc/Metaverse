@@ -99,7 +99,7 @@ MonoBehaviour:
   m_MinSize: {x: 677, y: 492}
   m_MaxSize: {x: 14001, y: 14042}
   vertical: 0
-  controlID: 120
+  controlID: 136
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -177,7 +177,7 @@ MonoBehaviour:
     y: 0
     width: 1707
     height: 878
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &8
 MonoBehaviour:
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 57
+  controlID: 84
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -370,20 +370,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Metaverse/Models/Building/Materials
+    - Assets/SteamVR/Scripts/Engine/Mechanics
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Metaverse/Models/Building/Materials
+  - Assets/SteamVR/Scripts/Engine/Mechanics
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Development\Metaverse\Metaverse
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: 604d0000
-    m_LastClickedID: 19808
-    m_ExpandedIDs: 000000000a4000000c4000000e40000010400000124000001440000016400000184000001a4000001c4000001e400000204000002240000024400000264000002a400000364000005e40000000ca9a3b
+    scrollPos: {x: 0, y: 283}
+    m_SelectedIDs: 58400000
+    m_LastClickedID: 16472
+    m_ExpandedIDs: 000000000a4000000c4000000e40000010400000124000001440000016400000184000001a4000001c4000001e4000002040000022400000284000002a40000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -534,9 +534,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 48300000
       m_LastClickedID: 0
-      m_ExpandedIDs: 1c8fffff3a8fffffe4a0ffff22b0ffff06b2ffff0ab2ffff52b2ffff70b2ffff98c5ffffd8d4ffffc8d6ffffccd6ffff5afbffff5efbffffb441000082420000
+      m_ExpandedIDs: d68afffff68affff229effff66adffff5aafffff62afffff22b1ffff46b1fffff8c2ffff3ad2ffff22d4ffff2ad4ffff7ad4ffffa0d4ffffd0e7ffff14f7ffff08f9ffff10f9ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
