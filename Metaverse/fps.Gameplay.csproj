@@ -57,25 +57,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\FPS\Scripts\Gameplay\Managers\PlayerInputHandler.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Objectives\ObjectivePickupItem.cs" />
     <Compile Include="Assets\FPS\Scripts\Gameplay\Jetpack.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\ProjectileChargeParameters.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\PlayerCharacterController.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\JetpackPickup.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\PositionBobbing.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Objectives\ObjectiveKillEnemies.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\ChargedWeaponEffectsHandler.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\WeaponPickup.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\ProjectileStandard.cs" />
     <Compile Include="Assets\FPS\Scripts\Gameplay\ChargedProjectileEffectsHandler.cs" />
     <Compile Include="Assets\FPS\Scripts\Gameplay\OverheatBehavior.cs" />
     <Compile Include="Assets\FPS\Scripts\Gameplay\HealthPickup.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\TeleportPlayer.cs" />
     <Compile Include="Assets\FPS\Scripts\Gameplay\WeaponFuelCellHandler.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\WeaponPickup.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\ProjectileChargeParameters.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\PositionBobbing.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\TeleportPlayer.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\Objectives\ObjectiveKillEnemies.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\Pickup.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\JetpackPickup.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\ProjectileStandard.cs" />
     <Compile Include="Assets\FPS\Scripts\Gameplay\Managers\PlayerWeaponsManager.cs" />
     <Compile Include="Assets\FPS\Scripts\Gameplay\Objectives\ObjectiveReachPoint.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Pickup.cs" />
     <Compile Include="Assets\FPS\Scripts\Gameplay\AmmoPickup.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\Objectives\ObjectivePickupItem.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\PlayerCharacterController.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\ChargedWeaponEffectsHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FPS\Scripts\Gameplay\fps.Gameplay.asmdef" />

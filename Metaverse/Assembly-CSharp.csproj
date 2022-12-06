@@ -56,9 +56,9 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />
-    <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshLink.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -782,9 +782,21 @@
       <Project>{909EDC2E-4FAF-1520-A440-757996FD1C3C}</Project>
       <Name>SteamVR_Input_Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="fps.UI.csproj">
+      <Project>{2B22D143-AEC1-7C5A-B408-90E7CA78D4CB}</Project>
+      <Name>fps.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="fps.Editor.csproj">
+      <Project>{B59E465A-19CE-E5AA-7F0D-F8ADA3FA29CB}</Project>
+      <Name>fps.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="SteamVR.csproj">
       <Project>{B981DDBF-0920-6A2D-64DC-5CD334368A12}</Project>
       <Name>SteamVR</Name>
+    </ProjectReference>
+    <ProjectReference Include="fps.AI.csproj">
+      <Project>{3C89404E-D009-39E8-870C-0581C0D3B8EC}</Project>
+      <Name>fps.AI</Name>
     </ProjectReference>
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
       <Project>{17DD6E10-3FDE-F47F-4FF6-9741606989FC}</Project>
@@ -794,29 +806,17 @@
       <Project>{98C7F33F-A516-0959-9AA9-23F2925C007D}</Project>
       <Name>SteamVR_Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="SteamVR_Actions.csproj">
-      <Project>{DEDBA3C3-402B-4B0A-9109-2548A63B48EA}</Project>
-      <Name>SteamVR_Actions</Name>
-    </ProjectReference>
-    <ProjectReference Include="fps.Editor.csproj">
-      <Project>{B59E465A-19CE-E5AA-7F0D-F8ADA3FA29CB}</Project>
-      <Name>fps.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="fps.Game.csproj">
       <Project>{1C73E0F8-3604-EC08-BBEF-4DF0A32908A0}</Project>
       <Name>fps.Game</Name>
     </ProjectReference>
+    <ProjectReference Include="SteamVR_Actions.csproj">
+      <Project>{DEDBA3C3-402B-4B0A-9109-2548A63B48EA}</Project>
+      <Name>SteamVR_Actions</Name>
+    </ProjectReference>
     <ProjectReference Include="fps.Gameplay.csproj">
       <Project>{16318EB9-A9E6-D0B9-AF06-D361D88F94E4}</Project>
       <Name>fps.Gameplay</Name>
-    </ProjectReference>
-    <ProjectReference Include="fps.UI.csproj">
-      <Project>{2B22D143-AEC1-7C5A-B408-90E7CA78D4CB}</Project>
-      <Name>fps.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="fps.AI.csproj">
-      <Project>{3C89404E-D009-39E8-870C-0581C0D3B8EC}</Project>
-      <Name>fps.AI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

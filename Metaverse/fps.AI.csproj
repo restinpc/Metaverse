@@ -56,14 +56,14 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FPS\Scripts\AI\PatrolPath.cs" />
+    <Compile Include="Assets\FPS\Scripts\AI\NavigationModule.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\EnemyManager.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\FollowPlayer.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\EnemyTurret.cs" />
-    <Compile Include="Assets\FPS\Scripts\AI\DetectionModule.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\EnemyMobile.cs" />
+    <Compile Include="Assets\FPS\Scripts\AI\PatrolPath.cs" />
+    <Compile Include="Assets\FPS\Scripts\AI\DetectionModule.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\EnemyController.cs" />
-    <Compile Include="Assets\FPS\Scripts\AI\NavigationModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FPS\Scripts\AI\fps.AI.asmdef" />
