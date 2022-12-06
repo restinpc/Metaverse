@@ -47,6 +47,11 @@ namespace Engine
                 initSteamVrScene();
                 Model.application.stdin = Model.steamVrScrene["SteamVR.Game"];
             }
+            else if (activeScene == Scene.FPS.ToString())
+            {
+                initFpsScene();
+                Model.application.stdin = Model.fpsScrene["FPS.Game"];
+            }
         }
 
         void Start()
@@ -206,6 +211,25 @@ namespace Engine
                     "SteamVR.Game",
                     Model.steamVrScrene,
                     Scene.SteamVR
+                );
+            }
+        }
+
+        void initFpsScene()
+        {
+            if (Model.fpsScrene == null)
+            {
+                if (Model.application.DEBUG)
+                {
+                    Debug.Log("Engine.Game.initFpsScene()");
+                }
+                Model.fpsScrene = new Dictionary<string, Components.Component> {
+                        { "FPS.Game", null },
+                    };
+                new Wrappers.GameWrapper(
+                    "FPS.Game",
+                    Model.fpsScrene,
+                    Scene.FPS
                 );
             }
         }
