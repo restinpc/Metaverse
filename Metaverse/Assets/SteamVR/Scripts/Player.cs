@@ -14,12 +14,10 @@ public class Player : MonoBehaviour
 	GameObject player;
 	GameObject direction;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.Find("FallbackObjects");
-		direction = GameObject.Find("Direction");
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
+	}
 
 	void OnEnable()
 	{
@@ -28,7 +26,7 @@ public class Player : MonoBehaviour
 
 	// Update is called once per frame
 	void Update()
-    {
+	{
 		float forward = 0.0f;
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 		{
@@ -73,17 +71,24 @@ public class Player : MonoBehaviour
 			transform.position.z
 		);
 		RaycastHit[] hitInfo = Physics.RaycastAll(alpha, Vector3.down, 10);
-		Vector3 point = new Vector3(0, 0, 0);
-		for (int i = 0; i < hitInfo.Length; i++)
+		if (hitInfo.Length > 0)
 		{
-			if (hitInfo[i].distance < dif || dif == 0)
+			Vector3 point = new Vector3(0, 0, 0);
+			for (int i = 0; i < hitInfo.Length; i++)
 			{
-				dif = hitInfo[i].distance;
-				point = hitInfo[i].point;
+				if (
+					hitInfo[i].collider.gameObject.name != "HeadCollider"
+					&& hitInfo[i].collider.gameObject.name != "LegCollider"
+					&& (hitInfo[i].distance < dif || dif == 0))
+				{
+					dif = hitInfo[i].distance;
+					point = hitInfo[i].point;
+				}
 			}
+			// direction.transform.position = point + new Vector3(0.25f, 0, 0);
+			transform.position = new Vector3(point.x, point.y + 1.7f, point.z);
 		}
-		direction.transform.position = point + new Vector3(0.25f, 0, 0);
-		transform.position = point;
+
 		Vector3 mousePosition = Input.mousePosition;
 		if (Input.GetMouseButtonDown(1) /* right mouse */)
 		{
@@ -94,10 +99,7 @@ public class Player : MonoBehaviour
 		{
 			Vector3 offset = mousePosition - startMousePosition;
 			Vector3 euler = startEulerAngles + new Vector3(-offset.y * 360.0f / Screen.height, offset.x * 360.0f / Screen.width, 0.0f);
-			// if (euler.x < 90 && (euler.y < 90 || euler.y > 180))
-			// {
-				transform.localEulerAngles = euler;
-			// }
+			transform.localEulerAngles = euler;
 		}
 	}
 }

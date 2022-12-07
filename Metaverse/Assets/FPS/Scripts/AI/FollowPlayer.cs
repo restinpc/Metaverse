@@ -10,6 +10,8 @@ namespace Unity.FPS.AI
 
         void Start()
         {
+            // todo
+            /*
             ActorsManager actorsManager = FindObjectOfType<ActorsManager>();
             if (actorsManager != null)
                 m_PlayerTransform = actorsManager.Player.transform;
@@ -20,6 +22,7 @@ namespace Unity.FPS.AI
             }
 
             m_OriginalOffset = transform.position - m_PlayerTransform.position;
+            */
         }
 
         void LateUpdate()
