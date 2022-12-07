@@ -14,9 +14,7 @@ namespace Unity.FPS.AI
             /*
             ActorsManager actorsManager = FindObjectOfType<ActorsManager>();
             if (actorsManager != null)
-            {
-                    m_PlayerTransform = actorsManager.Player.transform;
-            }
+                m_PlayerTransform = actorsManager.Player.transform;
             else
             {
                 enabled = false;

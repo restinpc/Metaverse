@@ -109,8 +109,8 @@
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\HideOnHandFocusLost.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Wrappers\Buttons\ButtonWrapper.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Components\Component.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\Valve.VR\SteamVR.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Engine\Core\Simulation.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Valve.VR\SteamVR.cs" />
     <Compile Include="Assets\SteamVR\Input\BehaviourUnityEvents\SteamVR_Behaviour_PoseEvent.cs" />
     <Compile Include="Assets\SteamVR\Input\SteamVR_Action_Vibration.cs" />
     <Compile Include="Assets\SteamVR\Scripts\Valve.VR\SteamVR_CameraFlip.cs" />

@@ -14,10 +14,10 @@ public class Player : MonoBehaviour
 	GameObject player;
 	GameObject direction;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
+	}
 
 	void OnEnable()
 	{
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
 	// Update is called once per frame
 	void Update()
-    {
+	{
 		float forward = 0.0f;
 		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 		{
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 		);
 		RaycastHit[] hitInfo = Physics.RaycastAll(alpha, Vector3.down, 10);
 		if (hitInfo.Length > 0)
-        {
+		{
 			Vector3 point = new Vector3(0, 0, 0);
 			for (int i = 0; i < hitInfo.Length; i++)
 			{
@@ -86,9 +86,9 @@ public class Player : MonoBehaviour
 				}
 			}
 			// direction.transform.position = point + new Vector3(0.25f, 0, 0);
-			transform.position = new Vector3(point.x , point.y + 1.7f, point.z);
+			transform.position = new Vector3(point.x, point.y + 1.7f, point.z);
 		}
-		
+
 		Vector3 mousePosition = Input.mousePosition;
 		if (Input.GetMouseButtonDown(1) /* right mouse */)
 		{
