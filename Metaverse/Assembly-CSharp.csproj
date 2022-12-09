@@ -62,18 +62,12 @@
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshLink.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\FPS\FPSMicrogame_README.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\FPS\Prefabs\PBObjects\_ReadMe_PBObjects.txt" />
-    <None Include="Assets\FPS\Art\Fonts\ApacheLicense2.0.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\FPS\Art\Shaders\ProjectorMultiply.shader" />
-    <None Include="Assets\FPS\Prefabs\RootObjects\_ReadMe_RootObjects.txt" />
-    <None Include="Assets\FPS\Prefabs\Level\BaseObjects\_ReadMe_BaseObjects.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -83,7 +77,6 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\FPS\Third-PartyNotice.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -782,21 +775,9 @@
       <Project>{909EDC2E-4FAF-1520-A440-757996FD1C3C}</Project>
       <Name>SteamVR_Input_Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="fps.UI.csproj">
-      <Project>{2B22D143-AEC1-7C5A-B408-90E7CA78D4CB}</Project>
-      <Name>fps.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="fps.Editor.csproj">
-      <Project>{B59E465A-19CE-E5AA-7F0D-F8ADA3FA29CB}</Project>
-      <Name>fps.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="SteamVR.csproj">
       <Project>{B981DDBF-0920-6A2D-64DC-5CD334368A12}</Project>
       <Name>SteamVR</Name>
-    </ProjectReference>
-    <ProjectReference Include="fps.AI.csproj">
-      <Project>{3C89404E-D009-39E8-870C-0581C0D3B8EC}</Project>
-      <Name>fps.AI</Name>
     </ProjectReference>
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
       <Project>{17DD6E10-3FDE-F47F-4FF6-9741606989FC}</Project>
@@ -806,17 +787,17 @@
       <Project>{98C7F33F-A516-0959-9AA9-23F2925C007D}</Project>
       <Name>SteamVR_Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="fps.Game.csproj">
-      <Project>{1C73E0F8-3604-EC08-BBEF-4DF0A32908A0}</Project>
-      <Name>fps.Game</Name>
-    </ProjectReference>
     <ProjectReference Include="SteamVR_Actions.csproj">
       <Project>{DEDBA3C3-402B-4B0A-9109-2548A63B48EA}</Project>
       <Name>SteamVR_Actions</Name>
     </ProjectReference>
-    <ProjectReference Include="fps.Gameplay.csproj">
-      <Project>{16318EB9-A9E6-D0B9-AF06-D361D88F94E4}</Project>
-      <Name>fps.Gameplay</Name>
+    <ProjectReference Include="Unity.FPS.csproj">
+      <Project>{AD1C2A7B-F52C-2A36-5F00-2717AADC3D8B}</Project>
+      <Name>Unity.FPS</Name>
+    </ProjectReference>
+    <ProjectReference Include="Metaverse.csproj">
+      <Project>{E1F2DB2D-096D-1AF4-50A1-713C48DE249B}</Project>
+      <Name>Metaverse</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

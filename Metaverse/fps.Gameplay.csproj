@@ -56,29 +56,29 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Managers\PlayerInputHandler.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Jetpack.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\ChargedProjectileEffectsHandler.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\OverheatBehavior.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\HealthPickup.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\WeaponFuelCellHandler.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\WeaponPickup.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\ProjectileChargeParameters.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\PositionBobbing.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\TeleportPlayer.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Objectives\ObjectiveKillEnemies.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Pickup.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\JetpackPickup.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\ProjectileStandard.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Managers\PlayerWeaponsManager.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Objectives\ObjectiveReachPoint.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\AmmoPickup.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Objectives\ObjectivePickupItem.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\PlayerCharacterController.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\ChargedWeaponEffectsHandler.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\Managers\PlayerInputHandler.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\Jetpack.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\ChargedProjectileEffectsHandler.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\OverheatBehavior.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\HealthPickup.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\WeaponFuelCellHandler.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\WeaponPickup.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\ProjectileChargeParameters.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\PositionBobbing.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\TeleportPlayer.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\Objectives\ObjectiveKillEnemies.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\Pickup.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\JetpackPickup.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\ProjectileStandard.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\Managers\PlayerWeaponsManager.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\Objectives\ObjectiveReachPoint.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\AmmoPickup.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\Objectives\ObjectivePickupItem.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\PlayerCharacterController.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\ChargedWeaponEffectsHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\FPS\Scripts\Gameplay\fps.Gameplay.asmdef" />
+    <None Include="Assets\SteamVR\Scripts\Unity.FPS\Gameplay\fps.Gameplay.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

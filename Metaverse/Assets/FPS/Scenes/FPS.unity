@@ -447,6 +447,10 @@ PrefabInstance:
       propertyPath: m_projectionMatrixMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11476190, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 11489144, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: urpControllerMaterial
       value: 
@@ -464,7 +468,8 @@ PrefabInstance:
       propertyPath: doNotDestroy
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11476190, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
 --- !u!4 &103349549 stripped
 Transform:
@@ -505,6 +510,7 @@ MonoBehaviour:
   speed: 4
   shiftSpeed: 16
   showInstructions: 1
+  hand: {fileID: 0}
 --- !u!1 &107835149
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,35 +56,35 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FPS\Scripts\Game\TimedSelfDestruct.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\MeshCombiner.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Events.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Managers\ObjectiveManager.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Shared\Objective.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Managers\ActorsManager.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Shared\Damageable.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Managers\EventManager.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Managers\AudioManager.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\MeshCombineUtility.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Shared\Health.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\IgnoreHitDetection.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\PrefabReplacer.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Shared\WeaponController.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Actor.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\ConstantRotation.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\GameConstants.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\MinMaxParameters.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\PrefabReplacerOnInstance.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Managers\GameFlowManager.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Shared\DamageArea.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\AudioUtility.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\DebugUtility.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\IgnoreHeatMap.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Shared\Destructable.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Shared\ProjectileBase.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\TimedSelfDestruct.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\MeshCombiner.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Events.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Managers\ObjectiveManager.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Shared\Objective.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Managers\ActorsManager.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Shared\Damageable.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Managers\EventManager.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Managers\AudioManager.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\MeshCombineUtility.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Shared\Health.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\IgnoreHitDetection.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\PrefabReplacer.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Shared\WeaponController.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Actor.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\ConstantRotation.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\GameConstants.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\MinMaxParameters.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\PrefabReplacerOnInstance.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Managers\GameFlowManager.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Shared\DamageArea.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\AudioUtility.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\DebugUtility.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\IgnoreHeatMap.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Shared\Destructable.cs" />
+    <Compile Include="Assets\SteamVR\Scripts\Unity.FPS\Game\Shared\ProjectileBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\FPS\Scripts\Game\fps.Game.asmdef" />
+    <None Include="Assets\SteamVR\Scripts\Unity.FPS\Game\fps.Game.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

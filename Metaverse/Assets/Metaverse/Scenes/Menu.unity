@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 15988151}
   - component: {fileID: 15988150}
   m_Layer: 0
-  m_Name: Menu.Caption
+  m_Name: Menu.Navigation.Caption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,6 +271,10 @@ PrefabInstance:
     - target: {fileID: 2083460, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: field of view
       value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476190, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11489144, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: urpControllerMaterial
@@ -879,7 +883,7 @@ GameObject:
   - component: {fileID: 699182952}
   - component: {fileID: 699182951}
   m_Layer: 0
-  m_Name: Mansion
+  m_Name: Menu.Navigation.Mansion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -922,7 +926,6 @@ MonoBehaviour:
   onHandClick:
     m_PersistentCalls:
       m_Calls: []
-  targetSceneName: Mansion
 --- !u!114 &699182952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1070,7 +1073,7 @@ GameObject:
   - component: {fileID: 846731306}
   - component: {fileID: 846731305}
   m_Layer: 0
-  m_Name: Text
+  m_Name: Menu.Navigation.Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1168,7 +1171,7 @@ GameObject:
   - component: {fileID: 935471277}
   - component: {fileID: 935471276}
   m_Layer: 0
-  m_Name: Steam VR
+  m_Name: Menu.Navigation.SteamVR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1211,7 +1214,6 @@ MonoBehaviour:
   onHandClick:
     m_PersistentCalls:
       m_Calls: []
-  targetSceneName: SteamVR
 --- !u!114 &935471277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1457,7 +1459,7 @@ GameObject:
   - component: {fileID: 1124656505}
   - component: {fileID: 1124656504}
   m_Layer: 0
-  m_Name: FPS
+  m_Name: Menu.Navigation.FPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1500,7 +1502,6 @@ MonoBehaviour:
   onHandClick:
     m_PersistentCalls:
       m_Calls: []
-  targetSceneName: FPS
 --- !u!114 &1124656505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2631,7 +2632,7 @@ GameObject:
   - component: {fileID: 2039029248}
   - component: {fileID: 2039029247}
   m_Layer: 0
-  m_Name: Menu.Quit
+  m_Name: Menu.Navigation.Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2674,7 +2675,6 @@ MonoBehaviour:
   onHandClick:
     m_PersistentCalls:
       m_Calls: []
-  targetSceneName: 
 --- !u!114 &2039029248
 MonoBehaviour:
   m_ObjectHideFlags: 0
