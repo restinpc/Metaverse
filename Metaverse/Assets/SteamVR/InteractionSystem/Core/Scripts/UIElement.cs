@@ -6,7 +6,6 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-using Engine.Core;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -15,8 +14,6 @@ namespace Valve.VR.InteractionSystem
 	public class UIElement : MonoBehaviour
 	{
 		public CustomEvents.UnityEventHand onHandClick;
-
-		public string targetSceneName;
 
         protected Hand currentHand;
 
@@ -61,22 +58,9 @@ namespace Valve.VR.InteractionSystem
 
 
         //-------------------------------------------------
-		int callback(Camera camera)
-        {
-			return 0;
-		}
         protected virtual void OnButtonClick()
 		{
-			if (targetSceneName.Length > 0)
-			{
-				Engine.Core.Simulation.Schedule<Engine.Events.SceneChange>(0.7f).targetScene = targetSceneName;
-				var ev = Simulation.Schedule<Engine.Events.ZoomOutCamera>(0.01f);
-				ev.callback = callback;
-			}
-			else
-			{
-				onHandClick.Invoke(currentHand);
-			}
+			onHandClick.Invoke(currentHand);
 		}
 	}
 
