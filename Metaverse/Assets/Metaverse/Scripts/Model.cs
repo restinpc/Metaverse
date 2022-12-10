@@ -6,7 +6,7 @@ namespace Engine
     public static class Model
     {
         public static App application = null;
-        public static Game gameModel = null;
+        public static Game Game = null;
         public static Components.Player player = null;
         public static Dictionary<string, Coroutine> coroutines = new Dictionary<string, Coroutine>();
         public static Dictionary<string, Components.Component> loadingScene = null;

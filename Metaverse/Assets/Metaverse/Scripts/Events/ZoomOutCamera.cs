@@ -35,8 +35,8 @@ namespace Engine.Events
             }
             if (camera != null)
             {
-                Model.coroutines["zoomOutCamera"] = Model.gameModel.StartCoroutine(
-                    Model.gameModel.zoomOutCamera(camera, from, to, 0.001f, callback)
+                Model.coroutines["zoomOutCamera"] = Model.Game.StartCoroutine(
+                    Model.Game.zoomOutCamera(camera, from, to, 0.001f, callback)
                 );
             }
         }

@@ -302,6 +302,7 @@
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.XRModule.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/SteamVR.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.FPS.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aP.dag/Unity.TextMeshPro.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/UnityEngine.UI.ref.dll"
 "Assets/Metaverse/Scripts/App.cs"
 "Assets/Metaverse/Scripts/Components/Button.cs"

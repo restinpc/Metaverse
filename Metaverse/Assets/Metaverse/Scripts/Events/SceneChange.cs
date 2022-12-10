@@ -12,7 +12,7 @@ namespace Engine.Events
             {
                 Debug.Log("Engine.Events.SceneChange.Execute(" + targetScene + ")");
             }
-            Model.gameModel.ChangeScene(targetScene);
+            Model.Game.ChangeScene(targetScene);
         }
 
     }

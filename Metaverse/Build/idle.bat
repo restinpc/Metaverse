@@ -1,0 +1,1 @@
+start "" Test.exe -logFile idle.txt -idle -scene FPS -realm 192.168.0.1 -pass helloworld

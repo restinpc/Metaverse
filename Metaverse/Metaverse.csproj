@@ -62,11 +62,14 @@
     <Compile Include="Assets\Metaverse\Scripts\Mechanics\PlayAudioClip.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Events\PlayerTokenCollision.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Events\ZoomInCamera.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Scenes\MansionScene.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Model.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Scenes\FpsScene.cs" />
     <Compile Include="Assets\Metaverse\Scripts\App.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\Buttons\ButtonWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Components\Component.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Core\Simulation.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Scenes\LoadingScene.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\Buttons\NewGameButton.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Core\Simulation.InstanceRegister.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Mechanics\GameController.cs" />
@@ -79,22 +82,19 @@
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\LoadingWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Prop.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\Captions\LoadingText.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Scenes\MenuScene.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Mechanics\TokenController.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Core\Fuzzy.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Events\SceneChange.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\GameWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\LabelWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\PlayerWrapper.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Scenes\SteamVrScene.cs" />
     <Compile Include="Assets\Metaverse\Scripts\FallbackPlayerController.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\ComponentWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Game.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Components\Player.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\Captions\LoadingCaption.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Scenes\MenuScene.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Scenes\LoadingScene.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Scenes\MansionScene.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Scenes\SteamVrScene.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Scenes\FpsScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Metaverse\Metaverse.asmdef" />
@@ -741,6 +741,9 @@
     </Reference>
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.15f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
