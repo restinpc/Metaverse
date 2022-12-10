@@ -36,8 +36,8 @@ namespace Engine.Events
             }
             if (camera != null)
             {
-                Model.coroutines["zoomInCamera"] = Model.gameModel.StartCoroutine(
-                    Model.gameModel.zoomInCamera(camera, from, to, 0.001f, callback)
+                Model.coroutines["zoomInCamera"] = Model.Game.StartCoroutine(
+                    Model.Game.zoomInCamera(camera, from, to, 0.001f, callback)
                 );
             }
         }

@@ -25,7 +25,7 @@ namespace Engine
             {
                 Model.application = new App();
             }
-            Model.gameModel = this;
+            Model.Game = this;
             activeScene = Model.application.state["activeScene"].getString();
             if (activeScene == Scene.Loading.ToString())
             {
@@ -68,6 +68,19 @@ namespace Engine
             }
             Simulation.Schedule<Events.ZoomInCamera>();
         } 
+
+        public bool isIdle()
+        {
+            var args = System.Environment.GetCommandLineArgs();
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (args[i] == "-idle")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public void ChangeScene(string targetScene)
         {
