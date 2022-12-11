@@ -47,6 +47,7 @@ namespace Engine
             {
                 Scenes.FpsScene.Load();
             }
+            Model.application.render();
         }
 
         void Start()

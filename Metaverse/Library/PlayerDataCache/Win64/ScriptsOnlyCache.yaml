@@ -1,5 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
+    Assembly-CSharp-Editor.dll:
+    - UnityEditor.AI.NavMeshAssetManager
     Assembly-CSharp.dll:
     - UnityEngine.AI.NavMeshModifier
     - UnityEngine.AI.NavMeshSurface
@@ -108,9 +110,11 @@ ScriptsOnlyBuild:
     - Unity.FPS.AI.PatrolPath
     - Unity.FPS.Game.Actor
     - Unity.FPS.Game.ActorsManager
+    - Unity.FPS.Game.Damageable
     - Unity.FPS.Game.GameFlowManager
     - Unity.FPS.Game.Health
     - Unity.FPS.Game.WeaponController
+    - Unity.FPS.Gameplay.HealthPickup
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -294,6 +298,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2762}
     - Class: 114
+      Script: {instanceID: 2844}
+    - Class: 114
       Script: {instanceID: 2880}
     - Class: 114
       Script: {instanceID: 2892}
@@ -323,6 +329,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 3490}
     - Class: 114
       Script: {instanceID: 3498}
+    - Class: 114
+      Script: {instanceID: 3514}
     - Class: 114
       Script: {instanceID: 3588}
     - Class: 114
@@ -386,15 +394,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5736}
     - Class: 114
-      Script: {instanceID: 24360}
+      Script: {instanceID: 24390}
     - Class: 114
-      Script: {instanceID: 24472}
+      Script: {instanceID: 48514}
     - Class: 114
-      Script: {instanceID: 24796}
-    - Class: 114
-      Script: {instanceID: 34308}
-    - Class: 114
-      Script: {instanceID: 34392}
+      Script: {instanceID: 161406}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 119
@@ -2672,6 +2676,42 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_Single
+  - hash:
+      serializedVersion: 2
+      Hash: 87c7141addf7c995befd6b9416b499c3
+    assemblyName: Unity.FPS.dll
+    namespaceName: Unity.FPS.Gameplay
+    className: HealthPickup
+  - hash:
+      serializedVersion: 2
+      Hash: 8299abb9ed638fadb82d4a68b493585c
+    assemblyName: Unity.FPS.dll
+    namespaceName: Unity.FPS.Gameplay
+    className: PlayerCharacterController
+  - hash:
+      serializedVersion: 2
+      Hash: 02a1f8a6a6a2e28538ec401006f70cf3
+    assemblyName: Unity.FPS.dll
+    namespaceName: Unity.FPS.Gameplay
+    className: Pickup
+  - hash:
+      serializedVersion: 2
+      Hash: 4d63e8926ba66395ca9ace7d8418608f
+    assemblyName: Unity.FPS.dll
+    namespaceName: Unity.FPS.Gameplay
+    className: PlayerInputHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 70f76b9e834a242e115cb4cf4637e083
+    assemblyName: Unity.FPS.dll
+    namespaceName: Unity.FPS.Gameplay
+    className: PlayerWeaponsManager
+  - hash:
+      serializedVersion: 2
+      Hash: d33e8381fa6d9592cb1fd047cfd7bcc8
+    assemblyName: Unity.FPS.dll
+    namespaceName: Unity.FPS.Game
+    className: Damageable
   platform: 19
   scenePathNames:
   - Assets/Metaverse/Scenes/Loading.unity

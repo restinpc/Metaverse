@@ -79,6 +79,13 @@
     <Compile Include="Assets\FPS\Scripts\Game\AudioUtility.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\EnemyController.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\DebugUtility.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\HealthPickup.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\PlayerCharacterController.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\Pickup.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\Managers\PlayerInputHandler.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\Managers\PlayerWeaponsManager.cs" />
+    <Compile Include="Assets\FPS\Scripts\Game\GameConstants.cs" />
+    <Compile Include="Assets\FPS\Scripts\Game\Shared\Damageable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FPS\FPSMicrogame_README.txt" />
