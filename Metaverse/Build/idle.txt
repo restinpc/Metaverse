@@ -1,0 +1,526 @@
+Mono path[0] = 'C:/Development/Metaverse/Metaverse/Build/Test_Data/Managed'
+Mono config path = 'C:/Development/Metaverse/Metaverse/Build/MonoBleedingEdge/etc'
+Initialize engine version: 2021.3.15f1 (e8e88683f834)
+[Subsystems] Discovering subsystems at path C:/Development/Metaverse/Metaverse/Build/Test_Data/UnitySubsystems
+[Subsystems] No descriptors matched for  examples in UnitySubsystems/XRSDKOpenVR/UnitySubsystemsManifest.json.
+[Subsystems] 1 'inputs' descriptors matched in UnitySubsystems/XRSDKOpenVR/UnitySubsystemsManifest.json
+[Subsystems] 1 'displays' descriptors matched in UnitySubsystems/XRSDKOpenVR/UnitySubsystemsManifest.json
+[Subsystems] No descriptors matched for  meshings in UnitySubsystems/XRSDKOpenVR/UnitySubsystemsManifest.json.
+GfxDevice: creating device client; threaded=1; jobified=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3080 (ID=0x2216)
+    Vendor:   NVIDIA
+    VRAM:     10078 MB
+    Driver:   27.21.14.6647
+Begin MonoManager ReloadAssembly
+- Completed reload, in  0.093 seconds
+XRGeneral Settings awakening...
+[Subsystems] Loading plugin XRSDKOpenVR for subsystem OpenVR Display...
+[XR] [OpenVR] Registering providers
+[XR] [OpenVR] Display lifecyle provider registered
+[Subsystems] XRSDKOpenVR successfully registered Provider for OpenVR Display
+[XR] [OpenVR] Input lifecycle provider registered
+[Subsystems] XRSDKOpenVR successfully registered Provider for OpenVR Input
+[Subsystems] XRSDKOpenVR successfully registered Provider for OpenVR Display
+[XR] [OpenVR] Starting Initialize
+[XR] [OpenVR] startupInfo: { 
+	"action_manifest_path": "C:/Development/Metaverse/Metaverse/Build/Test_Data/StreamingAssets/SteamVR/actions.json"
+}
+[XR] [OpenVR] [ERROR] VR_Init initError: VRInitError_Init_PathRegistryNotFound
+[XR] [OpenVR] XR OpenVR Display Shutdown
+[XR] [OpenVR] Shutdown
+<b>[OpenVR]</b> Could not initialize OpenVR. Error code: Init_PathRegistryNotFound
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 6.897300 ms
+Engine.Game.Awake(Loading)
+App.constructor()
+Engine.Game.initLoadingScene()
+Component.constructor(Loading.Game)
+Component.constructor(Loading.Player)
+Component.constructor(Loading.Navigation)
+Engine.Component(Loading.Game).addChild(Loading.Navigation)
+Component.constructor(Loading.Navigation.Caption)
+Engine.Component(Loading.Navigation).addChild(Loading.Navigation.Caption)
+Component.constructor(Loading.Navigation.Text)
+Engine.Component(Loading.Navigation).addChild(Loading.Navigation.Text)
+Component.constructor(Loading.Navigation.Menu)
+Engine.Component(Loading.Navigation).addChild(Loading.Navigation.Menu)
+Component.constructor(Loading.Navigation.Test)
+Engine.Component(Loading.Navigation).addChild(Loading.Navigation.Test)
+App.render(1)
+Engine.Component(Loading.Game).render(1)
+Engine.Component(Loading.Navigation).render(1)
+Engine.Component(Loading.Navigation.Caption).render(1)
+Engine.Component(Loading.Navigation.Text).render(1)
+Engine.Component(Loading.Navigation.Menu).render(1)
+Engine.Component(Loading.Navigation.Test).render(1)
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+App.render(2)
+Engine.Component(Loading.Game).render(2)
+Engine.Component(Loading.Navigation).render(2)
+Engine.Component(Loading.Navigation.Caption).render(2)
+Engine.Component(Loading.Navigation.Text).render(2)
+Engine.Component(Loading.Navigation.Menu).render(2)
+Engine.Component(Loading.Navigation.Test).render(2)
+Engine.Gameplay.Events.Execute(VRCamera)
+<color=green>0 ZoomInCamera</color>
+NullReferenceException: Object reference not set to an instance of an object
+  at Valve.VR.SteamVR_Action_Boolean_Source.UpdateValue () [0x00028] in <8759fefb4f404c1e86d7a2220bcedb0a>:0 
+  at Valve.VR.SteamVR_Action_In_Source_Map`1[SourceElement].ForceAddSourceToUpdateList (Valve.VR.SteamVR_Input_Sources inputSource) [0x00068] in <8759fefb4f404c1e86d7a2220bcedb0a>:0 
+  at Valve.VR.SteamVR_Action_In_Source_Map`1[SourceElement].OnAccessSource (Valve.VR.SteamVR_Input_Sources inputSource) [0x00007] in <8759fefb4f404c1e86d7a2220bcedb0a>:0 
+  at Valve.VR.SteamVR_Action_Source_Map`1[SourceElement].GetSourceElementForIndexer (Valve.VR.SteamVR_Input_Sources inputSource) [0x00002] in <8759fefb4f404c1e86d7a2220bcedb0a>:0 
+  at Valve.VR.SteamVR_Action_Source_Map`1[SourceElement].get_Item (Valve.VR.SteamVR_Input_Sources inputSource) [0x00000] in <8759fefb4f404c1e86d7a2220bcedb0a>:0 
+  at Valve.VR.SteamVR_Action_Boolean.GetStateDown (Valve.VR.SteamVR_Input_Sources inputSource) [0x00000] in <8759fefb4f404c1e86d7a2220bcedb0a>:0 
+  at Valve.VR.InteractionSystem.UIElement.HandHoverUpdate (Valve.VR.InteractionSystem.Hand hand) [0x0000e] in <8759fefb4f404c1e86d7a2220bcedb0a>:0 
+UnityEngine.Component:SendMessage(Component, String, Object, SendMessageOptions)
+Valve.VR.InteractionSystem.Hand:Update()
+
+Engine.Wrappers.NewGameButton.onClick()
+Engine.Events.ZoomOutCamera.Execute(VRCamera)
+<color=green>1,915183 ZoomOutCamera</color>
+Engine.Events.SceneChange.Execute(Menu)
+Engine.Game.ChangeScene(Menu)
+Engine.Model.setSceneAction(Menu)
+Engine.Model.toggleLoadingAction(False)
+Before dispatch >> 
+<color=orange>{"frameId":{"value":0},"activeScene":{"value":"Loading"},"loading":{"value":false},"started":{"value":false},"paused":{"value":false},"gameOver":{"value":false},"player":{"value":null}}</color>
+Will dispatch >> 
+<color=yellow>{"activeScene":{"value":"Menu"},"loading":{"value":false}}</color>
+Scene is changing from <Loading> to <Menu>
+After dispatch >> 
+<color=orange>{"frameId":{"value":1},"activeScene":{"value":"Menu"},"loading":{"value":false},"started":{"value":false},"paused":{"value":false},"gameOver":{"value":false},"player":{"value":null}}</color>
+<color=green>3,123116 SceneChange</color>
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.458900 ms
+Engine.Game.Awake(Menu)
+Engine.MenuScene()
+Component.constructor(Menu.Game)
+Component.constructor(Menu.Navigation)
+Engine.Component(Menu.Game).addChild(Menu.Navigation)
+Component.constructor(Menu.Navigation.Caption)
+Engine.Component(Menu.Navigation).addChild(Menu.Navigation.Caption)
+Engine.Wrappers.ButtonWrapper.constructor(Menu.Navigation.Mansion)
+Component.constructor(Menu.Navigation.Mansion)
+Engine.Component(Menu.Navigation).addChild(Menu.Navigation.Mansion)
+Engine.Wrappers.ButtonWrapper.constructor(Menu.Navigation.SteamVR)
+Component.constructor(Menu.Navigation.SteamVR)
+Engine.Component(Menu.Navigation).addChild(Menu.Navigation.SteamVR)
+Engine.Wrappers.ButtonWrapper.constructor(Menu.Navigation.FPS)
+Component.constructor(Menu.Navigation.FPS)
+Engine.Component(Menu.Navigation).addChild(Menu.Navigation.FPS)
+Component.constructor(Menu.Navigation.Quit)
+Engine.Component(Menu.Navigation).addChild(Menu.Navigation.Quit)
+App.render(3)
+Engine.Component(Menu.Game).render(1)
+Engine.Component(Menu.Navigation).render(1)
+Engine.Component(Menu.Navigation.Caption).render(1)
+Engine.Component(Menu.Navigation.Mansion).render(1)
+Engine.Component(Menu.Navigation.SteamVR).render(1)
+Engine.Component(Menu.Navigation.FPS).render(1)
+Engine.Component(Menu.Navigation.Quit).render(1)
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 1612.
+Total: 0.994000 ms (FindLiveObjects: 0.072700 ms CreateObjectMapping: 0.035400 ms MarkObjects: 0.873800 ms  DeleteObjects: 0.011900 ms)
+
+Engine.Model.startGameAction()
+Before dispatch >> 
+<color=orange>{"frameId":{"value":1},"activeScene":{"value":"Menu"},"loading":{"value":false},"started":{"value":false},"paused":{"value":false},"gameOver":{"value":false},"player":{"value":null}}</color>
+Will dispatch >> 
+<color=yellow>{"started":{"value":true}}</color>
+After dispatch >> 
+<color=orange>{"frameId":{"value":2},"activeScene":{"value":"Menu"},"loading":{"value":false},"started":{"value":true},"paused":{"value":false},"gameOver":{"value":false},"player":{"value":null}}</color>
+Engine.Component(Menu.Game).render(2)
+Engine.Component(Menu.Navigation).render(2)
+Engine.Component(Menu.Navigation.Caption).render(2)
+Engine.Component(Menu.Navigation.Mansion).render(2)
+Engine.Component(Menu.Navigation.SteamVR).render(2)
+Engine.Component(Menu.Navigation.FPS).render(2)
+Engine.Component(Menu.Navigation.Quit).render(2)
+Engine.Component(Menu.Navigation).render(3)
+Engine.Component(Menu.Navigation.Caption).render(3)
+Engine.Component(Menu.Navigation.Mansion).render(3)
+Engine.Component(Menu.Navigation.SteamVR).render(3)
+Engine.Component(Menu.Navigation.FPS).render(3)
+Engine.Component(Menu.Navigation.Quit).render(3)
+Engine.Component(Menu.Navigation.Caption).render(4)
+Engine.Component(Menu.Navigation.Mansion).render(4)
+Engine.Component(Menu.Navigation.SteamVR).render(4)
+Engine.Component(Menu.Navigation.FPS).render(4)
+Engine.Component(Menu.Navigation.Quit).render(4)
+<b>[SteamVR Interaction]</b> Failed to get IVRChaperone interface.
+Engine.Gameplay.Events.Execute(VRCamera)
+<color=green>3,206498 ZoomInCamera</color>
+Engine.Wrappers.ButtonWrapper.onClick(Mansion)
+Engine.Events.ZoomOutCamera.Execute(VRCamera)
+<color=green>5,321998 ZoomOutCamera</color>
+Engine.Wrappers.ButtonWrapper.callback()
+Engine.Events.SceneChange.Execute(Mansion)
+Engine.Game.ChangeScene(Mansion)
+Engine.Model.setSceneAction(Loading)
+Engine.Model.toggleLoadingAction(True)
+Before dispatch >> 
+<color=orange>{"frameId":{"value":2},"activeScene":{"value":"Menu"},"loading":{"value":false},"started":{"value":true},"paused":{"value":false},"gameOver":{"value":false},"player":{"value":null}}</color>
+Will dispatch >> 
+<color=yellow>{"activeScene":{"value":"Loading"},"loading":{"value":true}}</color>
+Scene is changing from <Menu> to <Loading>
+After dispatch >> 
+<color=orange>{"frameId":{"value":3},"activeScene":{"value":"Loading"},"loading":{"value":true},"started":{"value":true},"paused":{"value":false},"gameOver":{"value":false},"player":{"value":null}}</color>
+<color=green>7,463517 SceneChange</color>
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.887400 ms
+Engine.Game.Awake(Loading)
+App.render(4)
+Engine.Component(Loading.Game).render(3)
+Engine.Component(Loading.Navigation).render(3)
+Engine.Component(Loading.Navigation.Caption).render(3)
+Engine.Component(Loading.Navigation.Text).render(3)
+Engine.Component(Loading.Navigation.Menu).render(3)
+Engine.Component(Loading.Navigation.Test).render(3)
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 1429.
+Total: 0.798500 ms (FindLiveObjects: 0.054300 ms CreateObjectMapping: 0.027500 ms MarkObjects: 0.688800 ms  DeleteObjects: 0.027800 ms)
+
+App.render(5)
+Engine.Component(Loading.Game).render(4)
+Engine.Component(Loading.Navigation).render(4)
+Engine.Component(Loading.Navigation.Caption).render(4)
+Engine.Component(Loading.Navigation.Text).render(4)
+Engine.Component(Loading.Navigation.Menu).render(4)
+Engine.Component(Loading.Navigation.Test).render(4)
+Engine.Gameplay.Events.Execute(VRCamera)
+<color=green>7,48074 ZoomInCamera</color>
+Engine.Events.SceneChange.Execute(Mansion)
+Engine.Game.ChangeScene(Mansion)
+Engine.Model.setSceneAction(Mansion)
+Engine.Model.toggleLoadingAction(False)
+Before dispatch >> 
+<color=orange>{"frameId":{"value":3},"activeScene":{"value":"Loading"},"loading":{"value":true},"started":{"value":true},"paused":{"value":false},"gameOver":{"value":false},"player":{"value":null}}</color>
+Will dispatch >> 
+<color=yellow>{"activeScene":{"value":"Mansion"},"loading":{"value":false}}</color>
+Scene is changing from <Loading> to <Mansion>
+After dispatch >> 
+<color=orange>{"frameId":{"value":4},"activeScene":{"value":"Mansion"},"loading":{"value":false},"started":{"value":true},"paused":{"value":false},"gameOver":{"value":false},"player":{"value":null}}</color>
+<color=green>8,964073 SceneChange</color>
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.395400 ms
+Engine.Game.Awake(Mansion)
+Engine.Game.initMansionScene()
+Component.constructor(Mansion.Game)
+App.render(6)
+Engine.Component(Mansion.Game).render(1)
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+<b>[SteamVR]</b> Not Initialized (109)
+<b>[SteamVR]</b> Initialization failed. Please verify that you have SteamVR installed, your hmd is functioning, and OpenVR Loader is checked in the XR Plugin Management section of Project Settings.
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 3383.
+Total: 0.961000 ms (FindLiveObjects: 0.120500 ms CreateObjectMapping: 0.037700 ms MarkObjects: 0.746100 ms  DeleteObjects: 0.056300 ms)
+
+Engine.Gameplay.Events.Execute(VRCamera)
+<color=green>9,002225 ZoomInCamera</color>
+Setting up 8 worker threads for Enlighten.
+Memory Statistics:
+[ALLOC_TEMP_TLS] TLS Allocator
+  StackAllocators : 
+    [ALLOC_TEMP_MAIN]
+      Peak usage frame count: [0-1.0 KB]: 28 frames, [1.0 KB-2.0 KB]: 58315 frames, [2.0 KB-4.0 KB]: 109 frames, [4.0 KB-8.0 KB]: 109 frames, [8.0 KB-16.0 KB]: 4030 frames, [128.0 KB-256.0 KB]: 2 frames, [256.0 KB-0.5 MB]: 1 frames, [2.0 MB-4.0 MB]: 1 frames
+      Initial Block Size 4.0 MB
+      Current Block Size 4.0 MB
+      Peak Allocated Bytes 2.0 MB
+      Overflow Count 0
+    [ALLOC_TEMP_Loading.AsyncRead]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 231 B
+      Overflow Count 0
+    [ALLOC_TEMP_Loading.PreloadManager]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 175.9 KB
+      Overflow Count 16
+    [ALLOC_TEMP_Background Job.Worker 8]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 6]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 9.8 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 0]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 3.5 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 10]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 9]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 5]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 2.8 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 14]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 6]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 4]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 3.5 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 14]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 3.6 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 3]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 3.5 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 13]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 2.8 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 12]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_EnlightenWorker] x 8
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 15]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 1]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 2]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 7]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_UnityGfxDeviceWorker]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 15.0 KB
+      Overflow Count 0
+    [ALLOC_TEMP_AssetGarbageCollectorHelper] x 15
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 0 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 5]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 9]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 3.5 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 13]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 8]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 2.8 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 7]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 9.8 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 1]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 9.3 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 2]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 10.1 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 3]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 11]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 10]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 2.8 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 0]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 11]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 3.5 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Job.Worker 12]
+      Initial Block Size 256.0 KB
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 9.6 KB
+      Overflow Count 0
+    [ALLOC_TEMP_Background Job.Worker 4]
+      Initial Block Size 32.0 KB
+      Current Block Size 32.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+    [ALLOC_TEMP_BatchDeleteObjects]
+      Initial Block Size 64.0 KB
+      Current Block Size 64.0 KB
+      Peak Allocated Bytes 54 B
+      Overflow Count 0
+[ALLOC_DEFAULT] Dual Thread Allocator
+  Peak main deferred allocation count 188
+    [ALLOC_BUCKET]
+      Large Block size 4.0 MB
+      Used Block count 1
+      Peak Allocated bytes 1.7 MB
+    [ALLOC_DEFAULT_MAIN]
+      Peak usage frame count: [8.0 MB-16.0 MB]: 62595 frames
+      Requested Block Size 16.0 MB
+      Peak Block count 1
+      Peak Allocated memory 13.4 MB
+      Peak Large allocation bytes 0 B
+    [ALLOC_DEFAULT_THREAD]
+      Peak usage frame count: [16.0 MB-32.0 MB]: 62592 frames, [32.0 MB-64.0 MB]: 3 frames
+      Requested Block Size 16.0 MB
+      Peak Block count 1
+      Peak Allocated memory 46.9 MB
+      Peak Large allocation bytes 42.7 MB
+[ALLOC_TEMP_JOB_1_FRAME]
+  Initial Block Size 2.0 MB
+  Used Block Count 1
+  Overflow Count (too large) 0
+  Overflow Count (full) 0
+[ALLOC_TEMP_JOB_2_FRAMES]
+  Initial Block Size 2.0 MB
+  Used Block Count 1
+  Overflow Count (too large) 0
+  Overflow Count (full) 0
+[ALLOC_TEMP_JOB_4_FRAMES (JobTemp)]
+  Initial Block Size 2.0 MB
+  Used Block Count 2
+  Overflow Count (too large) 0
+  Overflow Count (full) 0
+[ALLOC_TEMP_JOB_ASYNC (Background)]
+  Initial Block Size 1.0 MB
+  Used Block Count 3
+  Overflow Count (too large) 0
+  Overflow Count (full) 0
+[ALLOC_GFX] Dual Thread Allocator
+  Peak main deferred allocation count 1
+    [ALLOC_BUCKET]
+      Large Block size 4.0 MB
+      Used Block count 1
+      Peak Allocated bytes 1.7 MB
+    [ALLOC_GFX_MAIN]
+      Peak usage frame count: [64.0 KB-128.0 KB]: 62313 frames, [128.0 KB-256.0 KB]: 281 frames, [2.0 MB-4.0 MB]: 1 frames
+      Requested Block Size 16.0 MB
+      Peak Block count 1
+      Peak Allocated memory 2.7 MB
+      Peak Large allocation bytes 0 B
+    [ALLOC_GFX_THREAD]
+      Peak usage frame count: [256.0 KB-0.5 MB]: 24 frames, [0.5 MB-1.0 MB]: 107 frames, [1.0 MB-2.0 MB]: 62464 frames
+      Requested Block Size 16.0 MB
+      Peak Block count 1
+      Peak Allocated memory 1.2 MB
+      Peak Large allocation bytes 0 B
+[ALLOC_CACHEOBJECTS] Dual Thread Allocator
+  Peak main deferred allocation count 28
+    [ALLOC_BUCKET]
+      Large Block size 4.0 MB
+      Used Block count 1
+      Peak Allocated bytes 1.7 MB
+    [ALLOC_CACHEOBJECTS_MAIN]
+      Peak usage frame count: [0.5 MB-1.0 MB]: 127 frames, [1.0 MB-2.0 MB]: 62468 frames
+      Requested Block Size 4.0 MB
+      Peak Block count 1
+      Peak Allocated memory 1.3 MB
+      Peak Large allocation bytes 0 B
+    [ALLOC_CACHEOBJECTS_THREAD]
+      Peak usage frame count: [4.0 MB-8.0 MB]: 62593 frames, [8.0 MB-16.0 MB]: 2 frames
+      Requested Block Size 4.0 MB
+      Peak Block count 3
+      Peak Allocated memory 13.2 MB
+      Peak Large allocation bytes 4.8 MB
+[ALLOC_TYPETREE] Dual Thread Allocator
+  Peak main deferred allocation count 0
+    [ALLOC_BUCKET]
+      Large Block size 4.0 MB
+      Used Block count 1
+      Peak Allocated bytes 1.7 MB
+    [ALLOC_TYPETREE_MAIN]
+      Peak usage frame count: [0-1.0 KB]: 62595 frames
+      Requested Block Size 2.0 MB
+      Peak Block count 1
+      Peak Allocated memory 1.0 KB
+      Peak Large allocation bytes 0 B
+    [ALLOC_TYPETREE_THREAD]
+      Peak usage frame count: [4.0 KB-8.0 KB]: 62595 frames
+      Requested Block Size 2.0 MB
+      Peak Block count 1
+      Peak Allocated memory 4.8 KB
+      Peak Large allocation bytes 0 B
