@@ -162,6 +162,10 @@ namespace Engine
             {
                 Debug.Log("Engine.Game.Update()");
             }
+            if (Model.fpsScene != null && Model.fpsScene["FPS.Enemy"] != null)
+            {
+                (Model.fpsScene["FPS.Enemy"] as Components.Enemy).Update();
+            }
             /*
             bool isStarted = Model.application.state["started"].getBool() == true;
             bool isPaused = Model.application.state["paused"].getBool() == true;

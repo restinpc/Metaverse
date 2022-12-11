@@ -95,6 +95,9 @@
     <Compile Include="Assets\Metaverse\Scripts\Game.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Components\Player.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\Captions\LoadingCaption.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Components\Enemy.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Components\EnemyFork.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Wrappers\EnemyWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Metaverse\Metaverse.asmdef" />
