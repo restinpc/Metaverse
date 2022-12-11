@@ -16,6 +16,7 @@ namespace Engine.Scenes
                 }
                 Model.fpsScene = new Dictionary<string, Components.Component> {
                         { "FPS.Game", null },
+                        { "FPS.Enemy", null },
                         { "FPS.Navigation", null },
                         { "FPS.Navigation.Caption", null },
                         { "FPS.Navigation.Menu", null },
@@ -30,6 +31,12 @@ namespace Engine.Scenes
                 );
                 new Wrappers.ComponentWrapper(
                     "FPS.Navigation",
+                    Model.fpsScene,
+                    Scene.FPS,
+                    Model.fpsScene["FPS.Game"]
+                );
+                new Wrappers.EnemyWrapper(
+                    "FPS.Enemy",
                     Model.fpsScene,
                     Scene.FPS,
                     Model.fpsScene["FPS.Game"]

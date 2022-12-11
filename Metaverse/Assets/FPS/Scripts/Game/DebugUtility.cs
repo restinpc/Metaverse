@@ -10,7 +10,7 @@ namespace Unity.FPS.Game
 #if UNITY_EDITOR
             if (component == null)
             {
-                Debug.LogError("Error: Component of type " + typeof(TS) + " on GameObject " + source.gameObject.name +
+                Debug.LogError("Error: Component of type " + typeof(TS) + " on GameObject " /* + source.gameObject.name */ +
                                " expected to find a component of type " + typeof(TO) + " on GameObject " +
                                onObject.name + ", but none were found.");
             }
@@ -22,7 +22,7 @@ namespace Unity.FPS.Game
 #if UNITY_EDITOR
             if (obj == null)
             {
-                Debug.LogError("Error: Component of type " + typeof(TS) + " on GameObject " + source.gameObject.name +
+                Debug.LogError("Error: Component of type " + typeof(TS) + " on GameObject " /* + source.gameObject.name */ +
                                " expected to find an object of type " + typeof(TO) +
                                " in the scene, but none were found.");
             }
@@ -34,7 +34,7 @@ namespace Unity.FPS.Game
 #if UNITY_EDITOR
             if (count == 0)
             {
-                Debug.LogError("Error: Component of type " + typeof(TS) + " on GameObject " + source.gameObject.name +
+                Debug.LogError("Error: Component of type " + typeof(TS) + " on GameObject " /* + source.gameObject.name */ +
                                " expected to find at least one component of type " + typeof(TO) + " on GameObject " +
                                onObject.name + ", but none were found.");
             }

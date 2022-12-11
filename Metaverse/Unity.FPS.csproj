@@ -56,7 +56,9 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FPS\Scripts\Gameplay\Managers\PlayerInputHandler.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\TimedSelfDestruct.cs" />
+    <Compile Include="Assets\FPS\Scripts\Game\GameConstants.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\Events.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\NavigationModule.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\EnemyManager.cs" />
@@ -65,27 +67,25 @@
     <Compile Include="Assets\FPS\Scripts\AI\EnemyTurret.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\Managers\ObjectiveManager.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\Shared\Objective.cs" />
+    <Compile Include="Assets\FPS\Scripts\Game\Shared\Damageable.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\Managers\ActorsManager.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\EnemyMobile.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\Pickup.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\Managers\EventManager.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\Managers\AudioManager.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\Shared\Health.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\PatrolPath.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\HealthPickup.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\Shared\WeaponController.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\DetectionModule.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\Actor.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\MinMaxParameters.cs" />
+    <Compile Include="Assets\FPS\Scripts\Gameplay\PlayerCharacterController.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\Managers\GameFlowManager.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\AudioUtility.cs" />
     <Compile Include="Assets\FPS\Scripts\AI\EnemyController.cs" />
     <Compile Include="Assets\FPS\Scripts\Game\DebugUtility.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\HealthPickup.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\PlayerCharacterController.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Pickup.cs" />
-    <Compile Include="Assets\FPS\Scripts\Gameplay\Managers\PlayerInputHandler.cs" />
     <Compile Include="Assets\FPS\Scripts\Gameplay\Managers\PlayerWeaponsManager.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\GameConstants.cs" />
-    <Compile Include="Assets\FPS\Scripts\Game\Shared\Damageable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FPS\FPSMicrogame_README.txt" />

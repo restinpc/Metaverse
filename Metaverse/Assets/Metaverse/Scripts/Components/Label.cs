@@ -48,7 +48,6 @@ namespace Engine.Components
                 {
                     textObject = gameObject.GetComponent<UnityEngine.UI.Text>();
                 }
-                Debug.LogError(this.props["value"].getString());
                 textObject.text = this.props["value"].getString();
             }
             catch (Exception e)
