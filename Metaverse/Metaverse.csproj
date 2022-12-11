@@ -90,7 +90,7 @@
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\LabelWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\PlayerWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Scenes\SteamVrScene.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\FallbackPlayerController.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Mechanics\FallbackPlayerController.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\ComponentWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Game.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Components\Player.cs" />

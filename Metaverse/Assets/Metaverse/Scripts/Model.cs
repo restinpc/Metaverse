@@ -13,7 +13,7 @@ namespace Engine
         public static Dictionary<string, Components.Component> menuScene = null;
         public static Dictionary<string, Components.Component> mansionScene = null;
         public static Dictionary<string, Components.Component> steamVrScrene = null;
-        public static Dictionary<string, Components.Component> fpsScrene = null;
+        public static Dictionary<string, Components.Component> fpsScene = null;
 
         public static Dictionary<string, Prop> defaultState()
         {
