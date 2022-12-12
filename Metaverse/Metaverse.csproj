@@ -61,9 +61,8 @@
     <Compile Include="Assets\Metaverse\Scripts\Mechanics\DeathZone.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Mechanics\PlayAudioClip.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Events\PlayerTokenCollision.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Wrappers\EnemyWrapper.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Wrappers\Enemies\EnemyWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Events\ZoomInCamera.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Components\Enemy.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Scenes\MansionScene.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Model.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Scenes\FpsScene.cs" />
@@ -94,10 +93,16 @@
     <Compile Include="Assets\Metaverse\Scripts\Scenes\SteamVrScene.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Mechanics\FallbackPlayerController.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\ComponentWrapper.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Components\EnemyFork.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Components\Enemy.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Game.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Components\Player.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\Captions\LoadingCaption.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Components\EnemyTurret.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Wrappers\Enemies\EnemyTurretWrapper.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Components\EnemyRobot.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Props\RobotProps.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Props\TurretProps.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Wrappers\Enemies\EnemyRobotWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Metaverse\Metaverse.asmdef" />

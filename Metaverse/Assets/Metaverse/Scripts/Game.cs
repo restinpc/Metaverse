@@ -156,15 +156,36 @@ namespace Engine
             }
         }
 
+        // @legacy
+        void LateUpdate()
+        {
+            if (Model.application.DEBUG && Model.application.DEEP_DEBUG)
+            {
+                Debug.Log("Engine.Game.LateUpdate()");
+            }
+            if (Model.fpsScene != null && Model.fpsScene["FPS.Enemies.Robot"] != null)
+            {
+                (Model.fpsScene["FPS.Enemies.Robot"] as Components.Enemy).LateUpdate();
+            }
+            if (Model.fpsScene != null && Model.fpsScene["FPS.Enemies.Turret"] != null)
+            {
+                (Model.fpsScene["FPS.Enemies.Turret"] as Components.Enemy).LateUpdate();
+            }
+        }
+
         void Update()
         {
             if (Model.application.DEBUG && Model.application.DEEP_DEBUG)
             {
                 Debug.Log("Engine.Game.Update()");
             }
-            if (Model.fpsScene != null && Model.fpsScene["FPS.Enemy"] != null)
+            if (Model.fpsScene != null && Model.fpsScene["FPS.Enemies.Robot"] != null)
             {
-                (Model.fpsScene["FPS.Enemy"] as Components.Enemy).Update();
+                (Model.fpsScene["FPS.Enemies.Robot"] as Components.Enemy).Update();
+            }
+            if (Model.fpsScene != null && Model.fpsScene["FPS.Enemies.Turret"] != null)
+            {
+                (Model.fpsScene["FPS.Enemies.Turret"] as Components.Enemy).Update();
             }
             /*
             bool isStarted = Model.application.state["started"].getBool() == true;

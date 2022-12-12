@@ -130,8 +130,6 @@ namespace Engine.Components
         int m_PathDestinationNodeIndex;
         EnemyManager m_EnemyManager;
         ActorsManager m_ActorsManager;
-        Health m_Health;
-        Actor m_Actor;
         Collider[] m_SelfColliders;
         GameFlowManager m_GameFlowManager;
         bool m_WasDamagedThisFrame;
@@ -155,39 +153,6 @@ namespace Engine.Components
         public bool IsCritical() => GetRatio() <= CriticalHealthRatio;
 
         bool m_IsDead;
-
-        /* @EnemyMobile */
-
-        public enum AIState
-        {
-            Patrol,
-            Follow,
-            Attack,
-        }
-
-        public Animator Animator;
-
-        [Tooltip("Fraction of the enemy's attack range at which it will stop moving towards target while attacking")]
-        [Range(0f, 1f)]
-        public float AttackStopDistanceRatio = 0.5f;
-
-        [Tooltip("The random hit damage effects")]
-        public ParticleSystem[] RandomHitSparks;
-
-        public ParticleSystem[] OnDetectVfx;
-        public AudioClip OnDetectSfx;
-
-        [Header("Sound")] public AudioClip MovementSound;
-        public MinMaxFloat PitchDistortionMovementSpeed;
-
-        public AIState AiState { get; private set; }
-        EnemyController m_EnemyController;
-        AudioSource m_AudioSource;
-
-        const string k_AnimMoveSpeedParameter = "MoveSpeed";
-        const string k_AnimAttackParameter = "Attack";
-        const string k_AnimAlertedParameter = "Alerted";
-        const string k_AnimOnDamagedParameter = "OnDamaged";
 
         /**
         * @constructor
@@ -222,56 +187,21 @@ namespace Engine.Components
                 if (this.gameObject && (
                     m_EnemyManager == null
                     || m_ActorsManager == null
-                    || m_Health == null
-                    || m_Actor == null
                     || NavMeshAgent == null
                     || m_GameFlowManager == null
-                    || m_AudioSource == null
-                    || Animator == null
-                    || PatrolPath == null
                 ))
                 {
-                    Animator = gameObject.GetComponentInChildren<Animator>();
-                    PatrolPath = GameObject.FindObjectOfType<PatrolPath>();
-
-                    this.onAttack += OnAttack;
-                    onLostTarget += OnLostTarget;
-                    SetPathDestinationToClosestNode();
-                    onDamaged += OnDamaged;
-
-                    // Start patrolling
-                    AiState = AIState.Patrol;
-
-                    // adding a audio source to play the movement sound on it
-                    m_AudioSource = gameObject.GetComponent<AudioSource>();
-                    DebugUtility.HandleErrorIfNullGetComponent<AudioSource, EnemyMobile>(m_AudioSource, null, gameObject);
-                    m_AudioSource.clip = MovementSound;
-                    m_AudioSource.Play();
-
                     m_EnemyManager = GameObject.FindObjectOfType<EnemyManager>();
-                    DebugUtility.HandleErrorIfNullFindObject<EnemyManager, EnemyController>(m_EnemyManager, null);
+                    DebugUtility.HandleErrorIfNullFindObject<EnemyManager, GameObject>(m_EnemyManager, null);
 
                     m_ActorsManager = GameObject.FindObjectOfType<ActorsManager>();
-                    DebugUtility.HandleErrorIfNullFindObject<ActorsManager, EnemyController>(m_ActorsManager, null);
-
-                    // todo
-                    // m_EnemyManager.RegisterEnemy(this);
-
-                    m_Health = gameObject.GetComponent<Health>();
-                    DebugUtility.HandleErrorIfNullGetComponent<Health, EnemyController>(m_Health, null, gameObject);
-
-                    m_Actor = gameObject.GetComponent<Actor>();
-                    DebugUtility.HandleErrorIfNullGetComponent<Actor, EnemyController>(m_Actor, null, gameObject);
+                    DebugUtility.HandleErrorIfNullFindObject<ActorsManager, GameObject>(m_ActorsManager, null);
 
                     NavMeshAgent = gameObject.GetComponent<NavMeshAgent>();
                     m_SelfColliders = gameObject.GetComponentsInChildren<Collider>();
 
                     m_GameFlowManager = GameObject.FindObjectOfType<GameFlowManager>();
-                    DebugUtility.HandleErrorIfNullFindObject<GameFlowManager, EnemyController>(m_GameFlowManager, null);
-
-                    // Subscribe to damage & death actions
-                    m_Health.OnDie += OnDie;
-                    m_Health.OnDamaged += OnDamaged;
+                    DebugUtility.HandleErrorIfNullFindObject<GameFlowManager, GameObject>(m_GameFlowManager, null);
 
                     // Find and initialize all weapons
                     FindAndInitializeAllWeapons();
@@ -279,9 +209,10 @@ namespace Engine.Components
                     weapon.ShowWeapon(true);
 
                     var detectionModules = gameObject.GetComponentsInChildren<DetectionModule>();
-                    DebugUtility.HandleErrorIfNoComponentFound<DetectionModule, EnemyController>(detectionModules.Length, null,
+                    DebugUtility.HandleErrorIfNoComponentFound<DetectionModule, GameObject>(detectionModules.Length, null,
                         gameObject);
-                    DebugUtility.HandleWarningIfDuplicateObjects<DetectionModule, EnemyController>(detectionModules.Length,
+
+                    DebugUtility.HandleWarningIfDuplicateObjects<DetectionModule, GameObject>(detectionModules.Length,
                         null, gameObject);
                     // Initialize detection module
                     DetectionModule = detectionModules[0];
@@ -290,7 +221,7 @@ namespace Engine.Components
                     onAttack += DetectionModule.OnAttack;
 
                     var navigationModules = gameObject.GetComponentsInChildren<NavigationModule>();
-                    DebugUtility.HandleWarningIfDuplicateObjects<DetectionModule, EnemyController>(detectionModules.Length,
+                    DebugUtility.HandleWarningIfDuplicateObjects<DetectionModule, GameObject>(detectionModules.Length,
                         null, gameObject);
                     // Override navmesh agent data
                     if (navigationModules.Length > 0)
@@ -335,7 +266,30 @@ namespace Engine.Components
             }
         }
 
-        void OnLostTarget()
+        public virtual void Update() { }
+
+        public virtual void LateUpdate() { }
+
+        public virtual void OnDamaged(float damage, GameObject damageSource)
+        {
+            // test if the damage source is the player
+            if (damageSource/* && !damageSource.GetComponent<EnemyController>()*/)
+            {
+                // pursue the player
+                DetectionModule.OnDamaged(damageSource);
+
+                onDamaged?.Invoke();
+                m_LastTimeDamaged = Time.time;
+
+                // play the damage tick sound
+                if (DamageTick && !m_WasDamagedThisFrame)
+                    AudioUtility.CreateSFX(DamageTick, gameObject.transform.position, AudioUtility.AudioGroups.DamageTick, 0f);
+
+                m_WasDamagedThisFrame = true;
+            }
+        }
+
+        public virtual void OnLostTarget()
         {
             onLostTarget.Invoke();
 
@@ -346,22 +300,9 @@ namespace Engine.Components
                 m_EyeRendererData.Renderer.SetPropertyBlock(m_EyeColorMaterialPropertyBlock,
                     m_EyeRendererData.MaterialIndex);
             }
-
-            if (AiState == AIState.Follow || AiState == AIState.Attack)
-            {
-                AiState = AIState.Patrol;
-            }
-
-            for (int i = 0; i < OnDetectVfx.Length; i++)
-            {
-                OnDetectVfx[i].Stop();
-            }
-
-            Animator.SetBool(k_AnimAlertedParameter, false);
-
         }
 
-        void OnDetectedTarget()
+        public virtual void OnDetectedTarget()
         {
             onDetectedTarget.Invoke();
 
@@ -372,24 +313,6 @@ namespace Engine.Components
                 m_EyeRendererData.Renderer.SetPropertyBlock(m_EyeColorMaterialPropertyBlock,
                     m_EyeRendererData.MaterialIndex);
             }
-
-            if (AiState == AIState.Patrol)
-            {
-                AiState = AIState.Follow;
-            }
-
-            for (int i = 0; i < OnDetectVfx.Length; i++)
-            {
-                OnDetectVfx[i].Play();
-            }
-
-            if (OnDetectSfx)
-            {
-                AudioUtility.CreateSFX(OnDetectSfx, gameObject.transform.position, AudioUtility.AudioGroups.EnemyDetection, 1f);
-            }
-
-            Animator.SetBool(k_AnimAlertedParameter, true);
-
         }
 
         public void OrientTowards(Vector3 lookPosition)
@@ -475,25 +398,6 @@ namespace Engine.Components
                         m_PathDestinationNodeIndex -= PatrolPath.PathNodes.Count;
                     }
                 }
-            }
-        }
-
-        void OnDamaged(float damage, GameObject damageSource)
-        {
-            // test if the damage source is the player
-            if (damageSource && !damageSource.GetComponent<EnemyController>())
-            {
-                // pursue the player
-                DetectionModule.OnDamaged(damageSource);
-
-                onDamaged?.Invoke();
-                m_LastTimeDamaged = Time.time;
-
-                // play the damage tick sound
-                if (DamageTick && !m_WasDamagedThisFrame)
-                    AudioUtility.CreateSFX(DamageTick, gameObject.transform.position, AudioUtility.AudioGroups.DamageTick, 0f);
-
-                m_WasDamagedThisFrame = true;
             }
         }
 
@@ -588,7 +492,7 @@ namespace Engine.Components
             if (m_Weapons == null)
             {
                 m_Weapons = gameObject.GetComponentsInChildren<WeaponController>();
-                DebugUtility.HandleErrorIfNoComponentFound<WeaponController, EnemyController>(m_Weapons.Length, null,
+                DebugUtility.HandleErrorIfNoComponentFound<WeaponController, GameObject>(m_Weapons.Length, null,
                     gameObject);
 
                 for (int i = 0; i < m_Weapons.Length; i++)
@@ -608,7 +512,7 @@ namespace Engine.Components
                 SetCurrentWeapon(0);
             }
 
-            DebugUtility.HandleErrorIfNullGetComponent<WeaponController, EnemyController>(m_CurrentWeapon, null,
+            DebugUtility.HandleErrorIfNullGetComponent<WeaponController, GameObject>(m_CurrentWeapon, null,
                 gameObject);
 
             return m_CurrentWeapon;
@@ -626,94 +530,6 @@ namespace Engine.Components
             {
                 m_LastTimeWeaponSwapped = Mathf.NegativeInfinity;
             }
-        }
-
-        public void Update()
-        {
-            UpdateAiStateTransitions();
-            UpdateCurrentAiState();
-
-            float moveSpeed = NavMeshAgent.velocity.magnitude;
-
-            // Update animator speed parameter
-            Animator.SetFloat(k_AnimMoveSpeedParameter, moveSpeed);
-
-            // changing the pitch of the movement sound depending on the movement speed
-            m_AudioSource.pitch = Mathf.Lerp(PitchDistortionMovementSpeed.Min, PitchDistortionMovementSpeed.Max,
-                moveSpeed / NavMeshAgent.speed);
-        }
-
-        void UpdateAiStateTransitions()
-        {
-            // Handle transitions 
-            switch (AiState)
-            {
-                case AIState.Follow:
-                    // Transition to attack when there is a line of sight to the target
-                    if (IsSeeingTarget && IsTargetInAttackRange)
-                    {
-                        AiState = AIState.Attack;
-                        SetNavDestination(gameObject.transform.position);
-                    }
-
-                    break;
-                case AIState.Attack:
-                    // Transition to follow when no longer a target in attack range
-                    if (!IsTargetInAttackRange)
-                    {
-                        AiState = AIState.Follow;
-                    }
-
-                    break;
-            }
-        }
-
-        void UpdateCurrentAiState()
-        {
-            // Handle logic 
-            switch (AiState)
-            {
-                case AIState.Patrol:
-                    UpdatePathDestination();
-                    SetNavDestination(GetDestinationOnPath());
-                    break;
-                case AIState.Follow:
-                    SetNavDestination(KnownDetectedTarget.transform.position);
-                    OrientTowards(KnownDetectedTarget.transform.position);
-                    OrientWeaponsTowards(KnownDetectedTarget.transform.position);
-                    break;
-                case AIState.Attack:
-                    if (Vector3.Distance(KnownDetectedTarget.transform.position,
-                            DetectionModule.DetectionSourcePoint.position)
-                        >= (AttackStopDistanceRatio * DetectionModule.AttackRange))
-                    {
-                        SetNavDestination(KnownDetectedTarget.transform.position);
-                    }
-                    else
-                    {
-                        SetNavDestination(gameObject.transform.position);
-                    }
-
-                    OrientTowards(KnownDetectedTarget.transform.position);
-                    TryAtack(KnownDetectedTarget.transform.position);
-                    break;
-            }
-        }
-
-        void OnAttack()
-        {
-            Animator.SetTrigger(k_AnimAttackParameter);
-        }
-
-        void OnDamaged()
-        {
-            if (RandomHitSparks.Length > 0)
-            {
-                int n = UnityEngine.Random.Range(0, RandomHitSparks.Length - 1);
-                RandomHitSparks[n].Play();
-            }
-
-            Animator.SetTrigger(k_AnimOnDamagedParameter);
         }
 
     }
