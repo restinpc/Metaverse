@@ -16,7 +16,9 @@ namespace Engine.Scenes
                 }
                 Model.fpsScene = new Dictionary<string, Components.Component> {
                         { "FPS.Game", null },
-                        { "FPS.Enemy", null },
+                        { "FPS.Enemies", null },
+                        { "FPS.Enemies.Turret", null },
+                        { "FPS.Enemies.Robot", null },
                         { "FPS.Navigation", null },
                         { "FPS.Navigation.Caption", null },
                         { "FPS.Navigation.Menu", null },
@@ -30,13 +32,25 @@ namespace Engine.Scenes
                     Scene.FPS
                 );
                 new Wrappers.ComponentWrapper(
-                    "FPS.Navigation",
+                    "FPS.Enemies",
                     Model.fpsScene,
                     Scene.FPS,
                     Model.fpsScene["FPS.Game"]
                 );
-                new Wrappers.EnemyWrapper(
-                    "FPS.Enemy",
+                new Wrappers.EnemyRobotWrapper(
+                    "FPS.Enemies.Robot",
+                    Model.fpsScene,
+                    Scene.FPS,
+                    Model.fpsScene["FPS.Enemies"]
+                );
+                new Wrappers.EnemyTurretWrapper(
+                    "FPS.Enemies.Turret",
+                    Model.fpsScene,
+                    Scene.FPS,
+                    Model.fpsScene["FPS.Enemies"]
+                );
+                new Wrappers.ComponentWrapper(
+                    "FPS.Navigation",
                     Model.fpsScene,
                     Scene.FPS,
                     Model.fpsScene["FPS.Game"]
