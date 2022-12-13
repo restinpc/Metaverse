@@ -14,6 +14,5 @@ namespace Engine.Props
         public AudioClip OnDetectSfx;
 
         [Header("Sound")] public AudioClip MovementSound;
-        // Start is called before the first frame update
     }
 }
