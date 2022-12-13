@@ -73,10 +73,13 @@
     <Compile Include="Assets\Metaverse\Scripts\Scenes\LoadingScene.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\Buttons\NewGameButton.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Core\Simulation.InstanceRegister.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Components\EnemyRobot.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Mechanics\GameController.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Events\ZoomOutCamera.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\Buttons\ExitGameButton.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Wrappers\Enemies\EnemyRobotWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Mechanics\TokenInstance.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Props\TurretProps.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Core\HeapQueue.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Core\Simulation.Event.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Components\Label.cs" />
@@ -85,6 +88,7 @@
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\Captions\LoadingText.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Scenes\MenuScene.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Mechanics\TokenController.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Props\RobotProps.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Core\Fuzzy.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Events\SceneChange.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\GameWrapper.cs" />
@@ -95,14 +99,10 @@
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\ComponentWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Components\Enemy.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Game.cs" />
+    <Compile Include="Assets\Metaverse\Scripts\Wrappers\Enemies\EnemyTurretWrapper.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Components\Player.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Wrappers\Captions\LoadingCaption.cs" />
     <Compile Include="Assets\Metaverse\Scripts\Components\EnemyTurret.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Wrappers\Enemies\EnemyTurretWrapper.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Components\EnemyRobot.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Props\RobotProps.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Props\TurretProps.cs" />
-    <Compile Include="Assets\Metaverse\Scripts\Wrappers\Enemies\EnemyRobotWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Metaverse\Metaverse.asmdef" />

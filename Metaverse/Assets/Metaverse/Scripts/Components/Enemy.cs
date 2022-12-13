@@ -189,8 +189,12 @@ namespace Engine.Components
                     || m_ActorsManager == null
                     || NavMeshAgent == null
                     || m_GameFlowManager == null
+                    || PatrolPath == null
                 ))
                 {
+                    PatrolPath = GameObject.FindObjectOfType<PatrolPath>();
+                    DebugUtility.HandleErrorIfNullFindObject<PatrolPath, GameObject>(PatrolPath, null);
+
                     m_EnemyManager = GameObject.FindObjectOfType<EnemyManager>();
                     DebugUtility.HandleErrorIfNullFindObject<EnemyManager, GameObject>(m_EnemyManager, null);
 
