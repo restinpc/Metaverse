@@ -1,21 +1,21 @@
 sceneSetups:
-- path: Assets/Metaverse/Scenes/Loading.unity
+- path: Assets/Engine/Scenes/Loading.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
-- path: Assets/Metaverse/Scenes/Menu.unity
+- path: Assets/Engine/Scenes/Menu.unity
   isLoaded: 0
   isActive: 0
   isSubScene: 0
-- path: Assets/Metaverse/Scenes/Mansion.unity
+- path: Assets/Engine/Scenes/Mansion.unity
   isLoaded: 0
   isActive: 0
   isSubScene: 0
-- path: Assets/Metaverse/Scenes/SteamVR.unity
+- path: Assets/Engine/Scenes/SteamVR.unity
   isLoaded: 0
   isActive: 0
   isSubScene: 0
-- path: Assets/FPS/Scenes/FPS.unity
+- path: Assets/Engine/Scenes/FPS.unity
   isLoaded: 0
   isActive: 0
   isSubScene: 0
