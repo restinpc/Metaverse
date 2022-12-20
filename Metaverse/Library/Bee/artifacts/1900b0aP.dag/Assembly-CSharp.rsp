@@ -303,7 +303,6 @@
 -r:"Library/Bee/artifacts/1900b0aP.dag/Metaverse.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/SteamVR.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/SteamVR_Actions.ref.dll"
--r:"Library/Bee/artifacts/1900b0aP.dag/Unity.FPS.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.Services.Core.Analytics.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.Services.Core.Environments.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.Services.Core.ref.dll"

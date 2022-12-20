@@ -791,10 +791,6 @@
       <Project>{E1F2DB2D-096D-1AF4-50A1-713C48DE249B}</Project>
       <Name>Metaverse</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.FPS.csproj">
-      <Project>{AD1C2A7B-F52C-2A36-5F00-2717AADC3D8B}</Project>
-      <Name>Unity.FPS</Name>
-    </ProjectReference>
     <ProjectReference Include="SteamVR_Actions.csproj">
       <Project>{DEDBA3C3-402B-4B0A-9109-2548A63B48EA}</Project>
       <Name>SteamVR_Actions</Name>
