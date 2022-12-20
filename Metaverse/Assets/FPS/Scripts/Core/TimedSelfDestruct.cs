@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Unity.FPS.Game
+namespace Engine.Core
 {
     public class TimedSelfDestruct : MonoBehaviour
     {

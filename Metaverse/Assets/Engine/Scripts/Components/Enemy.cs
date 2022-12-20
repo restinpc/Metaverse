@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.FPS.Game;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using Unity.FPS.AI;
+using Engine.Mechanics;
+using Engine.Core;
 
 namespace Engine.Components
 {

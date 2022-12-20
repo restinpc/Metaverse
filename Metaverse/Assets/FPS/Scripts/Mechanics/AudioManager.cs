@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Unity.FPS.Game
+namespace Engine.Mechanics
 {
     public class AudioManager : MonoBehaviour
     {
