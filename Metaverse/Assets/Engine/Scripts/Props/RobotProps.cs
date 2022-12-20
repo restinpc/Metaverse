@@ -1,5 +1,5 @@
 using UnityEngine;
-using Unity.FPS.AI;
+using Engine.Mechanics;
 
 namespace Engine.Props
 {

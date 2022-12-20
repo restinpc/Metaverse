@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.FPS.Game;
 using Engine.Props;
+using Engine.Core;
 
 namespace Engine.Components
 {

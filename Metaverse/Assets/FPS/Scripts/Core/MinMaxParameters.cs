@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Unity.FPS.Game
+namespace Engine.Core
 {
     [System.Serializable]
     public struct MinMaxFloat

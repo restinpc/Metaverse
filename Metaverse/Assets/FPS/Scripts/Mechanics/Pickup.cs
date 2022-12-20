@@ -1,7 +1,7 @@
-﻿using Unity.FPS.Game;
-using UnityEngine;
+﻿using UnityEngine;
+using Engine.Core;
 
-namespace Unity.FPS.Gameplay
+namespace Engine.Mechanics
 {
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class Pickup : MonoBehaviour

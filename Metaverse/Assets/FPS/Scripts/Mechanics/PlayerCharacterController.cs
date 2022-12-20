@@ -1,8 +1,8 @@
-﻿using Unity.FPS.Game;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
+using Engine.Core;
 
-namespace Unity.FPS.Gameplay
+namespace Engine.Mechanics
 {
     [RequireComponent(typeof(CharacterController), typeof(AudioSource))]
     public class PlayerCharacterController : MonoBehaviour

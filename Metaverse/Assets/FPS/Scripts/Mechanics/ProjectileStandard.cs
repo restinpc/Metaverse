@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Unity.FPS.Game;
 using UnityEngine;
+using Engine.Core;
 
-namespace Unity.FPS.Gameplay
+namespace Engine.Mechanics
 {
     public class ProjectileStandard : ProjectileBase
     {

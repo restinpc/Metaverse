@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Unity.FPS.AI
+namespace Engine.Mechanics
 {
     public class PatrolPath : MonoBehaviour
     {

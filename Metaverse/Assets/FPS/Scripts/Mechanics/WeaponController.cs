@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Engine.Core;
 
-namespace Unity.FPS.Game
+namespace Engine.Mechanics
 {
     public enum WeaponShootType
     {

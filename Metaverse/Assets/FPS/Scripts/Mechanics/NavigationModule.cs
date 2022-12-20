@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Unity.FPS.AI
+namespace Engine.Mechanics
 {
     // Component used to override values on start from the NavmeshAgent component in order to change
     // how the agent  is moving

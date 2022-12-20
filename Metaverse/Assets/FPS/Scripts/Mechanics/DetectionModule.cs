@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using Unity.FPS.Game;
+﻿// using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Unity.FPS.AI
+namespace Engine.Mechanics
 {
     public class DetectionModule : MonoBehaviour
     {

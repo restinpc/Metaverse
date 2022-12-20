@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Unity.FPS.Game
+namespace Engine.Mechanics
 {
     public class Damageable : MonoBehaviour
     {
