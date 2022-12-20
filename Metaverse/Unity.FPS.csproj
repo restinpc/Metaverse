@@ -58,20 +58,20 @@
   <ItemGroup>
     <Compile Include="Assets\FPS\Scripts\Core\TimedSelfDestruct.cs" />
     <Compile Include="Assets\FPS\Scripts\Mechanics\NavigationModule.cs" />
-    <Compile Include="Assets\FPS\Scripts\ProjectileBase.cs" />
+    <Compile Include="Assets\FPS\Scripts\Mechanics\WeaponController.cs" />
+    <Compile Include="Assets\FPS\Scripts\Mechanics\ProjectileBase.cs" />
     <Compile Include="Assets\FPS\Scripts\Mechanics\Damageable.cs" />
-    <Compile Include="Assets\FPS\Scripts\Pickup.cs" />
-    <Compile Include="Assets\FPS\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\FPS\Scripts\Mechanics\Pickup.cs" />
+    <Compile Include="Assets\FPS\Scripts\Mechanics\AudioManager.cs" />
+    <Compile Include="Assets\FPS\Scripts\Mechanics\ProjectileStandard.cs" />
     <Compile Include="Assets\FPS\Scripts\Mechanics\PatrolPath.cs" />
-    <Compile Include="Assets\FPS\Scripts\HealthPickup.cs" />
+    <Compile Include="Assets\FPS\Scripts\Mechanics\HealthPickup.cs" />
     <Compile Include="Assets\FPS\Scripts\Mechanics\DetectionModule.cs" />
     <Compile Include="Assets\FPS\Scripts\Core\MinMaxParameters.cs" />
-    <Compile Include="Assets\FPS\Scripts\PlayerCharacterController.cs" />
-    <Compile Include="Assets\FPS\Scripts\AudioUtility.cs" />
+    <Compile Include="Assets\FPS\Scripts\Mechanics\PlayerCharacterController.cs" />
+    <Compile Include="Assets\FPS\Scripts\Core\AudioUtility.cs" />
     <Compile Include="Assets\FPS\Scripts\Core\DebugUtility.cs" />
-    <Compile Include="Assets\FPS\Scripts\Mechanics\WeaponController.cs" />
-    <Compile Include="Assets\FPS\Scripts\ProjectileStandard.cs" />
-    <Compile Include="Assets\FPS\Scripts\DamageArea.cs" />
+    <Compile Include="Assets\FPS\Scripts\Mechanics\DamageArea.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FPS\FPSMicrogame_README.txt" />
