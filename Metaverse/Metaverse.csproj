@@ -59,13 +59,17 @@
     <Compile Include="Assets\Engine\Scripts\Components\Button.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\Buttons\TestButton.cs" />
     <Compile Include="Assets\Engine\Scripts\Mechanics\DeathZone.cs" />
+    <Compile Include="Assets\Engine\Scripts\Core\TimedSelfDestruct.cs" />
     <Compile Include="Assets\Engine\Scripts\Mechanics\PlayAudioClip.cs" />
     <Compile Include="Assets\Engine\Scripts\Events\PlayerTokenCollision.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\NavigationModule.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\Enemies\EnemyWrapper.cs" />
     <Compile Include="Assets\Engine\Scripts\Events\ZoomInCamera.cs" />
     <Compile Include="Assets\Engine\Scripts\Scenes\MansionScene.cs" />
     <Compile Include="Assets\Engine\Scripts\Model.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\WeaponController.cs" />
     <Compile Include="Assets\Engine\Scripts\Scenes\FpsScene.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\ProjectileBase.cs" />
     <Compile Include="Assets\Engine\Scripts\App.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\Buttons\ButtonWrapper.cs" />
     <Compile Include="Assets\Engine\Scripts\Components\Component.cs" />
@@ -79,24 +83,36 @@
     <Compile Include="Assets\Engine\Scripts\Wrappers\Buttons\ExitGameButton.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\Enemies\EnemyRobotWrapper.cs" />
     <Compile Include="Assets\Engine\Scripts\Mechanics\TokenInstance.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\Damageable.cs" />
     <Compile Include="Assets\Engine\Scripts\Props\TurretProps.cs" />
     <Compile Include="Assets\Engine\Scripts\Core\HeapQueue.cs" />
     <Compile Include="Assets\Engine\Scripts\Core\Simulation.Event.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\Pickup.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\AudioManager.cs" />
     <Compile Include="Assets\Engine\Scripts\Components\Label.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\LoadingWrapper.cs" />
     <Compile Include="Assets\Engine\Scripts\Prop.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\Captions\LoadingText.cs" />
     <Compile Include="Assets\Engine\Scripts\Scenes\MenuScene.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\ProjectileStandard.cs" />
     <Compile Include="Assets\Engine\Scripts\Mechanics\TokenController.cs" />
     <Compile Include="Assets\Engine\Scripts\Props\RobotProps.cs" />
     <Compile Include="Assets\Engine\Scripts\Core\Fuzzy.cs" />
     <Compile Include="Assets\Engine\Scripts\Events\SceneChange.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\GameWrapper.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\PatrolPath.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\HealthPickup.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\LabelWrapper.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\PlayerWrapper.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\DetectionModule.cs" />
     <Compile Include="Assets\Engine\Scripts\Scenes\SteamVrScene.cs" />
     <Compile Include="Assets\Engine\Scripts\Mechanics\FallbackPlayerController.cs" />
+    <Compile Include="Assets\Engine\Scripts\Core\MinMaxParameters.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\PlayerCharacterController.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\ComponentWrapper.cs" />
+    <Compile Include="Assets\Engine\Scripts\Core\AudioUtility.cs" />
+    <Compile Include="Assets\Engine\Scripts\Core\DebugUtility.cs" />
+    <Compile Include="Assets\Engine\Scripts\Mechanics\DamageArea.cs" />
     <Compile Include="Assets\Engine\Scripts\Components\Enemy.cs" />
     <Compile Include="Assets\Engine\Scripts\Game.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\Enemies\EnemyTurretWrapper.cs" />
@@ -105,6 +121,12 @@
     <Compile Include="Assets\Engine\Scripts\Components\EnemyTurret.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Engine\Prefabs\PBObjects\_ReadMe_PBObjects.txt" />
+    <None Include="Assets\Engine\Fonts\ApacheLicense2.0.txt" />
+    <None Include="Assets\Engine\Shaders\ProjectorMultiply.shader" />
+    <None Include="Assets\Engine\Prefabs\RootObjects\_ReadMe_RootObjects.txt" />
+    <None Include="Assets\Engine\Prefabs\Level\BaseObjects\_ReadMe_BaseObjects.txt" />
+    <None Include="Assets\Engine\Third-PartyNotice.txt" />
     <None Include="Assets\Engine\Engine.asmdef" />
   </ItemGroup>
   <ItemGroup>
@@ -764,10 +786,6 @@
     <ProjectReference Include="SteamVR.csproj">
       <Project>{B981DDBF-0920-6A2D-64DC-5CD334368A12}</Project>
       <Name>SteamVR</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.FPS.csproj">
-      <Project>{AD1C2A7B-F52C-2A36-5F00-2717AADC3D8B}</Project>
-      <Name>Unity.FPS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

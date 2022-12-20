@@ -332,7 +332,6 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/SteamVR_Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/SteamVR_Input_Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/SteamVR_Windows_EditorHelper.ref.dll"
--r:"Library/Bee/artifacts/1900b0aE.dag/Unity.FPS.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Services.Core.Analytics.ref.dll"
