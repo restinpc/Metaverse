@@ -12,6 +12,7 @@ ScriptsOnlyBuild:
     - Engine.Mechanics.HealthPickup
     - Engine.Mechanics.PatrolPath
     - Engine.Mechanics.WeaponController
+    - Engine.Props.MonoBehaviourProps
     - Engine.Props.RobotProps
     - TurretProps
     SteamVR.dll:
@@ -120,6 +121,14 @@ ScriptsOnlyBuild:
     Unity.XR.OpenVR.dll:
     - Unity.XR.OpenVR.OpenVRLoader
     - Unity.XR.OpenVR.OpenVRSettings
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -373,21 +382,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5736}
     - Class: 114
-      Script: {instanceID: 24350}
+      Script: {instanceID: 40168}
     - Class: 114
-      Script: {instanceID: 24352}
-    - Class: 114
-      Script: {instanceID: 24354}
-    - Class: 114
-      Script: {instanceID: 24402}
-    - Class: 114
-      Script: {instanceID: 24528}
-    - Class: 114
-      Script: {instanceID: 24530}
-    - Class: 114
-      Script: {instanceID: 24532}
-    - Class: 114
-      Script: {instanceID: 26418}
+      Script: {instanceID: 174700}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 119
@@ -2109,7 +2106,7 @@ ScriptsOnlyBuild:
     className: LinearAnimator
   - hash:
       serializedVersion: 2
-      Hash: a30460c8f073014e29001be9d8c62772
+      Hash: 9b5397d9b85b25c5bab4ce33bd9c90d8
     assemblyName: Metaverse.dll
     namespaceName: Engine.Props
     className: RobotProps
@@ -2653,6 +2650,12 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_Single
+  - hash:
+      serializedVersion: 2
+      Hash: b4060dbc91c2e0edcaf17023ecc71099
+    assemblyName: Metaverse.dll
+    namespaceName: Engine.Props
+    className: MonoBehaviourProps
   platform: 19
   scenePathNames:
   - Assets/Engine/Scenes/Loading.unity

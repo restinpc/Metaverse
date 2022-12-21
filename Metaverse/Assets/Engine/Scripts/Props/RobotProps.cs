@@ -5,7 +5,7 @@ namespace Engine.Props
 {
     public class RobotProps : MonoBehaviour
     {
-        public PatrolPath PatrolPath { get; set; }
+        public PatrolPath PatrolPath;
 
         [Tooltip("The random hit damage effects")]
         public ParticleSystem[] RandomHitSparks;
