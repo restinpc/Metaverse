@@ -345,6 +345,7 @@
 "Assets/Engine/Scripts/Mechanics/WeaponController.cs"
 "Assets/Engine/Scripts/Model.cs"
 "Assets/Engine/Scripts/Prop.cs"
+"Assets/Engine/Scripts/Props/MonoBehaviourProps.cs"
 "Assets/Engine/Scripts/Props/RobotProps.cs"
 "Assets/Engine/Scripts/Props/TurretProps.cs"
 "Assets/Engine/Scripts/Scenes/FpsScene.cs"

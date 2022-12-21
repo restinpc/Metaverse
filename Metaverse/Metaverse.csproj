@@ -119,6 +119,7 @@
     <Compile Include="Assets\Engine\Scripts\Components\Player.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\Captions\LoadingCaption.cs" />
     <Compile Include="Assets\Engine\Scripts\Components\EnemyTurret.cs" />
+    <Compile Include="Assets\Engine\Scripts\Props\MonoBehaviourProps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Engine\Prefabs\PBObjects\_ReadMe_PBObjects.txt" />

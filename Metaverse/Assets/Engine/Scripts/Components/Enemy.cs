@@ -183,11 +183,11 @@ namespace Engine.Components
             {
                 if (this.gameObject && (
                     NavMeshAgent == null
-                    || PatrolPath == null
+                    // || PatrolPath == null
                 ))
                 {
-                    PatrolPath = GameObject.FindObjectOfType<PatrolPath>();
-                    DebugUtility.HandleErrorIfNullFindObject<PatrolPath, GameObject>(PatrolPath, null);
+                    // PatrolPath = GameObject.<PatrolPath>();
+                    // DebugUtility.HandleErrorIfNullFindObject<PatrolPath, GameObject>(PatrolPath, null);
 
                     NavMeshAgent = gameObject.GetComponent<NavMeshAgent>();
                     m_SelfColliders = gameObject.GetComponentsInChildren<Collider>();
@@ -254,10 +254,6 @@ namespace Engine.Components
                 Debug.LogError("Engine.Enemy(" + this.name + ").render(" + this.renderId + ") -> " + e.Message);
             }
         }
-
-        public virtual void Update() { }
-
-        public virtual void LateUpdate() { }
 
         public virtual void OnDamaged(float damage, GameObject damageSource)
         {

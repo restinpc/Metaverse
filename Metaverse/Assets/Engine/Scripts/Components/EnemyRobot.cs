@@ -72,6 +72,7 @@ namespace Engine.Components
                 {
                     Animator = gameObject.GetComponentInChildren<Animator>();
                     Props = gameObject.GetComponentInChildren<RobotProps>();
+                    PatrolPath = Props.PatrolPath;
                     SetPathDestinationToClosestNode();
                     // Start patrolling
                     AiState = AIState.Patrol;
