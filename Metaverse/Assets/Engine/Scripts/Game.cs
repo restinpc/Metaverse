@@ -179,6 +179,12 @@ namespace Engine
             {
                 Debug.Log("Engine.Game.Update()");
             }
+            if (Input.GetButton("Jump"))
+            {
+                String path = System.Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\screenshot.png");
+                Debug.Log(path);
+                ScreenCapture.CaptureScreenshot(System.Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\screenshot.png"));
+            }
             /*
             if (Model.fpsScene != null && Model.fpsScene["FPS.Enemies.Robot"] != null)
             {

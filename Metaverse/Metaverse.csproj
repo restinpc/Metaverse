@@ -89,6 +89,7 @@
     <Compile Include="Assets\Engine\Scripts\Core\Simulation.Event.cs" />
     <Compile Include="Assets\Engine\Scripts\Mechanics\Pickup.cs" />
     <Compile Include="Assets\Engine\Scripts\Mechanics\AudioManager.cs" />
+    <Compile Include="Assets\Engine\Scripts\Props\MonoBehaviourProps.cs" />
     <Compile Include="Assets\Engine\Scripts\Components\Label.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\LoadingWrapper.cs" />
     <Compile Include="Assets\Engine\Scripts\Prop.cs" />
@@ -119,7 +120,6 @@
     <Compile Include="Assets\Engine\Scripts\Components\Player.cs" />
     <Compile Include="Assets\Engine\Scripts\Wrappers\Captions\LoadingCaption.cs" />
     <Compile Include="Assets\Engine\Scripts\Components\EnemyTurret.cs" />
-    <Compile Include="Assets\Engine\Scripts\Props\MonoBehaviourProps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Engine\Prefabs\PBObjects\_ReadMe_PBObjects.txt" />
